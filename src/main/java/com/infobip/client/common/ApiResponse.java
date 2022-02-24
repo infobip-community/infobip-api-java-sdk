@@ -73,4 +73,10 @@ public final class ApiResponse<T> {
     public T getData() {
         return data;
     }
+
+    @Override
+    public String toString() {
+        return "ApiResponse [statusCode=" + statusCode + ", headers=" + headers + ", data=" + data
+                + "]";
+    }
 }
