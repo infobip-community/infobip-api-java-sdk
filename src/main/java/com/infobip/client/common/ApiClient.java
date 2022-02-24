@@ -4,7 +4,9 @@ package com.infobip.client.common;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -71,6 +73,13 @@ public final class ApiClient {
         this.apiKey = apiKey;
     }
 
+    // TODO: improve ...
+    public Call buildCall(String apiEndpoint, HttpMethodType httpMethodType,
+            Map<String, String> httpHeaders, ApiCallback apiCallback) throws ApiException {
+        return buildCall(apiEndpoint, httpMethodType, httpHeaders, HttpHeader.EMPTY_STRING,
+                apiCallback);
+    }
+
     /**
      * <p>
      * Build HTTP call with the given options.
@@ -83,7 +92,7 @@ public final class ApiClient {
             throws ApiException {
         String url = basePath + apiEndpoint;
         Map<String, String> headers = new HashMap<String, String>();
-        headers.put(HttpHeader.AUTHORIZATION, HttpHeader.APP + HttpHeader.EMPTY_STRING + apiKey);
+        headers.put(HttpHeader.AUTHORIZATION, HttpHeader.APP + HttpHeader.SPACE + apiKey);
         headers.putAll(httpHeaders);
         Request.Builder requestBuilder = new Request.Builder().url(url);
         processHeaderParams(headers, requestBuilder);
@@ -265,6 +274,20 @@ public final class ApiClient {
     public <T> T deserialize(Response response, Type returnType) throws ApiException {
         // TODO: implement ...
         return null;
+    }
+
+    /**
+     * Escape the given string to be used as URL query value.
+     *
+     * @param str String to be escaped
+     * @return Escaped string
+     */
+    public String escapeString(String str) {
+        try {
+            return URLEncoder.encode(str, "utf8").replaceAll("\\+", "%20");
+        } catch (UnsupportedEncodingException e) {
+            return str;
+        }
     }
 
     private void initHttpClient() {

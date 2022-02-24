@@ -13,4 +13,5 @@ Infobip API Java Client - Community edition
     apiClient.setBasePath(URL_BASE_PATH);
 ```
 
-- [RCS Channel](src/main/java/com/infobip/client/channels/rcs/README.md)
+- [RCS Channel](src/main/java/com/infobip/client/channels/rcs/)
+- [WebRTC](src/main/java/com/infobip/client/channels/webrtc/)
