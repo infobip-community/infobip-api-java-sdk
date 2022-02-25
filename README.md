@@ -13,5 +13,6 @@ Infobip API Java Client - Community edition
     apiClient.setBasePath(URL_BASE_PATH);
 ```
 
+- [WhatsApp](src/main/java/com/infobip/client/channels/whatsapp/)
 - [RCS Channel](src/main/java/com/infobip/client/channels/rcs/)
 - [WebRTC](src/main/java/com/infobip/client/channels/webrtc/)
