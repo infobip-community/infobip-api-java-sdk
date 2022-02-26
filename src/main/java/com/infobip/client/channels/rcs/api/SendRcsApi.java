@@ -1,7 +1,6 @@
 
 package com.infobip.client.channels.rcs.api;
 
-import com.google.gson.reflect.TypeToken;
 import com.infobip.client.channels.rcs.model.RcsBulkRequest;
 import com.infobip.client.channels.rcs.model.RcsRequest;
 import com.infobip.client.channels.rcs.model.RcsResponse;
@@ -11,7 +10,6 @@ import com.infobip.client.common.ApiException;
 import com.infobip.client.common.ApiResponse;
 import com.infobip.client.common.HttpHeader;
 import com.infobip.client.common.HttpMethodType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.Call;
@@ -43,8 +41,7 @@ public final class SendRcsApi {
     public ApiResponse<RcsResponse> sendRcsMessage(final RcsRequest rcsRequest)
             throws ApiException {
         Call call = sendRcsMessageValidateBeforeCall(rcsRequest);
-        Type returnType = new TypeToken<RcsResponse>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, RcsResponse.class);
     }
 
     /**
@@ -60,8 +57,7 @@ public final class SendRcsApi {
     public Call sendRcsMessageAsync(final RcsRequest rcsRequest,
             final ApiCallback<RcsResponse> apiCallback) throws ApiException {
         Call call = sendRcsMessageValidateBeforeCall(rcsRequest, apiCallback);
-        Type returnType = new TypeToken<RcsResponse>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, RcsResponse.class, apiCallback);
         return call;
     }
 
@@ -77,8 +73,7 @@ public final class SendRcsApi {
     public ApiResponse<RcsResponse> sendRcsBulkMessage(final RcsBulkRequest rcsBulkRequest)
             throws ApiException {
         Call call = sendRcsBulkMessageValidateBeforeCall(rcsBulkRequest);
-        Type returnType = new TypeToken<RcsResponse>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, RcsResponse.class);
     }
 
     /**
@@ -94,8 +89,7 @@ public final class SendRcsApi {
     public Call sendRcsBulkMessageAsync(final RcsBulkRequest rcsBulkRequest,
             final ApiCallback<RcsResponse> apiCallback) throws ApiException {
         Call call = sendRcsBulkMessageValidateBeforeCall(rcsBulkRequest, apiCallback);
-        Type returnType = new TypeToken<RcsResponse>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, RcsResponse.class, apiCallback);
         return call;
     }
 

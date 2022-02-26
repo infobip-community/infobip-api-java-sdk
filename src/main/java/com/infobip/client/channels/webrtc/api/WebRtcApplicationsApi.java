@@ -1,18 +1,16 @@
 
 package com.infobip.client.channels.webrtc.api;
 
-import com.google.gson.reflect.TypeToken;
 import com.infobip.client.channels.webrtc.model.WebrtcApplicationRequest;
 import com.infobip.client.channels.webrtc.model.WebrtcApplicationResponse;
+import com.infobip.client.channels.webrtc.model.WebrtcApplicationResponses;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
 import com.infobip.client.common.ApiResponse;
 import com.infobip.client.common.HttpHeader;
 import com.infobip.client.common.HttpMethodType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import okhttp3.Call;
 
@@ -41,11 +39,9 @@ public final class WebRtcApplicationsApi {
      * @return ApiResponse&lt;List&lt;WebrtcApplicationResponse&gt;&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<List<WebrtcApplicationResponse>> getWebrtcApplications()
-            throws ApiException {
+    public ApiResponse<WebrtcApplicationResponses> getWebrtcApplications() throws ApiException {
         Call call = getWebrtcApplicationsValidateBeforeCall();
-        Type returnType = new TypeToken<List<WebrtcApplicationResponse>>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WebrtcApplicationResponses.class);
     }
 
     /**
@@ -59,10 +55,9 @@ public final class WebRtcApplicationsApi {
      * @throws ApiException in case of error(s)
      */
     public Call getWebrtcApplicationsAsync(
-            final ApiCallback<List<WebrtcApplicationResponse>> apiCallback) throws ApiException {
+            final ApiCallback<WebrtcApplicationResponses> apiCallback) throws ApiException {
         Call call = getWebrtcApplicationsValidateBeforeCall(apiCallback);
-        Type returnType = new TypeToken<List<WebrtcApplicationResponse>>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WebrtcApplicationResponses.class, apiCallback);
         return call;
     }
 
@@ -79,8 +74,7 @@ public final class WebRtcApplicationsApi {
     public ApiResponse<WebrtcApplicationResponse> saveWebrtcApplication(
             WebrtcApplicationRequest webrtcApplicationRequest) throws ApiException {
         Call call = saveWebrtcApplicationValidateBeforeCall(webrtcApplicationRequest);
-        Type returnType = new TypeToken<WebrtcApplicationResponse>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WebrtcApplicationResponse.class);
     }
 
     /**
@@ -97,8 +91,7 @@ public final class WebRtcApplicationsApi {
     public Call saveWebrtcApplicationAsync(final WebrtcApplicationRequest webrtcApplicationRequest,
             final ApiCallback<WebrtcApplicationResponse> apiCallback) throws ApiException {
         Call call = saveWebrtcApplicationValidateBeforeCall(webrtcApplicationRequest, apiCallback);
-        Type returnType = new TypeToken<WebrtcApplicationResponse>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WebrtcApplicationResponse.class, apiCallback);
         return call;
     }
 
@@ -115,8 +108,7 @@ public final class WebRtcApplicationsApi {
     public ApiResponse<WebrtcApplicationResponse> getWebrtcApplication(final String id)
             throws ApiException {
         Call call = getWebrtcApplicationValidateBeforeCall(id);
-        Type returnType = new TypeToken<WebrtcApplicationResponse>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WebrtcApplicationResponse.class);
     }
 
     /**
@@ -133,8 +125,7 @@ public final class WebRtcApplicationsApi {
     public Call getWebrtcApplicationAsync(final String id,
             final ApiCallback<WebrtcApplicationResponse> apiCallback) throws ApiException {
         Call call = getWebrtcApplicationValidateBeforeCall(id, apiCallback);
-        Type returnType = new TypeToken<WebrtcApplicationResponse>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WebrtcApplicationResponse.class, apiCallback);
         return call;
     }
 
@@ -152,8 +143,7 @@ public final class WebRtcApplicationsApi {
     public ApiResponse<WebrtcApplicationResponse> updateWebrtcApplication(final String id,
             final WebrtcApplicationRequest webrtcApplicationRequest) throws ApiException {
         Call call = updateWebrtcApplicationValidateBeforeCall(id, webrtcApplicationRequest);
-        Type returnType = new TypeToken<WebrtcApplicationResponse>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WebrtcApplicationResponse.class);
     }
 
     /**
@@ -173,8 +163,7 @@ public final class WebRtcApplicationsApi {
             final ApiCallback<WebrtcApplicationResponse> apiCallback) throws ApiException {
         Call call = updateWebrtcApplicationValidateBeforeCall(id, webrtcApplicationRequest,
                 apiCallback);
-        Type returnType = new TypeToken<WebrtcApplicationResponse>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WebrtcApplicationResponse.class, apiCallback);
         return call;
     }
 
