@@ -1,7 +1,6 @@
 
 package com.infobip.client.channels.whatsapp.api;
 
-import com.google.gson.reflect.TypeToken;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
@@ -9,7 +8,6 @@ import com.infobip.client.common.ApiResponse;
 import com.infobip.client.common.HttpHeader;
 import com.infobip.client.common.HttpMethodType;
 import java.io.File;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.Call;
@@ -46,8 +44,7 @@ public final class ReceiveWhatsAppMessageApi {
     public ApiResponse<File> downloadWhatsAppInboundMedia(final String sender, final String mediaId)
             throws ApiException {
         Call call = downloadWhatsAppInboundMediaValidateBeforeCall(sender, mediaId);
-        Type returnType = new TypeToken<File>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, File.class);
     }
 
     /**
@@ -70,8 +67,7 @@ public final class ReceiveWhatsAppMessageApi {
     public Call downloadWhatsAppInboundMediaAsync(final String sender, final String mediaId,
             final ApiCallback<File> apiCallback) throws ApiException {
         Call call = downloadWhatsAppInboundMediaValidateBeforeCall(sender, mediaId, apiCallback);
-        Type returnType = new TypeToken<File>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, File.class, apiCallback);
         return call;
     }
 
@@ -94,8 +90,7 @@ public final class ReceiveWhatsAppMessageApi {
     public ApiResponse<String> getWhatsAppMediaMetadata(final String sender, final String mediaId)
             throws ApiException {
         Call call = getWhatsAppMediaMetadataValidateBeforeCall(sender, mediaId);
-        Type returnType = new TypeToken<String>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, String.class);
     }
 
     /**
@@ -118,8 +113,7 @@ public final class ReceiveWhatsAppMessageApi {
     public Call getWhatsAppMediaMetadataAsync(final String sender, final String mediaId,
             final ApiCallback<String> apiCallback) throws ApiException {
         Call call = getWhatsAppMediaMetadataValidateBeforeCall(sender, mediaId, apiCallback);
-        Type returnType = new TypeToken<String>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, String.class, apiCallback);
         return call;
     }
 

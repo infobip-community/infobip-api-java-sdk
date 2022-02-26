@@ -1,18 +1,16 @@
 
 package com.infobip.client.channels.whatsapp.api;
 
-import com.google.gson.reflect.TypeToken;
-import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateResponse;
-import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateRequest;
-import com.infobip.client.channels.whatsapp.model.WhatsAppTemplatesResponse;
 import com.infobip.client.channels.whatsapp.model.WhatsAppDeleteMediaRequest;
+import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateRequest;
+import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateResponse;
+import com.infobip.client.channels.whatsapp.model.WhatsAppTemplatesResponse;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
 import com.infobip.client.common.ApiResponse;
 import com.infobip.client.common.HttpHeader;
 import com.infobip.client.common.HttpMethodType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.Call;
@@ -48,8 +46,7 @@ public final class ManageWhatsAppApi {
     public ApiResponse<WhatsAppTemplatesResponse> getWhatsAppTemplates(final String sender)
             throws ApiException {
         Call call = getWhatsAppTemplatesValidateBeforeCall(sender);
-        Type returnType = new TypeToken<WhatsAppTemplatesResponse>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppTemplatesResponse.class);
     }
 
     /**
@@ -71,8 +68,7 @@ public final class ManageWhatsAppApi {
     public Call getWhatsAppTemplatesAsync(final String sender,
             final ApiCallback<WhatsAppTemplatesResponse> apiCallback) throws ApiException {
         Call call = getWhatsAppTemplatesValidateBeforeCall(sender, apiCallback);
-        Type returnType = new TypeToken<WhatsAppTemplatesResponse>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppTemplatesResponse.class, apiCallback);
         return call;
     }
 
@@ -97,12 +93,9 @@ public final class ManageWhatsAppApi {
      *     Documentation</a>
      */
     public ApiResponse<WhatsAppTemplateResponse> createWhatsAppTemplate(final String sender,
-            final WhatsAppTemplateRequest whatsAppTemplateRequest)
-            throws ApiException {
-        Call call =
-                createWhatsAppTemplateValidateBeforeCall(sender, whatsAppTemplateRequest);
-        Type returnType = new TypeToken<WhatsAppTemplateResponse>() {}.getType();
-        return apiClient.execute(call, returnType);
+            final WhatsAppTemplateRequest whatsAppTemplateRequest) throws ApiException {
+        Call call = createWhatsAppTemplateValidateBeforeCall(sender, whatsAppTemplateRequest);
+        return apiClient.execute(call, WhatsAppTemplateResponse.class);
     }
 
     /**
@@ -130,10 +123,9 @@ public final class ManageWhatsAppApi {
     public Call createWhatsAppTemplateAsync(final String sender,
             final WhatsAppTemplateRequest whatsAppTemplateRequest,
             final ApiCallback<WhatsAppTemplateResponse> apiCallback) throws ApiException {
-        Call call = createWhatsAppTemplateValidateBeforeCall(sender,
-                whatsAppTemplateRequest, apiCallback);
-        Type returnType = new TypeToken<WhatsAppTemplateResponse>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        Call call = createWhatsAppTemplateValidateBeforeCall(sender, whatsAppTemplateRequest,
+                apiCallback);
+        apiClient.executeAsync(call, WhatsAppTemplateResponse.class, apiCallback);
         return call;
     }
 
@@ -156,8 +148,7 @@ public final class ManageWhatsAppApi {
     public ApiResponse<String> deleteWhatsAppMedia(final String sender,
             final WhatsAppDeleteMediaRequest whatsAppDeleteMediaRequest) throws ApiException {
         Call call = deleteWhatsAppMediaValidateBeforeCall(sender, whatsAppDeleteMediaRequest);
-        Type returnType = new TypeToken<String>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, String.class);
     }
 
     /**
@@ -182,8 +173,7 @@ public final class ManageWhatsAppApi {
             final ApiCallback<String> apiCallback) throws ApiException {
         Call call = deleteWhatsAppMediaValidateBeforeCall(sender, whatsAppDeleteMediaRequest,
                 apiCallback);
-        Type returnType = new TypeToken<String>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, String.class, apiCallback);
         return call;
     }
 
@@ -200,15 +190,13 @@ public final class ManageWhatsAppApi {
     }
 
     private Call createWhatsAppTemplateValidateBeforeCall(final String sender,
-            final WhatsAppTemplateRequest whatsAppTemplateRequest)
-            throws ApiException {
-        return createWhatsAppTemplateValidateBeforeCall(sender, whatsAppTemplateRequest,
-                null);
+            final WhatsAppTemplateRequest whatsAppTemplateRequest) throws ApiException {
+        return createWhatsAppTemplateValidateBeforeCall(sender, whatsAppTemplateRequest, null);
     }
 
     private Call createWhatsAppTemplateValidateBeforeCall(final String sender,
-            final WhatsAppTemplateRequest whatsAppTemplateRequest,
-            final ApiCallback apiCallback) throws ApiException {
+            final WhatsAppTemplateRequest whatsAppTemplateRequest, final ApiCallback apiCallback)
+            throws ApiException {
         if (sender == null) {
             throw new ApiException("Missing the required parameter");
         }
@@ -247,8 +235,8 @@ public final class ManageWhatsAppApi {
     }
 
     private Call createWhatsAppTemplateCall(final String sender,
-            final WhatsAppTemplateRequest whatsAppTemplateRequest,
-            final ApiCallback apiCallback) throws ApiException {
+            final WhatsAppTemplateRequest whatsAppTemplateRequest, final ApiCallback apiCallback)
+            throws ApiException {
         String createWhatsAppTemplateEndpoint = CREATE_WHATSAPP_TEMPLATE_ENDPOINT
                 .replaceAll("\\{" + "sender" + "\\}", apiClient.escapeString(sender.toString()));
         Map<String, String> httpHeaders = new HashMap<String, String>();

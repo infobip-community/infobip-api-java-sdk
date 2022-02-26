@@ -1,9 +1,7 @@
 
 package com.infobip.client.channels.whatsapp.api;
 
-import com.google.gson.reflect.TypeToken;
 import com.infobip.client.channels.whatsapp.model.WhatsAppAudioMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateMessageRequest;
 import com.infobip.client.channels.whatsapp.model.WhatsAppBulkMessageInfo;
 import com.infobip.client.channels.whatsapp.model.WhatsAppContactsMessage;
 import com.infobip.client.channels.whatsapp.model.WhatsAppDocumentMessage;
@@ -15,6 +13,7 @@ import com.infobip.client.channels.whatsapp.model.WhatsAppInteractiveProductMess
 import com.infobip.client.channels.whatsapp.model.WhatsAppLocationMessage;
 import com.infobip.client.channels.whatsapp.model.WhatsAppSingleMessageInfo;
 import com.infobip.client.channels.whatsapp.model.WhatsAppStickerMessage;
+import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateMessageRequest;
 import com.infobip.client.channels.whatsapp.model.WhatsAppTextMessage;
 import com.infobip.client.channels.whatsapp.model.WhatsAppVideoMessage;
 import com.infobip.client.common.ApiCallback;
@@ -23,7 +22,6 @@ import com.infobip.client.common.ApiException;
 import com.infobip.client.common.ApiResponse;
 import com.infobip.client.common.HttpHeader;
 import com.infobip.client.common.HttpMethodType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.Call;
@@ -69,10 +67,10 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public ApiResponse<WhatsAppBulkMessageInfo> sendWhatsAppTemplateMessage(
-            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest) throws ApiException {
+            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest)
+            throws ApiException {
         Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessageRequest);
-        Type returnType = new TypeToken<WhatsAppBulkMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppBulkMessageInfo.class);
     }
 
     /**
@@ -92,11 +90,12 @@ public final class SendWhatsAppMessageApi {
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp template
      *     message Documentation</a>
      */
-    public Call sendWhatsAppTemplateMessageAsync(final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest,
+    public Call sendWhatsAppTemplateMessageAsync(
+            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest,
             final ApiCallback<WhatsAppBulkMessageInfo> apiCallback) throws ApiException {
-        Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessageRequest, apiCallback);
-        Type returnType = new TypeToken<WhatsAppBulkMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessageRequest,
+                apiCallback);
+        apiClient.executeAsync(call, WhatsAppBulkMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -119,8 +118,7 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppTextMessage(
             final WhatsAppTextMessage whatsAppTextMessage) throws ApiException {
         Call call = sendWhatsAppTextMessageValidateBeforeCall(whatsAppTextMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -143,8 +141,7 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppTextMessageAsync(final WhatsAppTextMessage whatsAppTextMessage,
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call = sendWhatsAppTextMessageValidateBeforeCall(whatsAppTextMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -167,8 +164,7 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppDocumentMessage(
             final WhatsAppDocumentMessage whatsAppDocumentMessage) throws ApiException {
         Call call = sendWhatsAppDocumentMessageValidateBeforeCall(whatsAppDocumentMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -193,8 +189,7 @@ public final class SendWhatsAppMessageApi {
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call =
                 sendWhatsAppDocumentMessageValidateBeforeCall(whatsAppDocumentMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -217,8 +212,7 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppImageMessage(
             final WhatsAppImageMessage whatsAppImageMessage) throws ApiException {
         Call call = sendWhatsAppImageMessageValidateBeforeCall(whatsAppImageMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -241,8 +235,7 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppImageMessageAsync(final WhatsAppImageMessage whatsAppImageMessage,
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call = sendWhatsAppImageMessageValidateBeforeCall(whatsAppImageMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -265,8 +258,7 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppAudioMessage(
             final WhatsAppAudioMessage whatsAppAudioMessage) throws ApiException {
         Call call = sendWhatsAppAudioMessageValidateBeforeCall(whatsAppAudioMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -289,8 +281,7 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppAudioMessageAsync(final WhatsAppAudioMessage whatsAppAudioMessage,
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call = sendWhatsAppAudioMessageValidateBeforeCall(whatsAppAudioMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -313,8 +304,7 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppVideoMessage(
             final WhatsAppVideoMessage whatsAppVideoMessage) throws ApiException {
         Call call = sendWhatsAppVideoMessageValidateBeforeCall(whatsAppVideoMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -337,8 +327,7 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppVideoMessageAsync(final WhatsAppVideoMessage whatsAppVideoMessage,
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call = sendWhatsAppVideoMessageValidateBeforeCall(whatsAppVideoMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -361,8 +350,7 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppStickerMessage(
             final WhatsAppStickerMessage whatsAppStickerMessage) throws ApiException {
         Call call = sendWhatsAppStickerMessageValidateBeforeCall(whatsAppStickerMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -386,8 +374,7 @@ public final class SendWhatsAppMessageApi {
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call =
                 sendWhatsAppStickerMessageValidateBeforeCall(whatsAppStickerMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -410,8 +397,7 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppLocationMessage(
             final WhatsAppLocationMessage whatsAppLocationMessage) throws ApiException {
         Call call = sendWhatsAppLocationMessageValidateBeforeCall(whatsAppLocationMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -436,8 +422,7 @@ public final class SendWhatsAppMessageApi {
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call =
                 sendWhatsAppLocationMessageValidateBeforeCall(whatsAppLocationMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -460,8 +445,7 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppContactMessage(
             final WhatsAppContactsMessage whatsAppContactsMessage) throws ApiException {
         Call call = sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactsMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -486,8 +470,7 @@ public final class SendWhatsAppMessageApi {
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call =
                 sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactsMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -514,8 +497,7 @@ public final class SendWhatsAppMessageApi {
             throws ApiException {
         Call call = sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
                 whatsAppInteractiveButtonsMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -542,8 +524,7 @@ public final class SendWhatsAppMessageApi {
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call = sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
                 whatsAppInteractiveButtonsMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -570,8 +551,7 @@ public final class SendWhatsAppMessageApi {
             throws ApiException {
         Call call = sendWhatsAppInteractiveListMessageValidateBeforeCall(
                 whatsAppInteractiveListMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -598,8 +578,7 @@ public final class SendWhatsAppMessageApi {
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call = sendWhatsAppInteractiveListMessageValidateBeforeCall(
                 whatsAppInteractiveListMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -626,8 +605,7 @@ public final class SendWhatsAppMessageApi {
             throws ApiException {
         Call call = sendWhatsAppInteractiveProductMessageValidateBeforeCall(
                 whatsAppInteractiveProductMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -654,8 +632,7 @@ public final class SendWhatsAppMessageApi {
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call = sendWhatsAppInteractiveProductMessageValidateBeforeCall(
                 whatsAppInteractiveProductMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
@@ -682,8 +659,7 @@ public final class SendWhatsAppMessageApi {
             throws ApiException {
         Call call = sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
                 whatsAppInteractiveMultiProductMessage);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
     /**
@@ -710,19 +686,19 @@ public final class SendWhatsAppMessageApi {
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call = sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
                 whatsAppInteractiveMultiProductMessage, apiCallback);
-        Type returnType = new TypeToken<WhatsAppSingleMessageInfo>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
 
     private Call sendWhatsAppTemplateMessageValidateBeforeCall(
-            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest) throws ApiException {
+            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest)
+            throws ApiException {
         return sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessageRequest, null);
     }
 
     private Call sendWhatsAppTemplateMessageValidateBeforeCall(
-            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest, final ApiCallback apiCallback)
-            throws ApiException {
+            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest,
+            final ApiCallback apiCallback) throws ApiException {
         if (whatsAppTemplateMessageRequest == null) {
             throw new ApiException("Missing the required parameter");
         }
@@ -908,7 +884,8 @@ public final class SendWhatsAppMessageApi {
                 whatsAppInteractiveMultiProductMessage, apiCallback);
     }
 
-    private Call sendWhatsAppTemplateMessageCall(final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest,
+    private Call sendWhatsAppTemplateMessageCall(
+            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);

@@ -1,7 +1,6 @@
 
 package com.infobip.client.channels.webrtc.api;
 
-import com.google.gson.reflect.TypeToken;
 import com.infobip.client.channels.webrtc.model.WebrtcTokenRequest;
 import com.infobip.client.channels.webrtc.model.WebrtcTokenResponse;
 import com.infobip.client.common.ApiCallback;
@@ -10,7 +9,6 @@ import com.infobip.client.common.ApiException;
 import com.infobip.client.common.ApiResponse;
 import com.infobip.client.common.HttpHeader;
 import com.infobip.client.common.HttpMethodType;
-import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.Call;
@@ -40,8 +38,7 @@ public final class WebRtcTokenApi {
     public ApiResponse<WebrtcTokenResponse>
             generateWebrtcToken(final WebrtcTokenRequest webrtcTokenRequest) throws ApiException {
         Call call = generateWebrtcTokenValidateBeforeCall(webrtcTokenRequest);
-        Type returnType = new TypeToken<WebrtcTokenResponse>() {}.getType();
-        return apiClient.execute(call, returnType);
+        return apiClient.execute(call, WebrtcTokenResponse.class);
     }
 
     /**
@@ -57,8 +54,7 @@ public final class WebRtcTokenApi {
     public Call generateWebrtcTokenAsync(final WebrtcTokenRequest webrtcTokenRequest,
             final ApiCallback<WebrtcTokenResponse> apiCallback) throws ApiException {
         Call call = generateWebrtcTokenValidateBeforeCall(webrtcTokenRequest, apiCallback);
-        Type returnType = new TypeToken<WebrtcTokenResponse>() {}.getType();
-        apiClient.executeAsync(call, returnType, apiCallback);
+        apiClient.executeAsync(call, WebrtcTokenResponse.class, apiCallback);
         return call;
     }
 

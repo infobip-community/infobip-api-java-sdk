@@ -272,8 +272,13 @@ public final class ApiClient {
      */
     @SuppressWarnings("unchecked")
     public <T> T deserialize(Response response, Type returnType) throws ApiException {
-        // TODO: implement ...
-        return null;
+        T data = null;
+        try {
+            data = (T) objectMapper.readValue(response.body().bytes(), (Class) returnType);
+        } catch (IOException e) {
+            throw new ApiException(e);
+        }
+        return data;
     }
 
     /**
