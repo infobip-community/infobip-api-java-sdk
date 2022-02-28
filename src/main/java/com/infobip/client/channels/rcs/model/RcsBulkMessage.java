@@ -4,17 +4,20 @@ package com.infobip.client.channels.rcs.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <p>
- * RcsBulkRequest.
- * </p>
- */
-public class RcsBulkRequest {
+public final class RcsBulkMessage {
     private List<RcsMessage> messages = new ArrayList<>();
 
-    public RcsBulkRequest() {}
+    /**
+     * <p>
+     * RcsBulkMessage.
+     * </p>
+     */
+    public RcsBulkMessage() {}
 
-    public RcsBulkRequest messages(List<RcsMessage> messages) {
+    /**
+     * RcsMessage List.
+     */
+    public RcsBulkMessage messages(List<RcsMessage> messages) {
         this.messages = messages;
         return this;
     }
@@ -36,10 +39,10 @@ public class RcsBulkRequest {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof RcsBulkRequest)) {
+        if (!(obj instanceof RcsBulkMessage)) {
             return false;
         }
-        RcsBulkRequest other = (RcsBulkRequest) obj;
+        RcsBulkMessage other = (RcsBulkMessage) obj;
         if (messages == null) {
             if (other.messages != null) {
                 return false;
@@ -52,6 +55,6 @@ public class RcsBulkRequest {
 
     @Override
     public String toString() {
-        return "RcsBulkRequest [messages=" + messages + "]";
+        return "RcsBulkMessage [messages=" + messages + "]";
     }
 }
