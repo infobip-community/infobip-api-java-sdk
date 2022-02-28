@@ -1,12 +1,7 @@
 
-package com.infobip.client.channels.webrtc.model;
+package com.infobip.client.channels.webrtc.model.token;
 
-/**
- * <p>
- * WebrtcTokenRequest.
- * </p>
- */
-public final class WebrtcTokenRequest {
+public final class WebRtcToken {
     private final String identity;
     private String applicationId;
     private String displayName;
@@ -15,14 +10,14 @@ public final class WebrtcTokenRequest {
 
     /**
      * <p>
-     * Create WebrtcTokenRequest with required fields.
+     * WebRtcToken.
      * </p>
      *
      * @param identity The identity used to present user on Infobip WebRTC platform.
      *     Must be unique. Must contain at least 3 and at most 64 unicode characters
      *     including -, _, ..
      */
-    public WebrtcTokenRequest(String identity) {
+    public WebRtcToken(String identity) {
         this.identity = identity;
     }
 
@@ -31,7 +26,7 @@ public final class WebrtcTokenRequest {
      * one-stop place for all your configuration, including push notifications,
      * dynamic destination resolving and all other Web and In-App Calls features.
      */
-    public WebrtcTokenRequest applicationId(String applicationId) {
+    public WebRtcToken applicationId(String applicationId) {
         this.applicationId = applicationId;
         return this;
     }
@@ -42,7 +37,7 @@ public final class WebrtcTokenRequest {
      * identified user, along with identity. Must contain at least 5 and at most 50
      * characters.
      */
-    public WebrtcTokenRequest displayName(String displayName) {
+    public WebRtcToken displayName(String displayName) {
         this.displayName = displayName;
         return this;
     }
@@ -50,7 +45,7 @@ public final class WebrtcTokenRequest {
     /**
      * The object containing permission for certain actions during the session.
      */
-    public WebrtcTokenRequest capabilities(Capabilities capabilities) {
+    public WebRtcToken capabilities(Capabilities capabilities) {
         this.capabilities = capabilities;
         return this;
     }
@@ -59,7 +54,7 @@ public final class WebrtcTokenRequest {
      * This field represents a number of seconds until the token expires. If not
      * set, the token will last 8 hours. The maximum value is 24 hours.
      */
-    public WebrtcTokenRequest timeToLive(Long timeToLive) {
+    public WebRtcToken timeToLive(Long timeToLive) {
         this.timeToLive = timeToLive;
         return this;
     }
@@ -101,10 +96,10 @@ public final class WebrtcTokenRequest {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WebrtcTokenRequest)) {
+        if (!(obj instanceof WebRtcToken)) {
             return false;
         }
-        WebrtcTokenRequest other = (WebrtcTokenRequest) obj;
+        WebRtcToken other = (WebRtcToken) obj;
         if (applicationId == null) {
             if (other.applicationId != null) {
                 return false;
@@ -145,7 +140,7 @@ public final class WebrtcTokenRequest {
 
     @Override
     public String toString() {
-        return "WebrtcTokenRequest [identity=" + identity + ", applicationId=" + applicationId
+        return "WebRtcToken [identity=" + identity + ", applicationId=" + applicationId
                 + ", displayName=" + displayName + ", capabilities=" + capabilities
                 + ", timeToLive=" + timeToLive + "]";
     }

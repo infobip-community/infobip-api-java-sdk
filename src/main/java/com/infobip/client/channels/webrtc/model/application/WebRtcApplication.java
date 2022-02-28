@@ -1,12 +1,7 @@
 
-package com.infobip.client.channels.webrtc.model;
+package com.infobip.client.channels.webrtc.model.application;
 
-/**
- * <p>
- * WebrtcApplicationRequest.
- * </p>
- */
-public final class WebrtcApplicationRequest {
+public final class WebRtcApplication {
     private final String name;
     private String description;
     private Ios ios;
@@ -17,19 +12,19 @@ public final class WebrtcApplicationRequest {
 
     /**
      * <p>
-     * Create WebrtcApplicationRequest with required fields.
+     * WebRtcApplication.
      * </p>
      *
      * @param name Application name
      */
-    public WebrtcApplicationRequest(String name) {
+    public WebRtcApplication(String name) {
         this.name = name;
     }
 
     /**
      * Application description containing up to 160 characters.
      */
-    public WebrtcApplicationRequest description(String description) {
+    public WebRtcApplication description(String description) {
         this.description = description;
         return this;
     }
@@ -37,7 +32,7 @@ public final class WebrtcApplicationRequest {
     /**
      * Configuration used to enable iOS push notifications.
      */
-    public WebrtcApplicationRequest ios(Ios ios) {
+    public WebRtcApplication ios(Ios ios) {
         this.ios = ios;
         return this;
     }
@@ -45,7 +40,7 @@ public final class WebrtcApplicationRequest {
     /**
      * Configuration used to enable Android push notifications.
      */
-    public WebrtcApplicationRequest android(Android android) {
+    public WebRtcApplication android(Android android) {
         this.android = android;
         return this;
     }
@@ -53,7 +48,7 @@ public final class WebrtcApplicationRequest {
     /**
      * Enable to communicate app to app.
      */
-    public WebrtcApplicationRequest appToApp(boolean appToApp) {
+    public WebRtcApplication appToApp(boolean appToApp) {
         this.appToApp = appToApp;
         return this;
     }
@@ -61,7 +56,7 @@ public final class WebrtcApplicationRequest {
     /**
      * Enable to forward incoming calls to an agent on Conversations platform.
      */
-    public WebrtcApplicationRequest appToConversations(boolean appToConversations) {
+    public WebRtcApplication appToConversations(boolean appToConversations) {
         this.appToConversations = appToConversations;
         return this;
     }
@@ -69,7 +64,7 @@ public final class WebrtcApplicationRequest {
     /**
      * Enable to forward incoming calls to a phone number.
      */
-    public WebrtcApplicationRequest appToPhone(boolean appToPhone) {
+    public WebRtcApplication appToPhone(boolean appToPhone) {
         this.appToPhone = appToPhone;
         return this;
     }
@@ -121,10 +116,10 @@ public final class WebrtcApplicationRequest {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WebrtcApplicationRequest)) {
+        if (!(obj instanceof WebRtcApplication)) {
             return false;
         }
-        WebrtcApplicationRequest other = (WebrtcApplicationRequest) obj;
+        WebRtcApplication other = (WebRtcApplication) obj;
         if (android == null) {
             if (other.android != null) {
                 return false;
@@ -167,8 +162,8 @@ public final class WebrtcApplicationRequest {
 
     @Override
     public String toString() {
-        return "WebrtcApplicationRequest [name=" + name + ", description=" + description + ", ios="
-                + ios + ", android=" + android + ", appToApp=" + appToApp + ", appToConversations="
+        return "WebRtcApplication [name=" + name + ", description=" + description + ", ios=" + ios
+                + ", android=" + android + ", appToApp=" + appToApp + ", appToConversations="
                 + appToConversations + ", appToPhone=" + appToPhone + "]";
     }
 }
