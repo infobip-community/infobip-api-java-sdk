@@ -1,17 +1,15 @@
 
 package com.infobip.client.channels.rcs.model;
 
-public final class SuggestionTypeReply extends Suggestion {
+public final class ReplySuggestion extends Suggestion {
     /**
      * <p>
-     * Create SuggestionTypeReply with required fields.
+     * ReplySuggestion.
      * </p>
      *
-     * @param text Suggestion text
-     * @param postbackData Value which is going to be sent as a reply to a
-     *     suggestion
+     * @see Suggestion#Suggestion(String, String, SuggestionType)
      */
-    public SuggestionTypeReply(String text, String postbackData) {
+    public ReplySuggestion(String text, String postbackData) {
         super(text, postbackData, SuggestionType.REPLY);
     }
 
@@ -28,7 +26,7 @@ public final class SuggestionTypeReply extends Suggestion {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof SuggestionTypeReply)) {
+        if (!(obj instanceof ReplySuggestion)) {
             return false;
         }
         return true;
@@ -36,7 +34,7 @@ public final class SuggestionTypeReply extends Suggestion {
 
     @Override
     public String toString() {
-        return "SuggestionTypeReply [text=" + text + ", postbackData=" + postbackData + ", type="
+        return "ReplySuggestion [text=" + text + ", postbackData=" + postbackData + ", type="
                 + type + "]";
     }
 }

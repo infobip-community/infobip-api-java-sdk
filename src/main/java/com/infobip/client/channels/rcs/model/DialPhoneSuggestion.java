@@ -1,26 +1,24 @@
 
 package com.infobip.client.channels.rcs.model;
 
-public final class SuggestionTypeDialPhone extends Suggestion {
+public final class DialPhoneSuggestion extends Suggestion {
     private String phoneNumber;
 
     /**
      * <p>
-     * Create SuggestionTypeDialPhone with required fields.
+     * DialPhoneSuggestion.
      * </p>
      *
-     * @param text Suggestion text
-     * @param postbackData Value which is going to be sent as a reply to a
-     *     suggestion
+     * @see Suggestion#Suggestion(String, String, SuggestionType)
      */
-    public SuggestionTypeDialPhone(String text, String postbackData) {
+    public DialPhoneSuggestion(String text, String postbackData) {
         super(text, postbackData, SuggestionType.DIAL_PHONE);
     }
 
     /**
      * Valid phone number.
      */
-    public SuggestionTypeDialPhone phoneNumber(String phoneNumber) {
+    public DialPhoneSuggestion phoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -45,10 +43,10 @@ public final class SuggestionTypeDialPhone extends Suggestion {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof SuggestionTypeDialPhone)) {
+        if (!(obj instanceof DialPhoneSuggestion)) {
             return false;
         }
-        SuggestionTypeDialPhone other = (SuggestionTypeDialPhone) obj;
+        DialPhoneSuggestion other = (DialPhoneSuggestion) obj;
         if (phoneNumber == null) {
             if (other.phoneNumber != null) {
                 return false;
@@ -61,7 +59,7 @@ public final class SuggestionTypeDialPhone extends Suggestion {
 
     @Override
     public String toString() {
-        return "SuggestionTypeDialPhone [phoneNumber=" + phoneNumber + ", text=" + text
+        return "DialPhoneSuggestion [phoneNumber=" + phoneNumber + ", text=" + text
                 + ", postbackData=" + postbackData + ", type=" + type + "]";
     }
 }

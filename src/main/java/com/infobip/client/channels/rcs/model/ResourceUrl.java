@@ -6,7 +6,7 @@ public final class ResourceUrl {
 
     /**
      * <p>
-     * Create ResourceUrl with required fields.
+     * ResourceUrl.
      * </p>
      *
      * @param url URL of the given resource

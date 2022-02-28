@@ -8,7 +8,7 @@ public abstract class Suggestion {
 
     /**
      * <p>
-     * Create Suggestion with required fields.
+     * Suggestion.
      * </p>
      *
      * @param text Suggestion text
@@ -71,11 +71,5 @@ public abstract class Suggestion {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Suggestion [text=" + text + ", postbackData=" + postbackData + ", type=" + type
-                + "]";
     }
 }

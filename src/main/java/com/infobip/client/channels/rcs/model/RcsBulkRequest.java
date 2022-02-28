@@ -10,16 +10,16 @@ import java.util.List;
  * </p>
  */
 public class RcsBulkRequest {
-    private List<RcsRequest> messages = new ArrayList<>();
+    private List<RcsMessage> messages = new ArrayList<>();
 
     public RcsBulkRequest() {}
 
-    public RcsBulkRequest messages(List<RcsRequest> messages) {
+    public RcsBulkRequest messages(List<RcsMessage> messages) {
         this.messages = messages;
         return this;
     }
 
-    public List<RcsRequest> getMessages() {
+    public List<RcsMessage> getMessages() {
         return messages;
     }
 

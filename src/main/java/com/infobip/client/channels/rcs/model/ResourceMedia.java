@@ -8,7 +8,7 @@ public final class ResourceMedia {
 
     /**
      * <p>
-     * Create ResourceMedia with required fields.
+     * ResourceMedia.
      * </p>
      *
      * @param file Resource object describing the thumbnail of the card

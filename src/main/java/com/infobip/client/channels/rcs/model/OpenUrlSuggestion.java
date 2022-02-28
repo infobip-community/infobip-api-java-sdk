@@ -1,21 +1,20 @@
 
 package com.infobip.client.channels.rcs.model;
 
-public final class SuggestionTypeOpenUrl extends Suggestion {
+public final class OpenUrlSuggestion extends Suggestion {
     private final String url;
 
     /**
      * <p>
-     * Create SuggestionTypeOpenUrl with required fields.
+     * OpenUrlSuggestion.
      * </p>
      *
-     * @param text Suggestion text
-     * @param postbackData Value which is going to be sent as a reply to a
-     *     suggestion
      * @param url URL that will be opened on mobile phone when the suggestion is
      *     selected
+     *
+     * @see Suggestion#Suggestion(String, String, SuggestionType)
      */
-    public SuggestionTypeOpenUrl(String text, String postbackData, String url) {
+    public OpenUrlSuggestion(String text, String postbackData, String url) {
         super(text, postbackData, SuggestionType.OPEN_URL);
         this.url = url;
     }
@@ -40,10 +39,10 @@ public final class SuggestionTypeOpenUrl extends Suggestion {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof SuggestionTypeOpenUrl)) {
+        if (!(obj instanceof OpenUrlSuggestion)) {
             return false;
         }
-        SuggestionTypeOpenUrl other = (SuggestionTypeOpenUrl) obj;
+        OpenUrlSuggestion other = (OpenUrlSuggestion) obj;
         if (url == null) {
             if (other.url != null) {
                 return false;
@@ -56,7 +55,7 @@ public final class SuggestionTypeOpenUrl extends Suggestion {
 
     @Override
     public String toString() {
-        return "SuggestionTypeOpenUrl [url=" + url + ", text=" + text + ", postbackData="
-                + postbackData + ", type=" + type + "]";
+        return "OpenUrlSuggestion [url=" + url + ", text=" + text + ", postbackData=" + postbackData
+                + ", type=" + type + "]";
     }
 }

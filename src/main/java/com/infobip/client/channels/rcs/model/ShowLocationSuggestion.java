@@ -1,23 +1,22 @@
 
 package com.infobip.client.channels.rcs.model;
 
-public final class SuggestionTypeShowLocation extends Suggestion {
+public final class ShowLocationSuggestion extends Suggestion {
     private final double latitude;
     private final double longitude;
     private String label;
 
     /**
      * <p>
-     * Create SuggestionTypeShowLocation with required fields.
+     * ShowLocationSuggestion.
      * </p>
      *
-     * @param text Suggestion text
-     * @param postbackData Value which is going to be sent as a reply to a
-     *     suggestion
      * @param latitude Latitude of the location
      * @param longitude Longitude of the location
+     *
+     * @see Suggestion#Suggestion(String, String, SuggestionType)
      */
-    public SuggestionTypeShowLocation(String text, String postbackData, double latitude,
+    public ShowLocationSuggestion(String text, String postbackData, double latitude,
             double longitude) {
         super(text, postbackData, SuggestionType.SHOW_LOCATION);
         this.latitude = latitude;
@@ -27,7 +26,7 @@ public final class SuggestionTypeShowLocation extends Suggestion {
     /**
      * Label of the location.
      */
-    public SuggestionTypeShowLocation label(String label) {
+    public ShowLocationSuggestion label(String label) {
         this.label = label;
         return this;
     }
@@ -65,10 +64,10 @@ public final class SuggestionTypeShowLocation extends Suggestion {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof SuggestionTypeShowLocation)) {
+        if (!(obj instanceof ShowLocationSuggestion)) {
             return false;
         }
-        SuggestionTypeShowLocation other = (SuggestionTypeShowLocation) obj;
+        ShowLocationSuggestion other = (ShowLocationSuggestion) obj;
         if (label == null) {
             if (other.label != null) {
                 return false;
@@ -87,7 +86,7 @@ public final class SuggestionTypeShowLocation extends Suggestion {
 
     @Override
     public String toString() {
-        return "SuggestionTypeShowLocation [latitude=" + latitude + ", longitude=" + longitude
+        return "ShowLocationSuggestion [latitude=" + latitude + ", longitude=" + longitude
                 + ", label=" + label + ", text=" + text + ", postbackData=" + postbackData
                 + ", type=" + type + "]";
     }

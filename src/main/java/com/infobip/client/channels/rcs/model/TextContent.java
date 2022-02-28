@@ -4,18 +4,18 @@ package com.infobip.client.channels.rcs.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ContentTypeText extends Content {
+public final class TextContent extends Content {
     private final String text;
     private List<Suggestion> suggestions = new ArrayList<>();
 
     /**
      * <p>
-     * Create ContentTypeText with required fields.
+     * TextContent.
      * </p>
      *
      * @param text Message text
      */
-    public ContentTypeText(String text) {
+    public TextContent(String text) {
         super(ContentType.TEXT);
         this.text = text;
     }
@@ -23,7 +23,7 @@ public final class ContentTypeText extends Content {
     /**
      * List of suggestions.
      */
-    public ContentTypeText suggestions(List<Suggestion> suggestions) {
+    public TextContent suggestions(List<Suggestion> suggestions) {
         this.suggestions = suggestions;
         return this;
     }
@@ -53,10 +53,10 @@ public final class ContentTypeText extends Content {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof ContentTypeText)) {
+        if (!(obj instanceof TextContent)) {
             return false;
         }
-        ContentTypeText other = (ContentTypeText) obj;
+        TextContent other = (TextContent) obj;
         if (suggestions == null) {
             if (other.suggestions != null) {
                 return false;
@@ -76,7 +76,7 @@ public final class ContentTypeText extends Content {
 
     @Override
     public String toString() {
-        return "ContentTypeText [text=" + text + ", suggestions=" + suggestions + ", type=" + type
+        return "TextContent [text=" + text + ", suggestions=" + suggestions + ", type=" + type
                 + "]";
     }
 }
