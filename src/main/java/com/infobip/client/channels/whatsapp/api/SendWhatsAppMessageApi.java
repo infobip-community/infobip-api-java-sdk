@@ -1,21 +1,21 @@
 
 package com.infobip.client.channels.whatsapp.api;
 
-import com.infobip.client.channels.whatsapp.model.WhatsAppAudioMessage;
 import com.infobip.client.channels.whatsapp.model.WhatsAppBulkMessageInfo;
-import com.infobip.client.channels.whatsapp.model.WhatsAppContactsMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppDocumentMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppImageMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppInteractiveButtonsMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppInteractiveListMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppInteractiveMultiProductMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppInteractiveProductMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppLocationMessage;
 import com.infobip.client.channels.whatsapp.model.WhatsAppSingleMessageInfo;
-import com.infobip.client.channels.whatsapp.model.WhatsAppStickerMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateMessageRequest;
-import com.infobip.client.channels.whatsapp.model.WhatsAppTextMessage;
-import com.infobip.client.channels.whatsapp.model.WhatsAppVideoMessage;
+import com.infobip.client.channels.whatsapp.model.message.audio.WhatsAppAudioMessage;
+import com.infobip.client.channels.whatsapp.model.message.contact.WhatsAppContactMessage;
+import com.infobip.client.channels.whatsapp.model.message.document.WhatsAppDocumentMessage;
+import com.infobip.client.channels.whatsapp.model.message.image.WhatsAppImageMessage;
+import com.infobip.client.channels.whatsapp.model.message.interactive.button.WhatsAppInteractiveButtonsMessage;
+import com.infobip.client.channels.whatsapp.model.message.interactive.list.WhatsAppInteractiveListMessage;
+import com.infobip.client.channels.whatsapp.model.message.interactive.multiproduct.WhatsAppInteractiveMultiProductMessage;
+import com.infobip.client.channels.whatsapp.model.message.interactive.product.WhatsAppInteractiveProductMessage;
+import com.infobip.client.channels.whatsapp.model.message.location.WhatsAppLocationMessage;
+import com.infobip.client.channels.whatsapp.model.message.sticker.WhatsAppStickerMessage;
+import com.infobip.client.channels.whatsapp.model.message.template.WhatsAppTemplateMessage;
+import com.infobip.client.channels.whatsapp.model.message.text.WhatsAppTextMessage;
+import com.infobip.client.channels.whatsapp.model.message.video.WhatsAppVideoMessage;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
@@ -58,7 +58,7 @@ public final class SendWhatsAppMessageApi {
      * needs to be registered and pre-approved by WhatsApp.
      * </p>
      *
-     * @param whatsAppTemplateMessageRequest (required)
+     * @param whatsAppTemplateMessage (required)
      * @return ApiResponse&lt;WhatsAppBulkMessageInfo&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
@@ -67,9 +67,9 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public ApiResponse<WhatsAppBulkMessageInfo> sendWhatsAppTemplateMessage(
-            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest)
+            final WhatsAppTemplateMessage whatsAppTemplateMessage)
             throws ApiException {
-        Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessageRequest);
+        Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessage);
         return apiClient.execute(call, WhatsAppBulkMessageInfo.class);
     }
 
@@ -81,7 +81,7 @@ public final class SendWhatsAppMessageApi {
      * needs to be registered and pre-approved by WhatsApp.
      * </p>
      *
-     * @param whatsAppTemplateMessageRequest (required)
+     * @param whatsAppTemplateMessage (required)
      * @param apiCallback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the
@@ -91,9 +91,9 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public Call sendWhatsAppTemplateMessageAsync(
-            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest,
+            final WhatsAppTemplateMessage whatsAppTemplateMessage,
             final ApiCallback<WhatsAppBulkMessageInfo> apiCallback) throws ApiException {
-        Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessageRequest,
+        Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessage,
                 apiCallback);
         apiClient.executeAsync(call, WhatsAppBulkMessageInfo.class, apiCallback);
         return call;
@@ -434,7 +434,7 @@ public final class SendWhatsAppMessageApi {
      * the last 24 hours, otherwise template message should be used.
      * </p>
      *
-     * @param whatsAppContactsMessage (required)
+     * @param whatsAppContactMessage (required)
      * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
@@ -443,8 +443,8 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppContactMessage(
-            final WhatsAppContactsMessage whatsAppContactsMessage) throws ApiException {
-        Call call = sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactsMessage);
+            final WhatsAppContactMessage whatsAppContactMessage) throws ApiException {
+        Call call = sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactMessage);
         return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
     }
 
@@ -456,7 +456,7 @@ public final class SendWhatsAppMessageApi {
      * the last 24 hours, otherwise template message should be used.
      * </p>
      *
-     * @param whatsAppContactsMessage (required)
+     * @param whatsAppContactMessage (required)
      * @param apiCallback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the
@@ -466,10 +466,10 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public Call sendWhatsAppContactMessageAsync(
-            final WhatsAppContactsMessage whatsAppContactsMessage,
+            final WhatsAppContactMessage whatsAppContactMessage,
             final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
         Call call =
-                sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactsMessage, apiCallback);
+                sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
         return call;
     }
@@ -691,18 +691,18 @@ public final class SendWhatsAppMessageApi {
     }
 
     private Call sendWhatsAppTemplateMessageValidateBeforeCall(
-            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest)
+            final WhatsAppTemplateMessage whatsAppTemplateMessage)
             throws ApiException {
-        return sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessageRequest, null);
+        return sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessage, null);
     }
 
     private Call sendWhatsAppTemplateMessageValidateBeforeCall(
-            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest,
+            final WhatsAppTemplateMessage whatsAppTemplateMessage,
             final ApiCallback apiCallback) throws ApiException {
-        if (whatsAppTemplateMessageRequest == null) {
+        if (whatsAppTemplateMessage == null) {
             throw new ApiException("Missing the required parameter");
         }
-        return sendWhatsAppTemplateMessageCall(whatsAppTemplateMessageRequest, apiCallback);
+        return sendWhatsAppTemplateMessageCall(whatsAppTemplateMessage, apiCallback);
     }
 
     private Call sendWhatsAppTextMessageValidateBeforeCall(
@@ -804,17 +804,17 @@ public final class SendWhatsAppMessageApi {
     }
 
     private Call sendWhatsAppContactMessageValidateBeforeCall(
-            final WhatsAppContactsMessage whatsAppContactsMessage) throws ApiException {
-        return sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactsMessage, null);
+            final WhatsAppContactMessage whatsAppContactMessage) throws ApiException {
+        return sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactMessage, null);
     }
 
     private Call sendWhatsAppContactMessageValidateBeforeCall(
-            final WhatsAppContactsMessage whatsAppContactsMessage, final ApiCallback apiCallback)
+            final WhatsAppContactMessage whatsAppContactMessage, final ApiCallback apiCallback)
             throws ApiException {
-        if (whatsAppContactsMessage == null) {
+        if (whatsAppContactMessage == null) {
             throw new ApiException("Missing the required parameter");
         }
-        return sendWhatsAppContactMessageCall(whatsAppContactsMessage, apiCallback);
+        return sendWhatsAppContactMessageCall(whatsAppContactMessage, apiCallback);
     }
 
     private Call sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
@@ -885,13 +885,13 @@ public final class SendWhatsAppMessageApi {
     }
 
     private Call sendWhatsAppTemplateMessageCall(
-            final WhatsAppTemplateMessageRequest whatsAppTemplateMessageRequest,
+            final WhatsAppTemplateMessage whatsAppTemplateMessage,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(WHATSAPP_TEMPLATE_MESSAGE_ENDPOINT, HttpMethodType.POST,
-                httpHeaders, whatsAppTemplateMessageRequest, apiCallback);
+                httpHeaders, whatsAppTemplateMessage, apiCallback);
     }
 
     private Call sendWhatsAppTextMessageCall(final WhatsAppTextMessage whatsAppTextMessage,
@@ -960,13 +960,13 @@ public final class SendWhatsAppMessageApi {
     }
 
     private Call sendWhatsAppContactMessageCall(
-            final WhatsAppContactsMessage whatsAppContactsMessage, final ApiCallback apiCallback)
+            final WhatsAppContactMessage whatsAppContactMessage, final ApiCallback apiCallback)
             throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(WHATSAPP_CONTACT_MESSAGE_ENDPOINT, HttpMethodType.POST,
-                httpHeaders, whatsAppContactsMessage, apiCallback);
+                httpHeaders, whatsAppContactMessage, apiCallback);
     }
 
     private Call sendWhatsAppInteractiveButtonsMessageCall(

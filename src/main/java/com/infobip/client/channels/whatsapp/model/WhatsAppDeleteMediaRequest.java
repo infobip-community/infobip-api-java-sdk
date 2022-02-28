@@ -6,7 +6,7 @@ package com.infobip.client.channels.whatsapp.model;
  * WhatsAppDeleteMediaRequest.
  * </p>
  */
-public class WhatsAppDeleteMediaRequest {
+public final class WhatsAppDeleteMediaRequest {
     private String url;
 
     public WhatsAppDeleteMediaRequest(String url) {

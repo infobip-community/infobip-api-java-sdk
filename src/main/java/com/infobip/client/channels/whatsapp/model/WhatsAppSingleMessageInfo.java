@@ -6,7 +6,7 @@ package com.infobip.client.channels.whatsapp.model;
  * WhatsAppSingleMessageInfo.
  * </p>
  */
-public class WhatsAppSingleMessageInfo {
+public final class WhatsAppSingleMessageInfo {
     private String to;
     private Integer messageCount;
     private String messageId;
