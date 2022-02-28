@@ -1,12 +1,14 @@
 
 package com.infobip.client.channels.whatsapp.model;
 
+import com.infobip.client.channels.whatsapp.model.template.Template;
+
 /**
  * <p>
  * List of all templates for given sender.
  * </p>
  */
-public final class WhatsAppTemplateResponse extends WhatsAppTemplate {
+public final class WhatsAppTemplateResponse extends Template {
     private String id;
     private long businessAccountId;
     private Status status;
