@@ -1,6 +1,9 @@
 
 package com.infobip.client.channels.webrtc.model;
 
+import com.infobip.client.channels.webrtc.model.application.Android;
+import com.infobip.client.channels.webrtc.model.application.Ios;
+
 /**
  * <p>
  * WebrtcApplicationResponse.

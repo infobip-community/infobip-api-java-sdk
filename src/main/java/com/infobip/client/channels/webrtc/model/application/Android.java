@@ -1,17 +1,18 @@
 
-package com.infobip.client.channels.webrtc.model;
+package com.infobip.client.channels.webrtc.model.application;
 
-/**
- * <p>
- * Android.<br>
- * Configuration used to enable Android push notifications.
- * </p>
- */
 public final class Android {
     private String fcmServerKey;
 
     public Android() {}
 
+    /**
+     * <p>
+     * Android.
+     * </p>
+     *
+     * @param fcmServerKey FCM Server Key used to enable Android push notifications.
+     */
     public Android(String fcmServerKey) {
         this.fcmServerKey = fcmServerKey;
     }

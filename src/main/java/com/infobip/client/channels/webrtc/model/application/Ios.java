@@ -1,12 +1,6 @@
 
-package com.infobip.client.channels.webrtc.model;
+package com.infobip.client.channels.webrtc.model.application;
 
-/**
- * <p>
- * Ios.<br>
- * Configuration used to enable iOS push notifications.
- * </p>
- */
 public final class Ios {
     private String apnsCertificateFileName;
     private String apnsCertificateFileContent;
@@ -14,14 +8,29 @@ public final class Ios {
 
     public Ios() {}
 
+    /**
+     * <p>
+     * Ios.
+     * </p>
+     *
+     * @param apnsCertificateFileName Name of the APNS certificate file used to
+     *     enable iOS push notifications.
+     * @param apnsCertificateFileContent Content of the APNS certificate file used
+     *     to enable iOS push notifications.
+     */
     public Ios(String apnsCertificateFileName, String apnsCertificateFileContent) {
         this.apnsCertificateFileName = apnsCertificateFileName;
         this.apnsCertificateFileContent = apnsCertificateFileContent;
     }
 
     /**
-     * Name of the APNS certificate file used to enable iOS push notifications.
+     * Password used for decryption of the APNS certificate.
      */
+    public Ios apnsCertificatePassword(String apnsCertificatePassword) {
+        this.apnsCertificatePassword = apnsCertificatePassword;
+        return this;
+    }
+
     public String getApnsCertificateFileName() {
         return apnsCertificateFileName;
     }
@@ -30,9 +39,6 @@ public final class Ios {
         this.apnsCertificateFileName = apnsCertificateFileName;
     }
 
-    /**
-     * Content of the APNS certificate file used to enable iOS push notifications.
-     */
     public String getApnsCertificateFileContent() {
         return apnsCertificateFileContent;
     }
@@ -41,9 +47,6 @@ public final class Ios {
         this.apnsCertificateFileContent = apnsCertificateFileContent;
     }
 
-    /**
-     * Password used for decryption of the APNS certificate.
-     */
     public String getApnsCertificatePassword() {
         return apnsCertificatePassword;
     }

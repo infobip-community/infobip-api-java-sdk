@@ -1,12 +1,12 @@
 
-package com.infobip.client.channels.webrtc.model;
+package com.infobip.client.channels.webrtc.model.token;
 
 public final class Capabilities {
     private final Recording recording;
 
     /**
      * <p>
-     * Create Capabilities with required fields.
+     * Capabilities.
      * </p>
      *
      * @param recording Whether to allow recording calls during the session.
