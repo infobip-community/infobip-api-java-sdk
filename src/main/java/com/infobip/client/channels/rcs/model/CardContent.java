@@ -4,7 +4,7 @@ package com.infobip.client.channels.rcs.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ContentTypeCard extends Content {
+public final class CardContent extends Content {
     private final Orientation orientation;
     private final Alignment alignment;
     private final ResourceContent content;
@@ -12,14 +12,14 @@ public final class ContentTypeCard extends Content {
 
     /**
      * <p>
-     * Create ContentTypeCard with required fields.
+     * CardContent.
      * </p>
      *
      * @param orientation Orientation type defines orientation in Card message
      * @param alignment Alignment type defines alignment in Card message
      * @param content Card contained within the carousel
      */
-    public ContentTypeCard(Orientation orientation, Alignment alignment, ResourceContent content) {
+    public CardContent(Orientation orientation, Alignment alignment, ResourceContent content) {
         super(ContentType.CARD);
         this.orientation = orientation;
         this.alignment = alignment;
@@ -29,7 +29,7 @@ public final class ContentTypeCard extends Content {
     /**
      * List of suggestions.
      */
-    public ContentTypeCard suggestions(List<Suggestion> suggestions) {
+    public CardContent suggestions(List<Suggestion> suggestions) {
         this.suggestions = suggestions;
         return this;
     }
@@ -69,10 +69,10 @@ public final class ContentTypeCard extends Content {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof ContentTypeCard)) {
+        if (!(obj instanceof CardContent)) {
             return false;
         }
-        ContentTypeCard other = (ContentTypeCard) obj;
+        CardContent other = (CardContent) obj;
         if (alignment != other.alignment) {
             return false;
         }
@@ -98,7 +98,7 @@ public final class ContentTypeCard extends Content {
 
     @Override
     public String toString() {
-        return "ContentTypeCard [orientation=" + orientation + ", alignment=" + alignment
+        return "CardContent [orientation=" + orientation + ", alignment=" + alignment
                 + ", content=" + content + ", suggestions=" + suggestions + ", type=" + type + "]";
     }
 }

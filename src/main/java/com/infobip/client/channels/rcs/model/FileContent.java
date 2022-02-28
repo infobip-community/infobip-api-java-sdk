@@ -1,26 +1,26 @@
 
 package com.infobip.client.channels.rcs.model;
 
-public final class ContentTypeFile extends Content {
+public final class FileContent extends Content {
     private final ResourceUrl file;
     private ResourceUrl thumbnail;
 
     /**
      * <p>
-     * Create ContentTypeFile with required fields.
+     * FileContent.
      * </p>
      *
-     * @param file URL of the given resource
+     * @param file Resource object describing the thumbnail of the card
      */
-    public ContentTypeFile(ResourceUrl file) {
+    public FileContent(ResourceUrl file) {
         super(ContentType.FILE);
         this.file = file;
     }
 
     /**
-     * Resource object describing the thumbnail.
+     * Resource object describing the thumbnail of the card.
      */
-    public ContentTypeFile thumbnail(ResourceUrl thumbnail) {
+    public FileContent thumbnail(ResourceUrl thumbnail) {
         this.thumbnail = thumbnail;
         return this;
     }
@@ -50,10 +50,10 @@ public final class ContentTypeFile extends Content {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof ContentTypeFile)) {
+        if (!(obj instanceof FileContent)) {
             return false;
         }
-        ContentTypeFile other = (ContentTypeFile) obj;
+        FileContent other = (FileContent) obj;
         if (file == null) {
             if (other.file != null) {
                 return false;
@@ -73,7 +73,7 @@ public final class ContentTypeFile extends Content {
 
     @Override
     public String toString() {
-        return "ContentTypeFile [file=" + file + ", thumbnail=" + thumbnail + ", type=" + type
+        return "FileContent [file=" + file + ", thumbnail=" + thumbnail + ", type=" + type
                 + "]";
     }
 }

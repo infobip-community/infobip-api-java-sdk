@@ -1,15 +1,16 @@
 
 package com.infobip.client.channels.rcs.model;
 
-abstract class Content {
+public abstract class Content {
     protected final ContentType type;
 
     /**
      * <p>
-     * Create Content with required fields.
+     * Content.
      * </p>
      *
-     * @param type Type of message which is going to be sent over RCS
+     * @param type Message type, describing type of message which is going to be
+     *     sent over RCS
      */
     public Content(ContentType type) {
         this.type = type;
@@ -40,10 +41,5 @@ abstract class Content {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Content [type=" + type + "]";
     }
 }

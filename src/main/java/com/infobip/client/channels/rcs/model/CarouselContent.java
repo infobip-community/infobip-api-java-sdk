@@ -4,20 +4,20 @@ package com.infobip.client.channels.rcs.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public final class ContentTypeCarousel extends Content {
+public final class CarouselContent extends Content {
     private final Width cardWidth;
-    private final List<ResourceContent> contents;
+    private List<ResourceContent> contents = new ArrayList<>();
     private List<Suggestion> suggestions = new ArrayList<>();
 
     /**
      * <p>
-     * Create ContentTypeCarousel with required fields.
+     * CarouselContent.
      * </p>
      *
      * @param cardWidth Width of cards contained within the carousel
      * @param contents An array of cards contained within the carousel
      */
-    public ContentTypeCarousel(Width cardWidth, List<ResourceContent> contents) {
+    public CarouselContent(Width cardWidth, List<ResourceContent> contents) {
         super(ContentType.CAROUSEL);
         this.cardWidth = cardWidth;
         this.contents = contents;
@@ -26,7 +26,7 @@ public final class ContentTypeCarousel extends Content {
     /**
      * List of suggestions.
      */
-    public ContentTypeCarousel suggestions(List<Suggestion> suggestions) {
+    public CarouselContent suggestions(List<Suggestion> suggestions) {
         this.suggestions = suggestions;
         return this;
     }
@@ -61,10 +61,10 @@ public final class ContentTypeCarousel extends Content {
         if (!super.equals(obj)) {
             return false;
         }
-        if (!(obj instanceof ContentTypeCarousel)) {
+        if (!(obj instanceof CarouselContent)) {
             return false;
         }
-        ContentTypeCarousel other = (ContentTypeCarousel) obj;
+        CarouselContent other = (CarouselContent) obj;
         if (cardWidth != other.cardWidth) {
             return false;
         }
@@ -87,7 +87,7 @@ public final class ContentTypeCarousel extends Content {
 
     @Override
     public String toString() {
-        return "ContentTypeCarousel [cardWidth=" + cardWidth + ", contents=" + contents
+        return "CarouselContent [cardWidth=" + cardWidth + ", contents=" + contents
                 + ", suggestions=" + suggestions + ", type=" + type + "]";
     }
 }

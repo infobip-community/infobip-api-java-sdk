@@ -1,15 +1,10 @@
 
 package com.infobip.client.channels.rcs.model;
 
-/**
- * <p>
- * RcsRequest.
- * </p>
- */
-public final class RcsRequest {
+public final class RcsMessage {
     private String from;
     private final String to;
-    private int validityPeriod;
+    private Integer validityPeriod;
     private ValidityPeriodTimeUnit validityPeriodTimeUnit;
     private final Content content;
     private SmsFailover smsFailover;
@@ -19,13 +14,13 @@ public final class RcsRequest {
 
     /**
      * <p>
-     * Create RcsRequest with required fields.
+     * RcsMessage.
      * </p>
      *
      * @param to Message destination
      * @param content Rcs message contents
      */
-    public RcsRequest(String to, Content content) {
+    public RcsMessage(String to, Content content) {
         this.to = to;
         this.content = content;
     }
@@ -33,7 +28,7 @@ public final class RcsRequest {
     /**
      * Message sender.
      */
-    public RcsRequest from(String from) {
+    public RcsMessage from(String from) {
         this.from = from;
         return this;
     }
@@ -41,7 +36,7 @@ public final class RcsRequest {
     /**
      * Message validity period.
      */
-    public RcsRequest validityPeriod(int validityPeriod) {
+    public RcsMessage validityPeriod(Integer validityPeriod) {
         this.validityPeriod = validityPeriod;
         return this;
     }
@@ -49,7 +44,7 @@ public final class RcsRequest {
     /**
      * Message validity period time unit.
      */
-    public RcsRequest validityPeriodTimeUnit(ValidityPeriodTimeUnit validityPeriodTimeUnit) {
+    public RcsMessage validityPeriodTimeUnit(ValidityPeriodTimeUnit validityPeriodTimeUnit) {
         this.validityPeriodTimeUnit = validityPeriodTimeUnit;
         return this;
     }
@@ -57,7 +52,7 @@ public final class RcsRequest {
     /**
      * Sms failover message contents.
      */
-    public RcsRequest smsFailover(SmsFailover smsFailover) {
+    public RcsMessage smsFailover(SmsFailover smsFailover) {
         this.smsFailover = smsFailover;
         return this;
     }
@@ -65,7 +60,7 @@ public final class RcsRequest {
     /**
      * The URL on your call back server on which the Delivery report will be sent.
      */
-    public RcsRequest notifyUrl(String notifyUrl) {
+    public RcsMessage notifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
         return this;
     }
@@ -73,7 +68,7 @@ public final class RcsRequest {
     /**
      * Custom client data that will be included in Delivery Report.
      */
-    public RcsRequest callbackData(String callbackData) {
+    public RcsMessage callbackData(String callbackData) {
         this.callbackData = callbackData;
         return this;
     }
@@ -81,7 +76,7 @@ public final class RcsRequest {
     /**
      * MessageId data that will be included in Delivery Report.
      */
-    public RcsRequest messageId(String messageId) {
+    public RcsMessage messageId(String messageId) {
         this.messageId = messageId;
         return this;
     }
@@ -94,7 +89,7 @@ public final class RcsRequest {
         return to;
     }
 
-    public int getValidityPeriod() {
+    public Integer getValidityPeriod() {
         return validityPeriod;
     }
 
@@ -133,7 +128,7 @@ public final class RcsRequest {
         result = prime * result + ((notifyUrl == null) ? 0 : notifyUrl.hashCode());
         result = prime * result + ((smsFailover == null) ? 0 : smsFailover.hashCode());
         result = prime * result + ((to == null) ? 0 : to.hashCode());
-        result = prime * result + validityPeriod;
+        result = prime * result + ((validityPeriod == null) ? 0 : validityPeriod.hashCode());
         result = prime * result
                 + ((validityPeriodTimeUnit == null) ? 0 : validityPeriodTimeUnit.hashCode());
         return result;
@@ -144,10 +139,10 @@ public final class RcsRequest {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof RcsRequest)) {
+        if (!(obj instanceof RcsMessage)) {
             return false;
         }
-        RcsRequest other = (RcsRequest) obj;
+        RcsMessage other = (RcsMessage) obj;
         if (callbackData == null) {
             if (other.callbackData != null) {
                 return false;
@@ -197,7 +192,11 @@ public final class RcsRequest {
         } else if (!to.equals(other.to)) {
             return false;
         }
-        if (validityPeriod != other.validityPeriod) {
+        if (validityPeriod == null) {
+            if (other.validityPeriod != null) {
+                return false;
+            }
+        } else if (!validityPeriod.equals(other.validityPeriod)) {
             return false;
         }
         if (validityPeriodTimeUnit != other.validityPeriodTimeUnit) {
@@ -208,7 +207,7 @@ public final class RcsRequest {
 
     @Override
     public String toString() {
-        return "RcsRequest [from=" + from + ", to=" + to + ", validityPeriod=" + validityPeriod
+        return "RcsMessage [from=" + from + ", to=" + to + ", validityPeriod=" + validityPeriod
                 + ", validityPeriodTimeUnit=" + validityPeriodTimeUnit + ", content=" + content
                 + ", smsFailover=" + smsFailover + ", notifyUrl=" + notifyUrl + ", callbackData="
                 + callbackData + ", messageId=" + messageId + "]";

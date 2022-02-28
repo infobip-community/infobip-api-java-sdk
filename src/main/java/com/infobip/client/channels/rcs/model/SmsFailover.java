@@ -4,12 +4,12 @@ package com.infobip.client.channels.rcs.model;
 public final class SmsFailover {
     private String from;
     private String text;
-    private int validityPeriod;
+    private Integer validityPeriod;
     private ValidityPeriodTimeUnit validityPeriodTimeUnit;
 
     /**
      * <p>
-     * Create SmsFailover with required fields.
+     * SmsFailover.
      * </p>
      *
      * @param from Message failover sender
@@ -23,7 +23,7 @@ public final class SmsFailover {
     /**
      * Message failover validity period.
      */
-    public SmsFailover validityPeriod(int validityPeriod) {
+    public SmsFailover validityPeriod(Integer validityPeriod) {
         this.validityPeriod = validityPeriod;
         return this;
     }
@@ -44,7 +44,7 @@ public final class SmsFailover {
         return text;
     }
 
-    public int getValidityPeriod() {
+    public Integer getValidityPeriod() {
         return validityPeriod;
     }
 
@@ -58,7 +58,7 @@ public final class SmsFailover {
         int result = 1;
         result = prime * result + ((from == null) ? 0 : from.hashCode());
         result = prime * result + ((text == null) ? 0 : text.hashCode());
-        result = prime * result + validityPeriod;
+        result = prime * result + ((validityPeriod == null) ? 0 : validityPeriod.hashCode());
         result = prime * result
                 + ((validityPeriodTimeUnit == null) ? 0 : validityPeriodTimeUnit.hashCode());
         return result;
@@ -87,7 +87,11 @@ public final class SmsFailover {
         } else if (!text.equals(other.text)) {
             return false;
         }
-        if (validityPeriod != other.validityPeriod) {
+        if (validityPeriod == null) {
+            if (other.validityPeriod != null) {
+                return false;
+            }
+        } else if (!validityPeriod.equals(other.validityPeriod)) {
             return false;
         }
         if (validityPeriodTimeUnit != other.validityPeriodTimeUnit) {
