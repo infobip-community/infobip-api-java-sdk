@@ -1,9 +1,9 @@
 
 package com.infobip.client.channels.webrtc.api;
 
-import com.infobip.client.channels.webrtc.model.WebrtcApplicationResponse;
-import com.infobip.client.channels.webrtc.model.WebrtcApplicationResponses;
 import com.infobip.client.channels.webrtc.model.application.WebRtcApplication;
+import com.infobip.client.channels.webrtc.model.application.WebRtcApplicationResponse;
+import com.infobip.client.channels.webrtc.model.application.WebRtcApplicationResponses;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
@@ -15,15 +15,11 @@ import java.util.Map;
 import okhttp3.Call;
 
 public final class WebRtcApplicationsApi {
-    private static final String WEBRTC_APPLICATIONS_ENDPOINT = "/webrtc/1/applications";
-    private static final String GET_WEBRTC_APPLICATIONS_ENDPOINT = WEBRTC_APPLICATIONS_ENDPOINT;
-    private static final String SAVE_WEBRTC_APPLICATION_ENDPOINT = WEBRTC_APPLICATIONS_ENDPOINT;
-    private static final String GET_WEBRTC_APPLICATION_ENDPOINT =
-            WEBRTC_APPLICATIONS_ENDPOINT + "/{id}";
-    private static final String UPDATE_WEBRTC_APPLICATION_ENDPOINT =
-            GET_WEBRTC_APPLICATION_ENDPOINT;
-    private static final String DELETE_WEBRTC_APPLICATION_ENDPOINT =
-            GET_WEBRTC_APPLICATION_ENDPOINT;
+    private static final String GET_WEBRTC_APPLICATIONS_ENDPOINT = "/webrtc/1/applications";
+    private static final String SAVE_WEBRTC_APPLICATION_ENDPOINT = "/webrtc/1/applications";
+    private static final String GET_WEBRTC_APPLICATION_ENDPOINT = "/webrtc/1/applications/{id}";
+    private static final String UPDATE_WEBRTC_APPLICATION_ENDPOINT = "/webrtc/1/applications/{id}";
+    private static final String DELETE_WEBRTC_APPLICATION_ENDPOINT = "/webrtc/1/applications/{id}";
     private ApiClient apiClient;
 
     public WebRtcApplicationsApi(ApiClient apiClient) {
@@ -36,12 +32,12 @@ public final class WebRtcApplicationsApi {
      * List all applications for WebRTC channel.
      * </p>
      *
-     * @return ApiResponse&lt;List&lt;WebrtcApplicationResponse&gt;&gt;
+     * @return ApiResponse&lt;List&lt;WebRtcApplicationResponse&gt;&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<WebrtcApplicationResponses> getWebrtcApplications() throws ApiException {
-        Call call = getWebrtcApplicationsValidateBeforeCall();
-        return apiClient.execute(call, WebrtcApplicationResponses.class);
+    public ApiResponse<WebRtcApplicationResponses> getWebRtcApplications() throws ApiException {
+        Call call = getWebRtcApplicationsValidateBeforeCall();
+        return apiClient.execute(call, WebRtcApplicationResponses.class);
     }
 
     /**
@@ -54,10 +50,10 @@ public final class WebRtcApplicationsApi {
      * @return The request call
      * @throws ApiException in case of error(s)
      */
-    public Call getWebrtcApplicationsAsync(
-            final ApiCallback<WebrtcApplicationResponses> apiCallback) throws ApiException {
-        Call call = getWebrtcApplicationsValidateBeforeCall(apiCallback);
-        apiClient.executeAsync(call, WebrtcApplicationResponses.class, apiCallback);
+    public Call getWebRtcApplicationsAsync(
+            final ApiCallback<WebRtcApplicationResponses> apiCallback) throws ApiException {
+        Call call = getWebRtcApplicationsValidateBeforeCall(apiCallback);
+        apiClient.executeAsync(call, WebRtcApplicationResponses.class, apiCallback);
         return call;
     }
 
@@ -68,13 +64,13 @@ public final class WebRtcApplicationsApi {
      * </p>
      *
      * @param webRtcApplication (optional)
-     * @return ApiResponse&lt;WebrtcApplicationResponse&gt;
+     * @return ApiResponse&lt;WebRtcApplicationResponse&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<WebrtcApplicationResponse> saveWebrtcApplication(
-            WebRtcApplication webRtcApplication) throws ApiException {
-        Call call = saveWebrtcApplicationValidateBeforeCall(webRtcApplication);
-        return apiClient.execute(call, WebrtcApplicationResponse.class);
+    public ApiResponse<WebRtcApplicationResponse>
+            saveWebRtcApplication(WebRtcApplication webRtcApplication) throws ApiException {
+        Call call = saveWebRtcApplicationValidateBeforeCall(webRtcApplication);
+        return apiClient.execute(call, WebRtcApplicationResponse.class);
     }
 
     /**
@@ -88,10 +84,10 @@ public final class WebRtcApplicationsApi {
      * @return The request call
      * @throws ApiException in case of error(s)
      */
-    public Call saveWebrtcApplicationAsync(final WebRtcApplication webRtcApplication,
-            final ApiCallback<WebrtcApplicationResponse> apiCallback) throws ApiException {
-        Call call = saveWebrtcApplicationValidateBeforeCall(webRtcApplication, apiCallback);
-        apiClient.executeAsync(call, WebrtcApplicationResponse.class, apiCallback);
+    public Call saveWebRtcApplicationAsync(final WebRtcApplication webRtcApplication,
+            final ApiCallback<WebRtcApplicationResponse> apiCallback) throws ApiException {
+        Call call = saveWebRtcApplicationValidateBeforeCall(webRtcApplication, apiCallback);
+        apiClient.executeAsync(call, WebRtcApplicationResponse.class, apiCallback);
         return call;
     }
 
@@ -102,13 +98,13 @@ public final class WebRtcApplicationsApi {
      * </p>
      *
      * @param id Id of the application to get (required)
-     * @return ApiResponse&lt;WebrtcApplicationResponse&gt;
+     * @return ApiResponse&lt;WebRtcApplicationResponse&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<WebrtcApplicationResponse> getWebrtcApplication(final String id)
+    public ApiResponse<WebRtcApplicationResponse> getWebRtcApplication(final String id)
             throws ApiException {
-        Call call = getWebrtcApplicationValidateBeforeCall(id);
-        return apiClient.execute(call, WebrtcApplicationResponse.class);
+        Call call = getWebRtcApplicationValidateBeforeCall(id);
+        return apiClient.execute(call, WebRtcApplicationResponse.class);
     }
 
     /**
@@ -122,10 +118,10 @@ public final class WebRtcApplicationsApi {
      * @return The request call
      * @throws ApiException in case of error(s)
      */
-    public Call getWebrtcApplicationAsync(final String id,
-            final ApiCallback<WebrtcApplicationResponse> apiCallback) throws ApiException {
-        Call call = getWebrtcApplicationValidateBeforeCall(id, apiCallback);
-        apiClient.executeAsync(call, WebrtcApplicationResponse.class, apiCallback);
+    public Call getWebRtcApplicationAsync(final String id,
+            final ApiCallback<WebRtcApplicationResponse> apiCallback) throws ApiException {
+        Call call = getWebRtcApplicationValidateBeforeCall(id, apiCallback);
+        apiClient.executeAsync(call, WebRtcApplicationResponse.class, apiCallback);
         return call;
     }
 
@@ -137,13 +133,13 @@ public final class WebRtcApplicationsApi {
      *
      * @param id Id of the application to update (required)
      * @param webRtcApplication (optional)
-     * @return ApiResponse&lt;WebrtcApplicationResponse&gt;
+     * @return ApiResponse&lt;WebRtcApplicationResponse&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<WebrtcApplicationResponse> updateWebrtcApplication(final String id,
+    public ApiResponse<WebRtcApplicationResponse> updateWebRtcApplication(final String id,
             final WebRtcApplication webRtcApplication) throws ApiException {
-        Call call = updateWebrtcApplicationValidateBeforeCall(id, webRtcApplication);
-        return apiClient.execute(call, WebrtcApplicationResponse.class);
+        Call call = updateWebRtcApplicationValidateBeforeCall(id, webRtcApplication);
+        return apiClient.execute(call, WebRtcApplicationResponse.class);
     }
 
     /**
@@ -158,12 +154,11 @@ public final class WebRtcApplicationsApi {
      * @return The request call
      * @throws ApiException in case of error(s)
      */
-    public Call updateWebrtcApplicationAsync(final String id,
+    public Call updateWebRtcApplicationAsync(final String id,
             final WebRtcApplication webRtcApplication,
-            final ApiCallback<WebrtcApplicationResponse> apiCallback) throws ApiException {
-        Call call = updateWebrtcApplicationValidateBeforeCall(id, webRtcApplication,
-                apiCallback);
-        apiClient.executeAsync(call, WebrtcApplicationResponse.class, apiCallback);
+            final ApiCallback<WebRtcApplicationResponse> apiCallback) throws ApiException {
+        Call call = updateWebRtcApplicationValidateBeforeCall(id, webRtcApplication, apiCallback);
+        apiClient.executeAsync(call, WebRtcApplicationResponse.class, apiCallback);
         return call;
     }
 
@@ -177,8 +172,8 @@ public final class WebRtcApplicationsApi {
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<Void> deleteWebrtcApplication(final String id) throws ApiException {
-        Call call = deleteWebrtcApplicationValidateBeforeCall(id);
+    public ApiResponse<Void> deleteWebRtcApplication(final String id) throws ApiException {
+        Call call = deleteWebRtcApplicationValidateBeforeCall(id);
         return apiClient.execute(call);
     }
 
@@ -193,77 +188,76 @@ public final class WebRtcApplicationsApi {
      * @return The request call
      * @throws ApiException in case of error(s)
      */
-    public Call deleteWebrtcApplicationAsync(final String id, final ApiCallback<Void> apiCallback)
+    public Call deleteWebRtcApplicationAsync(final String id, final ApiCallback<Void> apiCallback)
             throws ApiException {
-        Call call = deleteWebrtcApplicationValidateBeforeCall(id, apiCallback);
+        Call call = deleteWebRtcApplicationValidateBeforeCall(id, apiCallback);
         apiClient.executeAsync(call, apiCallback);
         return call;
     }
 
-    private Call getWebrtcApplicationsValidateBeforeCall() throws ApiException {
-        return getWebrtcApplicationsValidateBeforeCall(null);
+    private Call getWebRtcApplicationsValidateBeforeCall() throws ApiException {
+        return getWebRtcApplicationsValidateBeforeCall(null);
     }
 
     // TODO: Improve validation logic
-    private Call getWebrtcApplicationsValidateBeforeCall(final ApiCallback apiCallback)
+    private Call getWebRtcApplicationsValidateBeforeCall(final ApiCallback apiCallback)
             throws ApiException {
-        return getWebrtcApplicationsCall(apiCallback);
+        return getWebRtcApplicationsCall(apiCallback);
     }
 
-    private Call saveWebrtcApplicationValidateBeforeCall(
-            final WebRtcApplication webRtcApplication) throws ApiException {
-        return saveWebrtcApplicationValidateBeforeCall(webRtcApplication, null);
+    private Call saveWebRtcApplicationValidateBeforeCall(final WebRtcApplication webRtcApplication)
+            throws ApiException {
+        return saveWebRtcApplicationValidateBeforeCall(webRtcApplication, null);
     }
 
     // TODO: Improve validation logic
-    private Call saveWebrtcApplicationValidateBeforeCall(
-            final WebRtcApplication webRtcApplication, final ApiCallback apiCallback)
-            throws ApiException {
-        return saveWebrtcApplicationCall(webRtcApplication, apiCallback);
+    private Call saveWebRtcApplicationValidateBeforeCall(final WebRtcApplication webRtcApplication,
+            final ApiCallback apiCallback) throws ApiException {
+        return saveWebRtcApplicationCall(webRtcApplication, apiCallback);
     }
 
-    private Call getWebrtcApplicationValidateBeforeCall(final String id) throws ApiException {
-        return getWebrtcApplicationValidateBeforeCall(id, null);
+    private Call getWebRtcApplicationValidateBeforeCall(final String id) throws ApiException {
+        return getWebRtcApplicationValidateBeforeCall(id, null);
     }
 
     // TODO: Improve validation logic; remove string literal(s)
-    private Call getWebrtcApplicationValidateBeforeCall(final String id,
+    private Call getWebRtcApplicationValidateBeforeCall(final String id,
             final ApiCallback apiCallback) throws ApiException {
         if (id == null) {
             throw new ApiException("Missing the required parameter");
         }
-        return getWebrtcApplicationCall(id, apiCallback);
+        return getWebRtcApplicationCall(id, apiCallback);
     }
 
-    private Call updateWebrtcApplicationValidateBeforeCall(final String id,
+    private Call updateWebRtcApplicationValidateBeforeCall(final String id,
             final WebRtcApplication webRtcApplication) throws ApiException {
-        return updateWebrtcApplicationValidateBeforeCall(id, webRtcApplication, null);
+        return updateWebRtcApplicationValidateBeforeCall(id, webRtcApplication, null);
     }
 
     // TODO: Improve validation logic; remove string literal(s)
-    private Call updateWebrtcApplicationValidateBeforeCall(final String id,
+    private Call updateWebRtcApplicationValidateBeforeCall(final String id,
             final WebRtcApplication webRtcApplication, final ApiCallback apiCallback)
             throws ApiException {
         if (id == null) {
             throw new ApiException("Missing the required parameter");
         }
-        return updateWebrtcApplicationCall(id, webRtcApplication, apiCallback);
+        return updateWebRtcApplicationCall(id, webRtcApplication, apiCallback);
     }
 
-    private Call deleteWebrtcApplicationValidateBeforeCall(final String id) throws ApiException {
-        return deleteWebrtcApplicationValidateBeforeCall(id, null);
+    private Call deleteWebRtcApplicationValidateBeforeCall(final String id) throws ApiException {
+        return deleteWebRtcApplicationValidateBeforeCall(id, null);
     }
 
     // TODO: Improve validation logic; remove string literal(s)
-    private Call deleteWebrtcApplicationValidateBeforeCall(final String id,
+    private Call deleteWebRtcApplicationValidateBeforeCall(final String id,
             final ApiCallback apiCallback) throws ApiException {
         if (id == null) {
             throw new ApiException("Missing the required parameter 'id'");
         }
-        return deleteWebrtcApplicationCall(id, apiCallback);
+        return deleteWebRtcApplicationCall(id, apiCallback);
     }
 
-    private Call getWebrtcApplicationsCall(final ApiCallback apiCallback) throws ApiException {
+    private Call getWebRtcApplicationsCall(final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
@@ -271,7 +265,7 @@ public final class WebRtcApplicationsApi {
                 httpHeaders, apiCallback);
     }
 
-    private Call saveWebrtcApplicationCall(final WebRtcApplication webRtcApplication,
+    private Call saveWebRtcApplicationCall(final WebRtcApplication webRtcApplication,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
@@ -280,37 +274,37 @@ public final class WebRtcApplicationsApi {
                 httpHeaders, webRtcApplication, apiCallback);
     }
 
-    private Call getWebrtcApplicationCall(final String id, final ApiCallback apiCallback)
+    private Call getWebRtcApplicationCall(final String id, final ApiCallback apiCallback)
             throws ApiException {
-        String getWebrtcApplicationEndpoint = GET_WEBRTC_APPLICATION_ENDPOINT
+        String getWebRtcApplicationEndpoint = GET_WEBRTC_APPLICATION_ENDPOINT
                 .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id));
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
-        return apiClient.buildCall(getWebrtcApplicationEndpoint, HttpMethodType.GET, httpHeaders,
+        return apiClient.buildCall(getWebRtcApplicationEndpoint, HttpMethodType.GET, httpHeaders,
                 apiCallback);
     }
 
-    private Call updateWebrtcApplicationCall(final String id,
+    private Call updateWebRtcApplicationCall(final String id,
             final WebRtcApplication webRtcApplication, final ApiCallback apiCallback)
             throws ApiException {
-        String updateWebrtcApplicationEndpoint = UPDATE_WEBRTC_APPLICATION_ENDPOINT
+        String updateWebRtcApplicationEndpoint = UPDATE_WEBRTC_APPLICATION_ENDPOINT
                 .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
-        return apiClient.buildCall(updateWebrtcApplicationEndpoint, HttpMethodType.PUT, httpHeaders,
+        return apiClient.buildCall(updateWebRtcApplicationEndpoint, HttpMethodType.PUT, httpHeaders,
                 webRtcApplication, apiCallback);
     }
 
-    private Call deleteWebrtcApplicationCall(final String id, final ApiCallback apiCallback)
+    private Call deleteWebRtcApplicationCall(final String id, final ApiCallback apiCallback)
             throws ApiException {
-        String deleteWebrtcApplicationEndpoint = DELETE_WEBRTC_APPLICATION_ENDPOINT
+        String deleteWebRtcApplicationEndpoint = DELETE_WEBRTC_APPLICATION_ENDPOINT
                 .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
-        return apiClient.buildCall(deleteWebrtcApplicationEndpoint, HttpMethodType.DELETE,
+        return apiClient.buildCall(deleteWebRtcApplicationEndpoint, HttpMethodType.DELETE,
                 httpHeaders, apiCallback);
     }
 }

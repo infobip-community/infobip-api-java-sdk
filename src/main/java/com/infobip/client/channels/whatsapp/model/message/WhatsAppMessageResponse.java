@@ -1,18 +1,18 @@
 
-package com.infobip.client.channels.whatsapp.model;
+package com.infobip.client.channels.whatsapp.model.message;
 
 /**
  * <p>
- * WhatsAppSingleMessageInfo.
+ * WhatsAppMessageResponse.
  * </p>
  */
-public final class WhatsAppSingleMessageInfo {
+public final class WhatsAppMessageResponse {
     private String to;
     private Integer messageCount;
     private String messageId;
-    private WhatsAppSingleMessageStatus status;
+    private Status status;
 
-    public WhatsAppSingleMessageInfo() {}
+    public WhatsAppMessageResponse() {}
 
     public String getTo() {
         return to;
@@ -38,11 +38,11 @@ public final class WhatsAppSingleMessageInfo {
         this.messageId = messageId;
     }
 
-    public WhatsAppSingleMessageStatus getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(WhatsAppSingleMessageStatus status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
@@ -62,10 +62,10 @@ public final class WhatsAppSingleMessageInfo {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WhatsAppSingleMessageInfo)) {
+        if (!(obj instanceof WhatsAppMessageResponse)) {
             return false;
         }
-        WhatsAppSingleMessageInfo other = (WhatsAppSingleMessageInfo) obj;
+        WhatsAppMessageResponse other = (WhatsAppMessageResponse) obj;
         if (messageCount == null) {
             if (other.messageCount != null) {
                 return false;
@@ -99,7 +99,7 @@ public final class WhatsAppSingleMessageInfo {
 
     @Override
     public String toString() {
-        return "WhatsAppSingleMessageInfo [to=" + to + ", messageCount=" + messageCount
+        return "WhatsAppMessageResponse [to=" + to + ", messageCount=" + messageCount
                 + ", messageId=" + messageId + ", status=" + status + "]";
     }
 }

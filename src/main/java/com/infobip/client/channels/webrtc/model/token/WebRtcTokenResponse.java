@@ -1,19 +1,27 @@
 
-package com.infobip.client.channels.webrtc.model;
+package com.infobip.client.channels.webrtc.model.token;
 
 /**
  * <p>
- * WebrtcTokenResponse.
+ * WebRtcTokenResponse.
  * </p>
  */
-public class WebrtcTokenResponse {
+public class WebRtcTokenResponse {
     private String token;
     private String expirationTime;
 
-    public WebrtcTokenResponse() {}
+    public WebRtcTokenResponse() {}
+
+    public String getToken() {
+        return token;
+    }
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getExpirationTime() {
+        return expirationTime;
     }
 
     public void setExpirationTime(String expirationTime) {
@@ -34,10 +42,10 @@ public class WebrtcTokenResponse {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WebrtcTokenResponse)) {
+        if (!(obj instanceof WebRtcTokenResponse)) {
             return false;
         }
-        WebrtcTokenResponse other = (WebrtcTokenResponse) obj;
+        WebRtcTokenResponse other = (WebRtcTokenResponse) obj;
         if (expirationTime == null) {
             if (other.expirationTime != null) {
                 return false;
@@ -57,6 +65,6 @@ public class WebrtcTokenResponse {
 
     @Override
     public String toString() {
-        return "WebrtcTokenResponse [token=" + token + ", expirationTime=" + expirationTime + "]";
+        return "WebRtcTokenResponse [token=" + token + ", expirationTime=" + expirationTime + "]";
     }
 }

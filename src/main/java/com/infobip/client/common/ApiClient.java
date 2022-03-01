@@ -23,9 +23,9 @@ import okhttp3.Response;
  * ApiClient class.
  * </p>
  */
-// TODO : WIP; Improve ApiClient; serde
+// TODO : WIP; Improve ApiClient
 public final class ApiClient {
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
     private OkHttpClient httpClient;
     private String basePath;
     private AuthenticationType authenticationType;
@@ -37,6 +37,7 @@ public final class ApiClient {
      * </p>
      */
     public ApiClient() {
+        objectMapper = Serde.INSTANCE.getObjectMapper();
         initHttpClient();
     }
 

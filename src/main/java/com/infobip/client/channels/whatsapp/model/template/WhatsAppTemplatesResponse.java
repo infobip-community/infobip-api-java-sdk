@@ -1,5 +1,5 @@
 
-package com.infobip.client.channels.whatsapp.model;
+package com.infobip.client.channels.whatsapp.model.template;
 
 import java.util.ArrayList;
 import java.util.List;
