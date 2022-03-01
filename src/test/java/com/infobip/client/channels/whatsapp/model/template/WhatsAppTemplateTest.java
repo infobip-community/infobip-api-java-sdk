@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("unused")
 public class WhatsAppTemplateTest {
     @Test
     void testWhatsAppTemplateSerialization_withRequiredParameters() throws Exception {

@@ -5,32 +5,56 @@ Rich Communication Services (RCS) is a new, visually appealing messaging channel
 
 ##### Example
 
+`RcsBulkMessage` example:
+
 ```java
-RcsRequest request = new RcsRequest("0123456", new ContentTypeText("someText"));
+        new RcsBulkMessage().messages(Arrays.asList(
+                new RcsMessage("385977666618", new TextContent("exampleText 1")),
+                new RcsMessage("385977666618",
+                        new TextContent("exampleText 2").suggestions(Arrays.asList(
+                                new ReplySuggestion("exampleText", "examplePostbackData"),
+                                new OpenUrlSuggestion("exampleText", "examplePostbackData",
+                                        "http://www.example.test"),
+                                new DialPhoneSuggestion("exampleText", "examplePostbackData")
+                                        .phoneNumber("385977666618"),
+                                new ShowLocationSuggestion("exampleText", "examplePostbackData",
+                                        45.793418, 15.946297).label("label"),
+                                new RequestLocationSuggestion("exampleText",
+                                        "examplePostbackData")))).from("myRcsSender")
+                                                .validityPeriod(15)
+                                                .validityPeriodTimeUnit(
+                                                        ValidityPeriodTimeUnit.MINUTES)
+                                                .smsFailover(
+                                                        new SmsFailover("441134960000", "Some text")
+                                                                .validityPeriod(20)
+                                                                .validityPeriodTimeUnit(
+                                                                    ValidityPeriodTimeUnit.MINUTES))
+                                                .notifyUrl("https://www.example.com/rcs")
+                                                .callbackData("Callback data")
+                                                .messageId("externalMessageId")));
 ```
 
-or
-
-```java
-RcsRequest request = new RcsRequest(            
-        "01213456",
-        new ContentTypeCarousel(
-                Width.SMALL,
-                Arrays.asList(
-                        new ResourceContent().title("someTitle"),
-                        new ResourceContent().title("anotherTitle")
-                        )
-                )
-        );
-```
+`RcsMessage` example:
 
 
 ```java
-SendRcsApi sendRcsApi = new SendRcsApi(apiClient);
-try {
-    ApiResponse<RcsResponse> response = sendRcsApi.sendRcsMessage(request);
-} catch (ApiException e) {
-    // HANDLE THE EXCEPTION
-}
-
+        new RcsMessage("385977666618",
+                new TextContent("exampleText").suggestions(Arrays.asList(
+                        new ReplySuggestion("exampleText", "examplePostbackData"),
+                        new OpenUrlSuggestion("exampleText", "examplePostbackData",
+                                "https://www.example.test"),
+                        new DialPhoneSuggestion("exampleText", "examplePostbackData")
+                                .phoneNumber("385977666618"),
+                        new ShowLocationSuggestion("exampleText", "examplePostbackData", 45.793418,
+                                15.946297).label("label"),
+                        new RequestLocationSuggestion("exampleText", "examplePostbackData"))))
+                                .from("myRcsSender")
+                                .validityPeriod(15)
+                                .validityPeriodTimeUnit(ValidityPeriodTimeUnit.MINUTES)
+                                .smsFailover(new SmsFailover("441134960000", "Some text")
+                                        .validityPeriod(20)
+                                        .validityPeriodTimeUnit(ValidityPeriodTimeUnit.MINUTES))
+                                .notifyUrl("https://www.example.com/rcs")
+                                .callbackData("Callback data")
+                                .messageId("externalMessageId");
 ```
