@@ -1,10 +1,16 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.button;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Action {
+    @Valid
+    @NotEmpty
+    @Size(max = 3)
     private List<Button> buttons = new ArrayList<>();
 
     /**

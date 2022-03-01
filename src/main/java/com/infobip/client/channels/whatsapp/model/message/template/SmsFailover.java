@@ -1,8 +1,15 @@
 
 package com.infobip.client.channels.whatsapp.model.message.template;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public final class SmsFailover {
+    @NotBlank
+    @Size(min = 1, max = 24)
     private final String from;
+    @NotBlank
+    @Size(min = 1, max = 4096)
     private final String text;
 
     /**

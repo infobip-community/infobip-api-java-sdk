@@ -1,9 +1,15 @@
 
 package com.infobip.client.channels.webrtc.model.token;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public final class WebRtcToken {
+    @NotBlank
+    @Size(min = 3, max = 64)
     private final String identity;
     private String applicationId;
+    @Size(min = 5, max = 50)
     private String displayName;
     private Capabilities capabilities;
     private Long timeToLive;

@@ -1,7 +1,10 @@
 
 package com.infobip.client.channels.whatsapp.model.template;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public final class PhoneNumberButton extends Button {
+    @NotEmpty
     private final String phoneNumber;
 
     /**

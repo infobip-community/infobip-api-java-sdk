@@ -1,15 +1,20 @@
 
 package com.infobip.client.channels.whatsapp.model;
 
+import jakarta.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+
 /**
  * <p>
- * WhatsAppDeleteMediaRequest.
+ * WhatsAppDeleteMedia.
  * </p>
  */
-public final class WhatsAppDeleteMediaRequest {
-    private String url;
+public final class WhatsAppDeleteMedia {
+    @NotEmpty
+    @URL
+    private final String url;
 
-    public WhatsAppDeleteMediaRequest(String url) {
+    public WhatsAppDeleteMedia(String url) {
         this.url = url;
     }
 
@@ -30,10 +35,10 @@ public final class WhatsAppDeleteMediaRequest {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WhatsAppDeleteMediaRequest)) {
+        if (!(obj instanceof WhatsAppDeleteMedia)) {
             return false;
         }
-        WhatsAppDeleteMediaRequest other = (WhatsAppDeleteMediaRequest) obj;
+        WhatsAppDeleteMedia other = (WhatsAppDeleteMedia) obj;
         if (url == null) {
             if (other.url != null) {
                 return false;
@@ -46,6 +51,6 @@ public final class WhatsAppDeleteMediaRequest {
 
     @Override
     public String toString() {
-        return "WhatsAppDeleteMediaRequest [url=" + url + "]";
+        return "WhatsAppDeleteMedia [url=" + url + "]";
     }
 }

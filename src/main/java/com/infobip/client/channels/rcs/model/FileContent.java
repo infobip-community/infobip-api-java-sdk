@@ -1,8 +1,14 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
 public final class FileContent extends Content {
+    @Valid
+    @NotNull
     private final ResourceUrl file;
+    @Valid
     private ResourceUrl thumbnail;
 
     /**
@@ -73,7 +79,6 @@ public final class FileContent extends Content {
 
     @Override
     public String toString() {
-        return "FileContent [file=" + file + ", thumbnail=" + thumbnail + ", type=" + type
-                + "]";
+        return "FileContent [file=" + file + ", thumbnail=" + thumbnail + ", type=" + type + "]";
     }
 }

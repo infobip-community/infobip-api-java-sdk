@@ -1,13 +1,20 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class CardContent extends Content {
+    @NotNull
     private final Orientation orientation;
+    @NotNull
     private final Alignment alignment;
+    @Valid
+    @NotNull
     private final ResourceContent content;
+    @Valid
     private List<Suggestion> suggestions = new ArrayList<>();
 
     /**
@@ -23,7 +30,7 @@ public final class CardContent extends Content {
         super(ContentType.CARD);
         this.orientation = orientation;
         this.alignment = alignment;
-        this.content = new ResourceContent();
+        this.content = content;
     }
 
     /**
@@ -98,7 +105,7 @@ public final class CardContent extends Content {
 
     @Override
     public String toString() {
-        return "CardContent [orientation=" + orientation + ", alignment=" + alignment
-                + ", content=" + content + ", suggestions=" + suggestions + ", type=" + type + "]";
+        return "CardContent [orientation=" + orientation + ", alignment=" + alignment + ", content="
+                + content + ", suggestions=" + suggestions + ", type=" + type + "]";
     }
 }

@@ -1,11 +1,19 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.list;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Action {
+    @NotEmpty
+    @Size(max = 20)
     private final String title;
+    @Valid
+    @NotEmpty
+    @Size(max = 10)
     private List<Section> sections = new ArrayList<>();
 
     /**

@@ -1,10 +1,12 @@
 
 package com.infobip.client.channels.whatsapp.model.message.template;
 
+import jakarta.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Body {
+    @NotEmpty
     private List<String> placeholders = new ArrayList<>();
 
     /**

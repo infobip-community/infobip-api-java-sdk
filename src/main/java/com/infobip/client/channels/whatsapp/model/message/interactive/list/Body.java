@@ -1,7 +1,12 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.list;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public final class Body {
+    @NotEmpty
+    @Size(max = 1024)
     private final String text;
 
     /**

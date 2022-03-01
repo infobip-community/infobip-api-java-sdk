@@ -1,9 +1,14 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.product;
 
+import static org.junit.Assert.assertEquals;
+import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
+import jakarta.validation.ConstraintViolation;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("unused")
 public class WhatsAppInteractiveProductMessageTest {
     @Test
     void testWhatsAppInteractiveProductMessageSerialization_withRequiredParameters()
@@ -11,8 +16,8 @@ public class WhatsAppInteractiveProductMessageTest {
         WhatsAppInteractiveProductMessage whatsAppMessage =
                 getWhatsAppInteractiveProductMessageWithRequiredParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(whatsAppMessage);
-        System.out.println(whatsAppMessage);
-        System.out.println(json + "\n");
+        // System.out.println(whatsAppMessage);
+        // System.out.println(json + "\n");
     }
 
     @Test
@@ -20,8 +25,24 @@ public class WhatsAppInteractiveProductMessageTest {
         WhatsAppInteractiveProductMessage whatsAppMessage =
                 getWhatsAppInteractiveProductMessageWithAllParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(whatsAppMessage);
-        System.out.println(whatsAppMessage);
-        System.out.println(json + "\n");
+        // System.out.println(whatsAppMessage);
+        // System.out.println(json + "\n");
+    }
+
+    @Test
+    void validateWhatsAppInteractiveProductMessage_withRequiredParameters() {
+        Set<ConstraintViolation<WhatsAppInteractiveProductMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getWhatsAppInteractiveProductMessageWithRequiredParameters());
+        assertEquals(0, constraintViolations.size());
+    }
+
+    @Test
+    void validateWhatsAppInteractiveProductMessage_withAllParameters() {
+        Set<ConstraintViolation<WhatsAppInteractiveProductMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getWhatsAppInteractiveProductMessageWithAllParameters());
+        assertEquals(0, constraintViolations.size());
     }
 
     public static WhatsAppInteractiveProductMessage

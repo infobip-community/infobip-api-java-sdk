@@ -1,25 +1,46 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import static org.junit.Assert.assertEquals;
+import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
+import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("unused")
 public class RcsBulkMessageTest {
     @Test
     void testRcsBulkMessageSerialization_withRequiredParameters() throws Exception {
         RcsBulkMessage rcsBulkMessage = getRcsBulkMessageWithRequiredParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(rcsBulkMessage);
-        System.out.println(rcsBulkMessage);
-        System.out.println(json + "\n");
+        // System.out.println(rcsBulkMessage);
+        // System.out.println(json + "\n");
     }
 
     @Test
     void testRcsBulkMessageSerialization_withAllParameters() throws Exception {
         RcsBulkMessage rcsBulkMessage = getRcsBulkMessageWithAllParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(rcsBulkMessage);
-        System.out.println(rcsBulkMessage);
-        System.out.println(json + "\n");
+        // System.out.println(rcsBulkMessage);
+        // System.out.println(json + "\n");
+    }
+
+    @Test
+    void validateRcsBulkMessage_withRequiredParameters() {
+        Set<ConstraintViolation<RcsBulkMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getRcsBulkMessageWithRequiredParameters());
+        assertEquals(0, constraintViolations.size());
+    }
+
+    @Test
+    void validateRcsBulkMessage_withAllParameters() {
+        Set<ConstraintViolation<RcsBulkMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getRcsBulkMessageWithAllParameters());
+        assertEquals(0, constraintViolations.size());
     }
 
     public static RcsBulkMessage getRcsBulkMessageWithRequiredParameters() {
@@ -36,7 +57,7 @@ public class RcsBulkMessageTest {
                         new TextContent("exampleText 2").suggestions(Arrays.asList(
                                 new ReplySuggestion("exampleText", "examplePostbackData"),
                                 new OpenUrlSuggestion("exampleText", "examplePostbackData",
-                                        "www.example.test"),
+                                        "http://www.example.test"),
                                 new DialPhoneSuggestion("exampleText", "examplePostbackData")
                                         .phoneNumber("385977666618"),
                                 new ShowLocationSuggestion("exampleText", "examplePostbackData",

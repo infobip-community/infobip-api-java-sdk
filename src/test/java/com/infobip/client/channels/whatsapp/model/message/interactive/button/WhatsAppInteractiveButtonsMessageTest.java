@@ -1,10 +1,15 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.button;
 
+import static org.junit.Assert.assertEquals;
+import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
+import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("unused")
 public class WhatsAppInteractiveButtonsMessageTest {
     @Test
     void testWhatsAppInteractiveButtonsMessageSerialization_withRequiredParameters()
@@ -12,8 +17,8 @@ public class WhatsAppInteractiveButtonsMessageTest {
         WhatsAppInteractiveButtonsMessage whatsAppMessage =
                 getWhatsAppInteractiveButtonsMessageWithRequiredParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(whatsAppMessage);
-        System.out.println(whatsAppMessage);
-        System.out.println(json + "\n");
+        // System.out.println(whatsAppMessage);
+        // System.out.println(json + "\n");
     }
 
     @Test
@@ -21,8 +26,24 @@ public class WhatsAppInteractiveButtonsMessageTest {
         WhatsAppInteractiveButtonsMessage whatsAppMessage =
                 getWhatsAppInteractiveButtonsMessageWithAllParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(whatsAppMessage);
-        System.out.println(whatsAppMessage);
-        System.out.println(json + "\n");
+        // System.out.println(whatsAppMessage);
+        // System.out.println(json + "\n");
+    }
+
+    @Test
+    void validateWhatsAppInteractiveButtonsMessage_withRequiredParameters() {
+        Set<ConstraintViolation<WhatsAppInteractiveButtonsMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getWhatsAppInteractiveButtonsMessageWithRequiredParameters());
+        assertEquals(0, constraintViolations.size());
+    }
+
+    @Test
+    void validateWhatsAppInteractiveButtonsMessage_withAllParameters() {
+        Set<ConstraintViolation<WhatsAppInteractiveButtonsMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getWhatsAppInteractiveButtonsMessageWithAllParameters());
+        assertEquals(0, constraintViolations.size());
     }
 
     public static WhatsAppInteractiveButtonsMessage

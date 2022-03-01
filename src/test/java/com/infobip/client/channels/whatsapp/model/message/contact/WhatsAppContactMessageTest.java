@@ -1,25 +1,46 @@
 
 package com.infobip.client.channels.whatsapp.model.message.contact;
 
+import static org.junit.Assert.assertEquals;
+import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
+import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("unused")
 public class WhatsAppContactMessageTest {
     @Test
     void testWhatsAppContactMessageSerialization_withRequiredParameters() throws Exception {
         WhatsAppContactMessage whatsAppMessage = getWhatsAppContactMessageWithRequiredParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(whatsAppMessage);
-        System.out.println(whatsAppMessage);
-        System.out.println(json + "\n");
+        // System.out.println(whatsAppMessage);
+        // System.out.println(json + "\n");
     }
 
     @Test
     void testWhatsAppContactMessageSerialization_withAllParameters() throws Exception {
         WhatsAppContactMessage whatsAppMessage = getWhatsAppContactMessageWithAllParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(whatsAppMessage);
-        System.out.println(whatsAppMessage);
-        System.out.println(json + "\n");
+        // System.out.println(whatsAppMessage);
+        // System.out.println(json + "\n");
+    }
+
+    @Test
+    void validateWhatsAppContactMessage_withRequiredParameters() {
+        Set<ConstraintViolation<WhatsAppContactMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getWhatsAppContactMessageWithRequiredParameters());
+        assertEquals(0, constraintViolations.size());
+    }
+
+    @Test
+    void validateWhatsAppContactMessage_withAllParameters() {
+        Set<ConstraintViolation<WhatsAppContactMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getWhatsAppContactMessageWithAllParameters());
+        assertEquals(0, constraintViolations.size());
     }
 
     public static WhatsAppContactMessage getWhatsAppContactMessageWithRequiredParameters() {

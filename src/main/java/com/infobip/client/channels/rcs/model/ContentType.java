@@ -1,6 +1,6 @@
 
 package com.infobip.client.channels.rcs.model;
 
-enum ContentType {
+public enum ContentType {
     TEXT, FILE, CARD, CAROUSEL;
 }

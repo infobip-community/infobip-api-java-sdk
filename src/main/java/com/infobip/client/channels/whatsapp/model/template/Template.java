@@ -2,11 +2,19 @@
 package com.infobip.client.channels.whatsapp.model.template;
 
 import com.infobip.client.channels.whatsapp.model.common.Language;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public abstract class Template {
+    @NotEmpty
     protected String name;
+    @NotNull
     protected Language language;
+    @NotNull
     protected Category category;
+    @Valid
+    @NotNull
     protected Structure structure;
 
     /**

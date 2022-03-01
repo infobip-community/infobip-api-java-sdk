@@ -1,24 +1,45 @@
 
 package com.infobip.client.channels.whatsapp.model.message.video;
 
+import static org.junit.Assert.assertEquals;
+import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
+import jakarta.validation.ConstraintViolation;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("unused")
 public class WhatsAppVideoMessageTest {
     @Test
     void testWhatsAppVideoMessageSerialization_withRequiredParameters() throws Exception {
         WhatsAppVideoMessage whatsAppMessage = getWhatsAppVideoMessageWithRequiredParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(whatsAppMessage);
-        System.out.println(whatsAppMessage);
-        System.out.println(json + "\n");
+        // System.out.println(whatsAppMessage);
+        // System.out.println(json + "\n");
     }
 
     @Test
     void testWhatsAppVideoMessageSerialization_withAllParameters() throws Exception {
         WhatsAppVideoMessage whatsAppMessage = getWhatsAppVideoMessageWithAllParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(whatsAppMessage);
-        System.out.println(whatsAppMessage);
-        System.out.println(json + "\n");
+        // System.out.println(whatsAppMessage);
+        // System.out.println(json + "\n");
+    }
+
+    @Test
+    void validateWhatsAppVideoMessage_withRequiredParameters() {
+        Set<ConstraintViolation<WhatsAppVideoMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getWhatsAppVideoMessageWithRequiredParameters());
+        assertEquals(0, constraintViolations.size());
+    }
+
+    @Test
+    void validateWhatsAppVideoMessage_withAllParameters() {
+        Set<ConstraintViolation<WhatsAppVideoMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getWhatsAppVideoMessageWithAllParameters());
+        assertEquals(0, constraintViolations.size());
     }
 
     public static WhatsAppVideoMessage getWhatsAppVideoMessageWithRequiredParameters() {

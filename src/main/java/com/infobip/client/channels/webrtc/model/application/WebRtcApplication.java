@@ -1,10 +1,18 @@
 
 package com.infobip.client.channels.webrtc.model.application;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public final class WebRtcApplication {
+    @NotBlank
     private final String name;
+    @Size(max = 160)
     private String description;
+    @Valid
     private Ios ios;
+    @Valid
     private Android android;
     private boolean appToApp = false;
     private boolean appToConversations = false;

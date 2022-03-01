@@ -2,10 +2,16 @@
 package com.infobip.client.channels.whatsapp.model.message.interactive.product;
 
 import com.infobip.client.channels.whatsapp.model.message.MessageContent;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 
 public final class Content extends MessageContent {
+    @Valid
+    @NotNull
     private final Action action;
+    @Valid
     private Body body;
+    @Valid
     private Footer footer;
 
     /**
@@ -99,7 +105,6 @@ public final class Content extends MessageContent {
 
     @Override
     public String toString() {
-        return "Content [action=" + action + ", body=" + body + ", footer="
-                + footer + "]";
+        return "Content [action=" + action + ", body=" + body + ", footer=" + footer + "]";
     }
 }

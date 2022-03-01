@@ -1,7 +1,12 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.product;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public final class Footer {
+    @NotEmpty
+    @Size(max = 60)
     private final String text;
 
     /**

@@ -1,9 +1,15 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.Range;
+
 public final class ShowLocationSuggestion extends Suggestion {
+    @Range(min = -90, max = 90)
     private final double latitude;
+    @Range(min = -180, max = 180)
     private final double longitude;
+    @Size(min = 1, max = 100)
     private String label;
 
     /**

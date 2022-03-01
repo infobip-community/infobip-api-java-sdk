@@ -1,7 +1,14 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
+
 public final class ResourceUrl {
+    @NotBlank
+    @Size(min = 1, max = 1000)
+    @URL
     private final String url;
 
     /**

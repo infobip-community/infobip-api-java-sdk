@@ -1,13 +1,20 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class ResourceContent {
+    @Size(min = 1, max = 200)
     private String title;
+    @Size(min = 1, max = 2000)
     private String description;
+    @Valid
     private ResourceMedia media;
+    @Valid
+    @Size(max = 4)
     private List<Suggestion> suggestions = new ArrayList<>();
 
     public ResourceContent() {}

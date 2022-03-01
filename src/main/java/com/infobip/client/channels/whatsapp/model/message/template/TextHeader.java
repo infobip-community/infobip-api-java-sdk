@@ -1,7 +1,10 @@
 
 package com.infobip.client.channels.whatsapp.model.message.template;
 
+import jakarta.validation.constraints.NotBlank;
+
 public final class TextHeader extends Header {
+    @NotBlank
     private final String placeholder;
 
     /**

@@ -1,8 +1,15 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 public abstract class Suggestion {
+    @NotBlank
+    @Size(min = 1, max = 25)
     protected final String text;
+    @NotBlank
+    @Size(min = 1, max = 2048)
     protected final String postbackData;
     protected final SuggestionType type;
 
