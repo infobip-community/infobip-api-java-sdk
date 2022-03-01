@@ -1,11 +1,17 @@
 
 package com.infobip.client.channels.whatsapp.model.message.template;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class WhatsAppTemplateMessage {
+    @Valid
+    @NotEmpty
     private List<TemplateMessage> messages = new ArrayList<>();
+    @Size(min = 1, max = 100)
     private String bulkId;
 
     /**

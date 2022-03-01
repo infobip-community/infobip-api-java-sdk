@@ -1,8 +1,13 @@
 
 package com.infobip.client.channels.whatsapp.model.template;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public abstract class Button {
     protected final ButtonType type;
+    @NotEmpty
+    @Size(max = 200)
     protected final String text;
 
     /**

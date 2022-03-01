@@ -2,11 +2,17 @@
 package com.infobip.client.channels.whatsapp.model.message.location;
 
 import com.infobip.client.channels.whatsapp.model.message.MessageContent;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.Range;
 
 public final class Content extends MessageContent {
+    @Range(min = -90, max = 90)
     private final double latitude;
+    @Range(min = -180, max = 180)
     private final double longitude;
+    @Size(min = 0, max = 1000)
     private String name;
+    @Size(min = 0, max = 1000)
     private String address;
 
     /**
@@ -104,7 +110,7 @@ public final class Content extends MessageContent {
 
     @Override
     public String toString() {
-        return "Content [latitude=" + latitude + ", longitude=" + longitude + ", name="
-                + name + ", address=" + address + "]";
+        return "Content [latitude=" + latitude + ", longitude=" + longitude + ", name=" + name
+                + ", address=" + address + "]";
     }
 }

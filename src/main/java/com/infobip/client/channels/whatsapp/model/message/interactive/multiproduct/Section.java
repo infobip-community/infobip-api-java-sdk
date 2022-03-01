@@ -1,11 +1,15 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.multiproduct;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Section {
+    @Size(max = 24)
     private String title;
+    @NotEmpty
     private List<String> productRetailerIds = new ArrayList<>();
 
     /**

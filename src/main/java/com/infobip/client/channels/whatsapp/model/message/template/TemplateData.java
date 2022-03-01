@@ -1,12 +1,18 @@
 
 package com.infobip.client.channels.whatsapp.model.message.template;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class TemplateData {
+    @Valid
+    @NotNull
     private final Body body;
+    @Valid
     private Header header;
+    @Valid
     private List<Button> buttons = new ArrayList<>();
 
     /**

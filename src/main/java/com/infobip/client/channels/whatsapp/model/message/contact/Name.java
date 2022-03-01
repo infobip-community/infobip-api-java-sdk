@@ -1,12 +1,16 @@
 
 package com.infobip.client.channels.whatsapp.model.message.contact;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public final class Name {
+    @NotEmpty
     private final String firstName;
     private String lastName;
     private String middleName;
     private String nameSuffix;
     private String namePrefix;
+    @NotEmpty
     private final String formattedName;
 
     /**

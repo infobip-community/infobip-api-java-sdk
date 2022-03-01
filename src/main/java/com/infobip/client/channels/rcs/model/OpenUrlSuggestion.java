@@ -1,7 +1,12 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.URL;
+
 public final class OpenUrlSuggestion extends Suggestion {
+    @NotBlank
+    @URL
     private final String url;
 
     /**

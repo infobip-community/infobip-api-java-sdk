@@ -1,8 +1,12 @@
 
 package com.infobip.client.channels.whatsapp.model.message.template;
 
+import org.hibernate.validator.constraints.Range;
+
 public final class LocationHeader extends Header {
+    @Range(min = -90, max = 90)
     private final double latitude;
+    @Range(min = -180, max = 180)
     private final double longitude;
 
     /**

@@ -1,25 +1,45 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import static org.junit.Assert.assertEquals;
+import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
+import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("unused")
 public class RcsMessageTest {
     @Test
     void testRcsMessageSerialization_withRequiredParameters() throws Exception {
         RcsMessage rcsMessage = getRcsMessageWithRequiredParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(rcsMessage);
-        System.out.println(rcsMessage);
-        System.out.println(json + "\n");
+        // System.out.println(rcsMessage);
+        // System.out.println(json + "\n");
     }
 
     @Test
     void testRcsMessageSerialization_withAllParameters() throws Exception {
         RcsMessage rcsMessage = getRcsMessageWithAllParameters();
         String json = Serde.INSTANCE.getObjectMapper().writeValueAsString(rcsMessage);
-        System.out.println(rcsMessage);
-        System.out.println(json + "\n");
+        // System.out.println(rcsMessage);
+        // System.out.println(json + "\n");
+    }
+
+    @Test
+    void validateRcsMessage_withRequiredParameters() {
+        Set<ConstraintViolation<RcsMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator()
+                        .validate(getRcsMessageWithRequiredParameters());
+        assertEquals(0, constraintViolations.size());
+    }
+
+    @Test
+    void validateRcsMessage_withAllParameters() {
+        Set<ConstraintViolation<RcsMessage>> constraintViolations =
+                ModelValidator.INSTANCE.getValidator().validate(getRcsMessageWithAllParameters());
+        assertEquals(0, constraintViolations.size());
     }
 
     public static RcsMessage getRcsMessageWithRequiredParameters() {
@@ -31,7 +51,7 @@ public class RcsMessageTest {
                 new TextContent("exampleText").suggestions(Arrays.asList(
                         new ReplySuggestion("exampleText", "examplePostbackData"),
                         new OpenUrlSuggestion("exampleText", "examplePostbackData",
-                                "www.example.test"),
+                                "https://www.example.test"),
                         new DialPhoneSuggestion("exampleText", "examplePostbackData")
                                 .phoneNumber("385977666618"),
                         new ShowLocationSuggestion("exampleText", "examplePostbackData", 45.793418,

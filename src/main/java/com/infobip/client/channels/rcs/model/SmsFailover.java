@@ -1,8 +1,12 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.constraints.NotBlank;
+
 public final class SmsFailover {
+    @NotBlank
     private String from;
+    @NotBlank
     private String text;
     private Integer validityPeriod;
     private ValidityPeriodTimeUnit validityPeriodTimeUnit;

@@ -1,13 +1,23 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.URL;
+
 public final class RcsMessage {
     private String from;
+    @NotBlank
     private final String to;
     private Integer validityPeriod;
     private ValidityPeriodTimeUnit validityPeriodTimeUnit;
+    @Valid
+    @NotNull
     private final Content content;
+    @Valid
     private SmsFailover smsFailover;
+    @URL
     private String notifyUrl;
     private String callbackData;
     private String messageId;

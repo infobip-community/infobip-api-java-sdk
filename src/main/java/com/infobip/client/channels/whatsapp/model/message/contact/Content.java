@@ -2,10 +2,14 @@
 package com.infobip.client.channels.whatsapp.model.message.contact;
 
 import com.infobip.client.channels.whatsapp.model.message.MessageContent;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Content extends MessageContent {
+    @Valid
+    @NotEmpty
     private List<Contact> contacts = new ArrayList<>();
 
     /**

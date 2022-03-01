@@ -1,8 +1,17 @@
 
 package com.infobip.client.channels.whatsapp.model.message.template;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
+
 public final class DocumentHeader extends Header {
+    @NotBlank
+    @Size(max = 2048)
+    @URL
     private final String mediaUrl;
+    @NotBlank
+    @Size(max = 240)
     private final String filename;
 
     /**

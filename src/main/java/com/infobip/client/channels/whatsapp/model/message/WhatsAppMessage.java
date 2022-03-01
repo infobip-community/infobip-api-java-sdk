@@ -1,13 +1,29 @@
 
 package com.infobip.client.channels.whatsapp.model.message;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
+
 @SuppressWarnings("unchecked")
 public abstract class WhatsAppMessage<T extends WhatsAppMessage<T>> {
+    @NotBlank
+    @Size(min = 1, max = 24)
     protected final String from;
+    @NotBlank
+    @Size(min = 1, max = 24)
     protected final String to;
+    @Size(min = 0, max = 50)
     protected String messageId;
+    @Valid
+    @NotNull
     protected final MessageContent content;
+    @Size(min = 0, max = 4000)
     protected String callbackData;
+    @Size(min = 0, max = 2048)
+    @URL
     protected String notifyUrl;
 
     /**

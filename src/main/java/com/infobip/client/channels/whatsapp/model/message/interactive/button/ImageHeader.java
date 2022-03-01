@@ -1,7 +1,14 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.button;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
+
 public final class ImageHeader extends Header {
+    @NotEmpty
+    @Size(max = 2048)
+    @URL
     private final String mediaUrl;
 
     /**

@@ -1,7 +1,10 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.constraints.Size;
+
 public final class DialPhoneSuggestion extends Suggestion {
+    @Size(min = 5, max = 15)
     private String phoneNumber;
 
     /**

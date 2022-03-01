@@ -1,8 +1,12 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.product;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public final class Action {
+    @NotEmpty
     private final String catalogId;
+    @NotEmpty
     private final String productRetailerId;
 
     /**

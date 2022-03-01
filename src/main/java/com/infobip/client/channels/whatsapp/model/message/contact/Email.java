@@ -2,6 +2,7 @@
 package com.infobip.client.channels.whatsapp.model.message.contact;
 
 public final class Email {
+    @jakarta.validation.constraints.Email
     private String email;
     private EmailType type;
 

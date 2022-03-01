@@ -1,9 +1,18 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.button;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public final class Button {
+    @NotNull
     private final ButtonType type;
+    @NotEmpty
+    @Size(max = 256)
     private final String id;
+    @NotEmpty
+    @Size(max = 20)
     private final String title;
 
     /**

@@ -2,10 +2,18 @@
 package com.infobip.client.channels.whatsapp.model.message.document;
 
 import com.infobip.client.channels.whatsapp.model.message.MessageContent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
 
 public final class Content extends MessageContent {
+    @NotBlank
+    @Size(max = 2048)
+    @URL
     private final String mediaUrl;
+    @Size(max = 3000)
     private String caption;
+    @Size(max = 240)
     private String filename;
 
     /**
@@ -95,7 +103,7 @@ public final class Content extends MessageContent {
 
     @Override
     public String toString() {
-        return "Content [mediaUrl=" + mediaUrl + ", caption=" + caption + ", filename="
-                + filename + "]";
+        return "Content [mediaUrl=" + mediaUrl + ", caption=" + caption + ", filename=" + filename
+                + "]";
     }
 }

@@ -2,8 +2,12 @@
 package com.infobip.client.channels.whatsapp.model.message.text;
 
 import com.infobip.client.channels.whatsapp.model.message.MessageContent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 public final class Content extends MessageContent {
+    @NotBlank
+    @Size(max = 4096)
     private final String text;
     private boolean previewUrl = false;
 

@@ -1,7 +1,12 @@
 
 package com.infobip.client.channels.whatsapp.model.template;
 
+import jakarta.validation.constraints.NotEmpty;
+import org.hibernate.validator.constraints.URL;
+
 public final class UrlButton extends Button {
+    @NotEmpty
+    @URL
     private final String url;
 
     /**

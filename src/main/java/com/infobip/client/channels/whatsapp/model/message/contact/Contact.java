@@ -1,16 +1,22 @@
 
 package com.infobip.client.channels.whatsapp.model.message.contact;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Contact {
     private List<Address> addresses = new ArrayList<>();
     private String birthday;
+    @Valid
     private List<Email> emails = new ArrayList<>();
+    @Valid
+    @NotNull
     private final Name name;
     private Org org;
     private List<Phone> phones = new ArrayList<>();
+    @Valid
     private List<Url> urls = new ArrayList<>();
 
     /**

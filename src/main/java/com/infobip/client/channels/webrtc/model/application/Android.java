@@ -1,7 +1,10 @@
 
 package com.infobip.client.channels.webrtc.model.application;
 
+import jakarta.validation.constraints.NotBlank;
+
 public final class Android {
+    @NotBlank
     private String fcmServerKey;
 
     public Android() {}

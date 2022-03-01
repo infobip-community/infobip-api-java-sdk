@@ -1,7 +1,10 @@
 
 package com.infobip.client.channels.whatsapp.model.message.contact;
 
+import org.hibernate.validator.constraints.URL;
+
 public final class Url {
+    @URL
     private String url;
     private UrlType type;
 

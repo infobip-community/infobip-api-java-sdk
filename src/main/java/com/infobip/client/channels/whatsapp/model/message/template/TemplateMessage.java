@@ -3,8 +3,10 @@ package com.infobip.client.channels.whatsapp.model.message.template;
 
 import com.infobip.client.channels.whatsapp.model.message.MessageContent;
 import com.infobip.client.channels.whatsapp.model.message.WhatsAppMessage;
+import jakarta.validation.Valid;
 
 public final class TemplateMessage extends WhatsAppMessage<TemplateMessage> {
+    @Valid
     private SmsFailover smsFailover;
 
     /**

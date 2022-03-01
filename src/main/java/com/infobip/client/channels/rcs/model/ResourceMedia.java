@@ -1,9 +1,16 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+
 public final class ResourceMedia {
+    @Valid
+    @NotNull
     private final ResourceUrl file;
+    @Valid
     private ResourceUrl thumbnail;
+    @NotNull
     private final Height height;
 
     /**

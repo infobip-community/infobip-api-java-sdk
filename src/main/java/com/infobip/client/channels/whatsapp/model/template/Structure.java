@@ -1,15 +1,23 @@
 
 package com.infobip.client.channels.whatsapp.model.template;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Structure {
+    @Valid
     private Header header;
+    @NotEmpty
     private final String body;
+    @Size(max = 60)
     private String footer;
+    @Valid
+    @Size(max = 3)
     private List<Button> buttons = new ArrayList<>();
-    private StructureType type; // TODO: not present in request ...
+    private StructureType type;
 
     /**
      * <p>

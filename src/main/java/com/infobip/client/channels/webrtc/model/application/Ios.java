@@ -1,8 +1,12 @@
 
 package com.infobip.client.channels.webrtc.model.application;
 
+import jakarta.validation.constraints.NotBlank;
+
 public final class Ios {
+    @NotBlank
     private String apnsCertificateFileName;
+    @NotBlank
     private String apnsCertificateFileContent;
     private String apnsCertificatePassword;
 

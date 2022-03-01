@@ -1,7 +1,7 @@
 
 package com.infobip.client.channels.whatsapp.api;
 
-import com.infobip.client.channels.whatsapp.model.WhatsAppDeleteMediaRequest;
+import com.infobip.client.channels.whatsapp.model.WhatsAppDeleteMedia;
 import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateResponse;
 import com.infobip.client.channels.whatsapp.model.WhatsAppTemplatesResponse;
 import com.infobip.client.channels.whatsapp.model.template.WhatsAppTemplate;
@@ -137,7 +137,7 @@ public final class ManageWhatsAppApi {
      *
      * @param sender Registered WhatsApp sender number. Must be in international
      *     format. (required)
-     * @param whatsAppDeleteMediaRequest (required)
+     * @param whatsAppDeleteMedia (required)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
@@ -146,8 +146,8 @@ public final class ManageWhatsAppApi {
      *     Documentation</a>
      */
     public ApiResponse<String> deleteWhatsAppMedia(final String sender,
-            final WhatsAppDeleteMediaRequest whatsAppDeleteMediaRequest) throws ApiException {
-        Call call = deleteWhatsAppMediaValidateBeforeCall(sender, whatsAppDeleteMediaRequest);
+            final WhatsAppDeleteMedia whatsAppDeleteMedia) throws ApiException {
+        Call call = deleteWhatsAppMediaValidateBeforeCall(sender, whatsAppDeleteMedia);
         return apiClient.execute(call, String.class);
     }
 
@@ -159,7 +159,7 @@ public final class ManageWhatsAppApi {
      *
      * @param sender Registered WhatsApp sender number. Must be in international
      *     format. (required)
-     * @param whatsAppDeleteMediaRequest (required)
+     * @param whatsAppDeleteMedia (required)
      * @param apiCallback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the
@@ -169,9 +169,9 @@ public final class ManageWhatsAppApi {
      *     Documentation</a>
      */
     public Call deleteWhatsAppMediaAsync(final String sender,
-            final WhatsAppDeleteMediaRequest whatsAppDeleteMediaRequest,
+            final WhatsAppDeleteMedia whatsAppDeleteMedia,
             final ApiCallback<String> apiCallback) throws ApiException {
-        Call call = deleteWhatsAppMediaValidateBeforeCall(sender, whatsAppDeleteMediaRequest,
+        Call call = deleteWhatsAppMediaValidateBeforeCall(sender, whatsAppDeleteMedia,
                 apiCallback);
         apiClient.executeAsync(call, String.class, apiCallback);
         return call;
@@ -207,20 +207,20 @@ public final class ManageWhatsAppApi {
     }
 
     private Call deleteWhatsAppMediaValidateBeforeCall(final String sender,
-            final WhatsAppDeleteMediaRequest whatsAppDeleteMediaRequest) throws ApiException {
-        return deleteWhatsAppMediaValidateBeforeCall(sender, whatsAppDeleteMediaRequest, null);
+            final WhatsAppDeleteMedia whatsAppDeleteMedia) throws ApiException {
+        return deleteWhatsAppMediaValidateBeforeCall(sender, whatsAppDeleteMedia, null);
     }
 
     private Call deleteWhatsAppMediaValidateBeforeCall(final String sender,
-            final WhatsAppDeleteMediaRequest whatsAppDeleteMediaRequest,
+            final WhatsAppDeleteMedia whatsAppDeleteMedia,
             final ApiCallback apiCallback) throws ApiException {
         if (sender == null) {
             throw new ApiException("Missing the required parameter");
         }
-        if (whatsAppDeleteMediaRequest == null) {
+        if (whatsAppDeleteMedia == null) {
             throw new ApiException("Missing the required parameter");
         }
-        return deleteWhatsAppMediaCall(sender, whatsAppDeleteMediaRequest, apiCallback);
+        return deleteWhatsAppMediaCall(sender, whatsAppDeleteMedia, apiCallback);
     }
 
     private Call getWhatsAppTemplatesCall(final String sender, final ApiCallback apiCallback)
@@ -247,7 +247,7 @@ public final class ManageWhatsAppApi {
     }
 
     private Call deleteWhatsAppMediaCall(final String sender,
-            final WhatsAppDeleteMediaRequest whatsAppDeleteMediaRequest,
+            final WhatsAppDeleteMedia whatsAppDeleteMedia,
             final ApiCallback apiCallback) throws ApiException {
         // TODO: to string utils; remove toString()
         String deleteWhatsAppMediaEndpoint = DELETE_WHATSAPP_MEDIA_ENDPOINT
@@ -262,6 +262,6 @@ public final class ManageWhatsAppApi {
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(deleteWhatsAppMediaEndpoint, HttpMethodType.DELETE, httpHeaders,
-                whatsAppDeleteMediaRequest, apiCallback);
+                whatsAppDeleteMedia, apiCallback);
     }
 }

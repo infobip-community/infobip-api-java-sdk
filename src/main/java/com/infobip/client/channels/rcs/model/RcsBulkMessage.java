@@ -1,10 +1,12 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import jakarta.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class RcsBulkMessage {
+    @Valid
     private List<RcsMessage> messages = new ArrayList<>();
 
     /**

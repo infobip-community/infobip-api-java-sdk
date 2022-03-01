@@ -2,8 +2,14 @@
 package com.infobip.client.channels.whatsapp.model.message.sticker;
 
 import com.infobip.client.channels.whatsapp.model.message.MessageContent;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.URL;
 
 public final class Content extends MessageContent {
+    @NotBlank
+    @Size(max = 2048)
+    @URL
     private final String mediaUrl;
 
     /**
