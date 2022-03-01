@@ -1,15 +1,12 @@
 
-package com.infobip.client.channels.webrtc.model;
-
-import com.infobip.client.channels.webrtc.model.application.Android;
-import com.infobip.client.channels.webrtc.model.application.Ios;
+package com.infobip.client.channels.webrtc.model.application;
 
 /**
  * <p>
- * WebrtcApplicationResponse.
+ * WebRtcApplicationResponse.
  * </p>
  */
-public final class WebrtcApplicationResponse {
+public final class WebRtcApplicationResponse {
     private String id;
     private String name;
     private String description;
@@ -19,7 +16,7 @@ public final class WebrtcApplicationResponse {
     private Boolean appToConversations;
     private Boolean appToPhone;
 
-    public WebrtcApplicationResponse() {}
+    public WebRtcApplicationResponse() {}
 
     /**
      * Application identifier.
@@ -130,10 +127,10 @@ public final class WebrtcApplicationResponse {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WebrtcApplicationResponse)) {
+        if (!(obj instanceof WebRtcApplicationResponse)) {
             return false;
         }
-        WebrtcApplicationResponse other = (WebrtcApplicationResponse) obj;
+        WebRtcApplicationResponse other = (WebRtcApplicationResponse) obj;
         if (android == null) {
             if (other.android != null) {
                 return false;
@@ -195,7 +192,7 @@ public final class WebrtcApplicationResponse {
 
     @Override
     public String toString() {
-        return "WebrtcApplicationResponse [id=" + id + ", name=" + name + ", description="
+        return "WebRtcApplicationResponse [id=" + id + ", name=" + name + ", description="
                 + description + ", ios=" + ios + ", android=" + android + ", appToApp=" + appToApp
                 + ", appToConversations=" + appToConversations + ", appToPhone=" + appToPhone + "]";
     }

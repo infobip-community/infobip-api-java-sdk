@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.webrtc.api;
 
-import com.infobip.client.channels.webrtc.model.WebrtcTokenResponse;
 import com.infobip.client.channels.webrtc.model.token.WebRtcToken;
+import com.infobip.client.channels.webrtc.model.token.WebRtcTokenResponse;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
@@ -32,13 +32,13 @@ public final class WebRtcTokenApi {
      * </p>
      *
      * @param webRtcToken (optional)
-     * @return ApiResponse&lt;WebrtcTokenResponse&gt;
+     * @return ApiResponse&lt;WebRtcTokenResponse&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<WebrtcTokenResponse>
-            generateWebrtcToken(final WebRtcToken webRtcToken) throws ApiException {
-        Call call = generateWebrtcTokenValidateBeforeCall(webRtcToken);
-        return apiClient.execute(call, WebrtcTokenResponse.class);
+    public ApiResponse<WebRtcTokenResponse> generateWebRtcToken(final WebRtcToken webRtcToken)
+            throws ApiException {
+        Call call = generateWebRtcTokenValidateBeforeCall(webRtcToken);
+        return apiClient.execute(call, WebRtcTokenResponse.class);
     }
 
     /**
@@ -51,25 +51,25 @@ public final class WebRtcTokenApi {
      * @return The request call
      * @throws ApiException in case of error(s)
      */
-    public Call generateWebrtcTokenAsync(final WebRtcToken webRtcToken,
-            final ApiCallback<WebrtcTokenResponse> apiCallback) throws ApiException {
-        Call call = generateWebrtcTokenValidateBeforeCall(webRtcToken, apiCallback);
-        apiClient.executeAsync(call, WebrtcTokenResponse.class, apiCallback);
+    public Call generateWebRtcTokenAsync(final WebRtcToken webRtcToken,
+            final ApiCallback<WebRtcTokenResponse> apiCallback) throws ApiException {
+        Call call = generateWebRtcTokenValidateBeforeCall(webRtcToken, apiCallback);
+        apiClient.executeAsync(call, WebRtcTokenResponse.class, apiCallback);
         return call;
     }
 
-    private Call generateWebrtcTokenValidateBeforeCall(final WebRtcToken webRtcToken)
+    private Call generateWebRtcTokenValidateBeforeCall(final WebRtcToken webRtcToken)
             throws ApiException {
-        return generateWebrtcTokenValidateBeforeCall(webRtcToken, null);
+        return generateWebRtcTokenValidateBeforeCall(webRtcToken, null);
     }
 
     // TODO: Improve validation logic
-    private Call generateWebrtcTokenValidateBeforeCall(final WebRtcToken webRtcToken,
+    private Call generateWebRtcTokenValidateBeforeCall(final WebRtcToken webRtcToken,
             final ApiCallback apiCallback) throws ApiException {
-        return generateWebrtcTokenCall(webRtcToken, apiCallback);
+        return generateWebRtcTokenCall(webRtcToken, apiCallback);
     }
 
-    private Call generateWebrtcTokenCall(final WebRtcToken webRtcToken,
+    private Call generateWebRtcTokenCall(final WebRtcToken webRtcToken,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);

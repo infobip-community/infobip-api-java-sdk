@@ -6,19 +6,19 @@ import java.util.List;
 
 /**
  * <p>
- * RcsResponse.
+ * RcsMessageResponse.
  * </p>
  */
-public final class RcsResponse {
-    private List<RcsResponseMessage> messages = new ArrayList<>();
+public final class RcsMessageResponse {
+    private List<ResponseMessage> messages = new ArrayList<>();
 
-    public RcsResponse() {}
+    public RcsMessageResponse() {}
 
-    public List<RcsResponseMessage> getMessages() {
+    public List<ResponseMessage> getMessages() {
         return messages;
     }
 
-    public void setMessages(List<RcsResponseMessage> messages) {
+    public void setMessages(List<ResponseMessage> messages) {
         this.messages = messages;
     }
 
@@ -35,10 +35,10 @@ public final class RcsResponse {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof RcsResponse)) {
+        if (!(obj instanceof RcsMessageResponse)) {
             return false;
         }
-        RcsResponse other = (RcsResponse) obj;
+        RcsMessageResponse other = (RcsMessageResponse) obj;
         if (messages == null) {
             if (other.messages != null) {
                 return false;
@@ -51,6 +51,6 @@ public final class RcsResponse {
 
     @Override
     public String toString() {
-        return "RcsResponse [messages=" + messages + "]";
+        return "RcsMessageResponse [messages=" + messages + "]";
     }
 }

@@ -1,7 +1,7 @@
 
-package com.infobip.client.channels.whatsapp.model;
+package com.infobip.client.channels.whatsapp.model.message;
 
-public final class WhatsAppSingleMessageStatus {
+public final class Status {
     private int groupId;
     private String groupName;
     private int id;
@@ -9,7 +9,7 @@ public final class WhatsAppSingleMessageStatus {
     private String description;
     private String action;
 
-    public WhatsAppSingleMessageStatus() {}
+    public Status() {}
 
     public int getGroupId() {
         return groupId;
@@ -77,10 +77,10 @@ public final class WhatsAppSingleMessageStatus {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WhatsAppSingleMessageStatus)) {
+        if (!(obj instanceof Status)) {
             return false;
         }
-        WhatsAppSingleMessageStatus other = (WhatsAppSingleMessageStatus) obj;
+        Status other = (Status) obj;
         if (action == null) {
             if (other.action != null) {
                 return false;
@@ -120,7 +120,7 @@ public final class WhatsAppSingleMessageStatus {
 
     @Override
     public String toString() {
-        return "WhatsAppSingleMessageStatus [groupId=" + groupId + ", groupName=" + groupName
+        return "Status [groupId=" + groupId + ", groupName=" + groupName
                 + ", id=" + id + ", name=" + name + ", description=" + description + ", action="
                 + action + "]";
     }

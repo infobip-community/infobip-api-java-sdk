@@ -1,13 +1,13 @@
 
 package com.infobip.client.channels.rcs.model;
 
-public final class RcsResponseMessage {
+public final class ResponseMessage {
     private String to;
     private int messageCount;
-    private int messageId;
+    private String messageId;
     private Status status;
 
-    public RcsResponseMessage() {}
+    public ResponseMessage() {}
 
     public String getTo() {
         return to;
@@ -25,11 +25,11 @@ public final class RcsResponseMessage {
         this.messageCount = messageCount;
     }
 
-    public int getMessageId() {
+    public String getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(int messageId) {
+    public void setMessageId(String messageId) {
         this.messageId = messageId;
     }
 
@@ -46,7 +46,7 @@ public final class RcsResponseMessage {
         final int prime = 31;
         int result = 1;
         result = prime * result + messageCount;
-        result = prime * result + messageId;
+        result = prime * result + ((messageId == null) ? 0 : messageId.hashCode());
         result = prime * result + ((status == null) ? 0 : status.hashCode());
         result = prime * result + ((to == null) ? 0 : to.hashCode());
         return result;
@@ -57,14 +57,18 @@ public final class RcsResponseMessage {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof RcsResponseMessage)) {
+        if (!(obj instanceof ResponseMessage)) {
             return false;
         }
-        RcsResponseMessage other = (RcsResponseMessage) obj;
+        ResponseMessage other = (ResponseMessage) obj;
         if (messageCount != other.messageCount) {
             return false;
         }
-        if (messageId != other.messageId) {
+        if (messageId == null) {
+            if (other.messageId != null) {
+                return false;
+            }
+        } else if (!messageId.equals(other.messageId)) {
             return false;
         }
         if (status == null) {
@@ -86,7 +90,7 @@ public final class RcsResponseMessage {
 
     @Override
     public String toString() {
-        return "RcsResponseMessage [to=" + to + ", messageCount=" + messageCount + ", messageId="
+        return "ResponseMessage [to=" + to + ", messageCount=" + messageCount + ", messageId="
                 + messageId + ", status=" + status + "]";
     }
 }

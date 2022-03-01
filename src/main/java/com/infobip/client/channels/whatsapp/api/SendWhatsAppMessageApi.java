@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.api;
 
-import com.infobip.client.channels.whatsapp.model.WhatsAppBulkMessageInfo;
-import com.infobip.client.channels.whatsapp.model.WhatsAppSingleMessageInfo;
+import com.infobip.client.channels.whatsapp.model.message.WhatsAppBulkMessagesResponse;
+import com.infobip.client.channels.whatsapp.model.message.WhatsAppMessageResponse;
 import com.infobip.client.channels.whatsapp.model.message.audio.WhatsAppAudioMessage;
 import com.infobip.client.channels.whatsapp.model.message.contact.WhatsAppContactMessage;
 import com.infobip.client.channels.whatsapp.model.message.document.WhatsAppDocumentMessage;
@@ -59,18 +59,18 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppTemplateMessage (required)
-     * @return ApiResponse&lt;WhatsAppBulkMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppBulkMessagesResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp template
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppBulkMessageInfo> sendWhatsAppTemplateMessage(
+    public ApiResponse<WhatsAppBulkMessagesResponse> sendWhatsAppTemplateMessage(
             final WhatsAppTemplateMessage whatsAppTemplateMessage)
             throws ApiException {
         Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessage);
-        return apiClient.execute(call, WhatsAppBulkMessageInfo.class);
+        return apiClient.execute(call, WhatsAppBulkMessagesResponse.class);
     }
 
     /**
@@ -92,10 +92,10 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppTemplateMessageAsync(
             final WhatsAppTemplateMessage whatsAppTemplateMessage,
-            final ApiCallback<WhatsAppBulkMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppBulkMessagesResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessage,
                 apiCallback);
-        apiClient.executeAsync(call, WhatsAppBulkMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppBulkMessagesResponse.class, apiCallback);
         return call;
     }
 
@@ -108,17 +108,17 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppTextMessage (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp text
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppTextMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppTextMessage(
             final WhatsAppTextMessage whatsAppTextMessage) throws ApiException {
         Call call = sendWhatsAppTextMessageValidateBeforeCall(whatsAppTextMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -139,9 +139,9 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public Call sendWhatsAppTextMessageAsync(final WhatsAppTextMessage whatsAppTextMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppTextMessageValidateBeforeCall(whatsAppTextMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -154,17 +154,17 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppDocumentMessage (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp document
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppDocumentMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppDocumentMessage(
             final WhatsAppDocumentMessage whatsAppDocumentMessage) throws ApiException {
         Call call = sendWhatsAppDocumentMessageValidateBeforeCall(whatsAppDocumentMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -186,10 +186,10 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppDocumentMessageAsync(
             final WhatsAppDocumentMessage whatsAppDocumentMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call =
                 sendWhatsAppDocumentMessageValidateBeforeCall(whatsAppDocumentMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -202,17 +202,17 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppImageMessage (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp image
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppImageMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppImageMessage(
             final WhatsAppImageMessage whatsAppImageMessage) throws ApiException {
         Call call = sendWhatsAppImageMessageValidateBeforeCall(whatsAppImageMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -233,9 +233,9 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public Call sendWhatsAppImageMessageAsync(final WhatsAppImageMessage whatsAppImageMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppImageMessageValidateBeforeCall(whatsAppImageMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -248,17 +248,17 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppAudioMessage (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp audio
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppAudioMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppAudioMessage(
             final WhatsAppAudioMessage whatsAppAudioMessage) throws ApiException {
         Call call = sendWhatsAppAudioMessageValidateBeforeCall(whatsAppAudioMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -279,9 +279,9 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public Call sendWhatsAppAudioMessageAsync(final WhatsAppAudioMessage whatsAppAudioMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppAudioMessageValidateBeforeCall(whatsAppAudioMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -294,17 +294,17 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppVideoMessage (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp video
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppVideoMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppVideoMessage(
             final WhatsAppVideoMessage whatsAppVideoMessage) throws ApiException {
         Call call = sendWhatsAppVideoMessageValidateBeforeCall(whatsAppVideoMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -325,9 +325,9 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public Call sendWhatsAppVideoMessageAsync(final WhatsAppVideoMessage whatsAppVideoMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppVideoMessageValidateBeforeCall(whatsAppVideoMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -340,17 +340,17 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppStickerMessage (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp sticker
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppStickerMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppStickerMessage(
             final WhatsAppStickerMessage whatsAppStickerMessage) throws ApiException {
         Call call = sendWhatsAppStickerMessageValidateBeforeCall(whatsAppStickerMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -371,10 +371,10 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public Call sendWhatsAppStickerMessageAsync(final WhatsAppStickerMessage whatsAppStickerMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call =
                 sendWhatsAppStickerMessageValidateBeforeCall(whatsAppStickerMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -387,17 +387,17 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppLocationMessage (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp location
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppLocationMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppLocationMessage(
             final WhatsAppLocationMessage whatsAppLocationMessage) throws ApiException {
         Call call = sendWhatsAppLocationMessageValidateBeforeCall(whatsAppLocationMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -419,10 +419,10 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppLocationMessageAsync(
             final WhatsAppLocationMessage whatsAppLocationMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call =
                 sendWhatsAppLocationMessageValidateBeforeCall(whatsAppLocationMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -435,17 +435,17 @@ public final class SendWhatsAppMessageApi {
      * </p>
      *
      * @param whatsAppContactMessage (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp contact
      *     message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppContactMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppContactMessage(
             final WhatsAppContactMessage whatsAppContactMessage) throws ApiException {
         Call call = sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -467,10 +467,10 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppContactMessageAsync(
             final WhatsAppContactMessage whatsAppContactMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call =
                 sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -485,19 +485,19 @@ public final class SendWhatsAppMessageApi {
      *
      * @param whatsAppInteractiveButtonsMessage
      *     (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp
      *     interactive buttons message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppInteractiveButtonsMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppInteractiveButtonsMessage(
             final WhatsAppInteractiveButtonsMessage whatsAppInteractiveButtonsMessage)
             throws ApiException {
         Call call = sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
                 whatsAppInteractiveButtonsMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -521,10 +521,10 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppInteractiveButtonsMessageAsync(
             final WhatsAppInteractiveButtonsMessage whatsAppInteractiveButtonsMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
                 whatsAppInteractiveButtonsMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -539,19 +539,19 @@ public final class SendWhatsAppMessageApi {
      *
      * @param whatsAppInteractiveListMessage
      *     (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp
      *     interactive list message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppInteractiveListMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppInteractiveListMessage(
             final WhatsAppInteractiveListMessage whatsAppInteractiveListMessage)
             throws ApiException {
         Call call = sendWhatsAppInteractiveListMessageValidateBeforeCall(
                 whatsAppInteractiveListMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -575,10 +575,10 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppInteractiveListMessageAsync(
             final WhatsAppInteractiveListMessage whatsAppInteractiveListMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppInteractiveListMessageValidateBeforeCall(
                 whatsAppInteractiveListMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -593,19 +593,19 @@ public final class SendWhatsAppMessageApi {
      *
      * @param whatsAppInteractiveProductMessage
      *     (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp
      *     interactive product message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppInteractiveProductMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppInteractiveProductMessage(
             final WhatsAppInteractiveProductMessage whatsAppInteractiveProductMessage)
             throws ApiException {
         Call call = sendWhatsAppInteractiveProductMessageValidateBeforeCall(
                 whatsAppInteractiveProductMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -629,10 +629,10 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppInteractiveProductMessageAsync(
             final WhatsAppInteractiveProductMessage whatsAppInteractiveProductMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppInteractiveProductMessageValidateBeforeCall(
                 whatsAppInteractiveProductMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -647,19 +647,19 @@ public final class SendWhatsAppMessageApi {
      *
      * @param whatsAppInteractiveMultiProductMessage
      *     (required)
-     * @return ApiResponse&lt;WhatsAppSingleMessageInfo&gt;
+     * @return ApiResponse&lt;WhatsAppMessageResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot
      *     deserialize the response body
      *
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp
      *     interactive multi-product message Documentation</a>
      */
-    public ApiResponse<WhatsAppSingleMessageInfo> sendWhatsAppInteractiveMultiProductMessage(
+    public ApiResponse<WhatsAppMessageResponse> sendWhatsAppInteractiveMultiProductMessage(
             final WhatsAppInteractiveMultiProductMessage whatsAppInteractiveMultiProductMessage)
             throws ApiException {
         Call call = sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
                 whatsAppInteractiveMultiProductMessage);
-        return apiClient.execute(call, WhatsAppSingleMessageInfo.class);
+        return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
     /**
@@ -683,10 +683,10 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppInteractiveMultiProductMessageAsync(
             final WhatsAppInteractiveMultiProductMessage whatsAppInteractiveMultiProductMessage,
-            final ApiCallback<WhatsAppSingleMessageInfo> apiCallback) throws ApiException {
+            final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
         Call call = sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
                 whatsAppInteractiveMultiProductMessage, apiCallback);
-        apiClient.executeAsync(call, WhatsAppSingleMessageInfo.class, apiCallback);
+        apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 

@@ -1,25 +1,25 @@
 
-package com.infobip.client.channels.whatsapp.model;
+package com.infobip.client.channels.whatsapp.model.message;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * <p>
- * WhatsAppBulkMessageInfo.
+ * WhatsAppBulkMessagesResponse.
  * </p>
  */
-public final class WhatsAppBulkMessageInfo {
-    private List<WhatsAppSingleMessageInfo> messages = new ArrayList<>();
+public final class WhatsAppBulkMessagesResponse {
+    private List<WhatsAppMessageResponse> messages = new ArrayList<>();
     private String bulkId;
 
-    public WhatsAppBulkMessageInfo() {}
+    public WhatsAppBulkMessagesResponse() {}
 
-    public List<WhatsAppSingleMessageInfo> getMessages() {
+    public List<WhatsAppMessageResponse> getMessages() {
         return messages;
     }
 
-    public void setMessages(List<WhatsAppSingleMessageInfo> messages) {
+    public void setMessages(List<WhatsAppMessageResponse> messages) {
         this.messages = messages;
     }
 
@@ -45,10 +45,10 @@ public final class WhatsAppBulkMessageInfo {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof WhatsAppBulkMessageInfo)) {
+        if (!(obj instanceof WhatsAppBulkMessagesResponse)) {
             return false;
         }
-        WhatsAppBulkMessageInfo other = (WhatsAppBulkMessageInfo) obj;
+        WhatsAppBulkMessagesResponse other = (WhatsAppBulkMessagesResponse) obj;
         if (bulkId == null) {
             if (other.bulkId != null) {
                 return false;
@@ -68,6 +68,6 @@ public final class WhatsAppBulkMessageInfo {
 
     @Override
     public String toString() {
-        return "WhatsAppBulkMessageInfo [messages=" + messages + ", bulkId=" + bulkId + "]";
+        return "WhatsAppBulkMessagesResponse [messages=" + messages + ", bulkId=" + bulkId + "]";
     }
 }

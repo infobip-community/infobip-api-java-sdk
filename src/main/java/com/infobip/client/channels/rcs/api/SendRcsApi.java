@@ -3,7 +3,7 @@ package com.infobip.client.channels.rcs.api;
 
 import com.infobip.client.channels.rcs.model.RcsBulkMessage;
 import com.infobip.client.channels.rcs.model.RcsMessage;
-import com.infobip.client.channels.rcs.model.RcsResponse;
+import com.infobip.client.channels.rcs.model.RcsMessageResponse;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
@@ -21,8 +21,7 @@ import okhttp3.Call;
  */
 public final class SendRcsApi {
     private static final String SEND_RCS_MESSAGE_ENDPOINT = "/ott/rcs/1/message";
-    private static final String SEND_BULK_RCS_MESSAGE_ENDPOINT =
-            SEND_RCS_MESSAGE_ENDPOINT + "/bulk";
+    private static final String SEND_BULK_RCS_MESSAGE_ENDPOINT = "/ott/rcs/1/message/bulk";
     private ApiClient apiClient;
 
     public SendRcsApi(ApiClient apiClient) {
@@ -35,13 +34,13 @@ public final class SendRcsApi {
      * <p>
      *
      * @param rcsMessage (required)
-     * @return ApiResponse&lt;RcsResponse&gt;
+     * @return ApiResponse&lt;RcsMessageResponse&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<RcsResponse> sendRcsMessage(final RcsMessage rcsMessage)
+    public ApiResponse<RcsMessageResponse> sendRcsMessage(final RcsMessage rcsMessage)
             throws ApiException {
         Call call = sendRcsMessageValidateBeforeCall(rcsMessage);
-        return apiClient.execute(call, RcsResponse.class);
+        return apiClient.execute(call, RcsMessageResponse.class);
     }
 
     /**
@@ -55,9 +54,9 @@ public final class SendRcsApi {
      * @throws ApiException in case of error(s)
      */
     public Call sendRcsMessageAsync(final RcsMessage rcsMessage,
-            final ApiCallback<RcsResponse> apiCallback) throws ApiException {
+            final ApiCallback<RcsMessageResponse> apiCallback) throws ApiException {
         Call call = sendRcsMessageValidateBeforeCall(rcsMessage, apiCallback);
-        apiClient.executeAsync(call, RcsResponse.class, apiCallback);
+        apiClient.executeAsync(call, RcsMessageResponse.class, apiCallback);
         return call;
     }
 
@@ -67,13 +66,13 @@ public final class SendRcsApi {
      * </p>
      *
      * @param rcsBulkMessage (required)
-     * @return ApiResponse&lt;RcsResponse&gt;
+     * @return ApiResponse&lt;RcsMessageResponse&gt;
      * @throws ApiException in case of error(s)
      */
-    public ApiResponse<RcsResponse> sendRcsBulkMessage(final RcsBulkMessage rcsBulkMessage)
+    public ApiResponse<RcsMessageResponse> sendRcsBulkMessage(final RcsBulkMessage rcsBulkMessage)
             throws ApiException {
         Call call = sendRcsBulkMessageValidateBeforeCall(rcsBulkMessage);
-        return apiClient.execute(call, RcsResponse.class);
+        return apiClient.execute(call, RcsMessageResponse.class);
     }
 
     /**
@@ -87,9 +86,9 @@ public final class SendRcsApi {
      * @throws ApiException in case of error(s)
      */
     public Call sendRcsBulkMessageAsync(final RcsBulkMessage rcsBulkMessage,
-            final ApiCallback<RcsResponse> apiCallback) throws ApiException {
+            final ApiCallback<RcsMessageResponse> apiCallback) throws ApiException {
         Call call = sendRcsBulkMessageValidateBeforeCall(rcsBulkMessage, apiCallback);
-        apiClient.executeAsync(call, RcsResponse.class, apiCallback);
+        apiClient.executeAsync(call, RcsMessageResponse.class, apiCallback);
         return call;
     }
 

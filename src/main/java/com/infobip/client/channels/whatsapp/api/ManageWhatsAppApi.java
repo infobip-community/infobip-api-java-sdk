@@ -2,9 +2,9 @@
 package com.infobip.client.channels.whatsapp.api;
 
 import com.infobip.client.channels.whatsapp.model.WhatsAppDeleteMedia;
-import com.infobip.client.channels.whatsapp.model.WhatsAppTemplateResponse;
-import com.infobip.client.channels.whatsapp.model.WhatsAppTemplatesResponse;
 import com.infobip.client.channels.whatsapp.model.template.WhatsAppTemplate;
+import com.infobip.client.channels.whatsapp.model.template.WhatsAppTemplateResponse;
+import com.infobip.client.channels.whatsapp.model.template.WhatsAppTemplatesResponse;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
