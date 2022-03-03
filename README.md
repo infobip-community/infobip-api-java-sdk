@@ -1,88 +1,132 @@
-# Infobip API Java Client
+# Infobip API Java SDK
 
-This is a Java Client for Infobip API and you can use it as a dependency when you want to consume [Infobip APIs](https://www.infobip.com/docs/api) in your application.
-To use this, you'll need an Infobip account. You can create a freetrial account [here](https://www.infobip.com/signup).
+[![Maven Central](https://badgen.net/maven/v/maven-central/io.github.infobip-community/infobip-api-java-sdk)](https://search.maven.org/artifact/io.github.infobip-community/infobip-api-java-sdk)
+[![License](https://badgen.net/github/license/infobip-community/infobip-api-java-sdk)](LICENSE)
 
-<img src="https://udesigncss.com/wp-content/uploads/2020/01/Infobip-logo-transparent.png" height="48px" alt="Infobip" />
+This is a Java SDK for Infobip API and you can use it as a dependency to add [Infobip APIs](https://www.infobip.com/docs/api) features to your application.
+To use this, you'll need an Infobip account. If you do not own one, you can create a [free account here](https://www.infobip.com/signup).
 
 #### Table of contents:
-* [Documentation](#documentation)
+
 * [General Info](#general-info)
+* [License](#license)
 * [Installation](#installation)
-* [Quickstart](#quickstart)
-* [Ask for help](#ask-for-help)
-
-## Documentation
-
-Detailed documentation about Infobip API can be found [here](https://www.infobip.com/docs/api).
+* [Quickstart Guide](#quickstart-guide)
+* [Documentation](#documentation)
+* [Development](#development)
 
 ## General Info
-For `infobip-api-java-client` versioning we use [Semantic Versioning][semver] scheme.
 
-Published under [MIT License][license].
+For `infobip-api-java-sdk` versioning we use [Semantic Versioning](https://semver.org) scheme.
 
-Compiled with Java 8.
+## License
+
+Published under [MIT License](LICENSE).
 
 ## Installation
 
 #### Maven Central
 
-Simply add the following in your project's POM file under `dependencies` tag:
+`infobip-api-java-sdk` is published to Maven Central Repository.
+
+To use it, we need to add the following dependency:
 
 ```xml
 <dependency>
-      <groupId>com.infobip</groupId>
-      <artifactId>infobip-api-java-client</artifactId>
-      <version>3.2.0</version>
+  <groupId>io.github.infobip-community</groupId>
+  <artifactId>infobip-api-java-sdk</artifactId>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-#### Compile manually
+#### Manual approach
 
 If you decide to take a manual approach, you need the following installed and available in your `$PATH`:
-- Java 8
-- [Apache Maven v3.3.4 or greater](https://maven.apache.org/download.cgi)
+- Java 8 or greater
+- Apache Maven v3 or greater
 
-To compile it proceed with following:
+After cloning of `infobip-api-java-sdk` repository you can use:
 
-    $ git clone git@github.com:infobip/infobip-api-java-client
-    $ cd infobip-api-java-client
-    $ mvn install       # Requires maven, download from https://maven.apache.org/download.html
-
-#### Build JAR manually
-If you want to build your own .jar, execute the following from within the cloned directory:
-
-    $ git clone git@github.com:infobip/infobip-api-java-client
-    $ cd infobip-api-java-client
-    $ mvn package       # Requires maven, download from https://maven.apache.org/download.html
-    
-## Quickstart
-
-#### Initialize the Client
-
-```java
-        ApiClient apiClient = new ApiClient();
-        apiClient.setApiKey(API_KEY);
-        apiClient.setBasePath(BASE_PATH);
+```
+mvn install
 ```
 
-#### Send a text message to a single recipient.
+to install SDK into your Local Maven Repository (`~/.m2` folder), or
+
+```
+mvn package
+```
+
+to build your own .jar file, documentation and sources (under `infobip-api-java-sdk/target` folder).
+
+## Quickstart Guide
+
+(1) Complete the [installation](#installation) process and make sure that you have `infobip-api-java-sdk` as dependency in your project.
+
+(2) Initialize the API Client with `API_KEY` and `BASE_PATH` which you'll get after [creating the free account](https://www.infobip.com/signup):
 
 ```java
-        SendWhatsAppMessageApi sendWhatsAppMessageApi = new SendWhatsAppMessageApi(apiClient);
-        WhatsAppTextMessage whatsAppTextMessage =
-                new WhatsAppTextMessage("441134960000", "441134960001",
-                        new Content("Some text with url: http://example.com").previewUrl(true))
-                                .messageId("a28dd97c-1ffb-4fcf-99f1-0b557ed381da")
-                                .callbackData("Callback data")
-                                .notifyUrl("https://www.example.com/whatsapp");
-        try {
-            ApiResponse<WhatsAppMessageResponse> response =
-                    sendWhatsAppMessageApi.sendWhatsAppTextMessage(whatsAppTextMessage);
-        } catch (ApiException e) {
-            /* handle exception */
-        }
+ApiClient apiClient = new ApiClient();
+apiClient.setApiKey(API_KEY);
+apiClient.setBasePath(BASE_PATH);
 ```
+
+Note about **API Authentication**:
+
+Currently, `infobip-api-java-sdk` only supports API Key authentication, and the key needs to be passed during client creation.
+This will most likely change with future versions, once more authentication methods are included.
+
+(3) To be able to send, for example, [WhatsApp Text message](https://www.infobip.com/docs/api#channels/whatsapp/send-whatsapp-text-message) initialize the `SendWhatsAppMessageApi` with `ApiClient`:
+
+```java
+SendWhatsAppMessageApi sendWhatsAppMessageApi = new SendWhatsAppMessageApi(apiClient);
+```
+
+prepare the `WhatsAppTextMessage` (request):
+
+```java
+WhatsAppTextMessage whatsAppTextMessage =
+        new WhatsAppTextMessage("441134960000", "441134960001",
+                new Content("Some text with url: http://example.com")
+                .previewUrl(true))
+        .messageId("a28dd97c-1ffb-4fcf-99f1-0b557ed381da")
+        .callbackData("Callback data")
+        .notifyUrl("https://www.example.com/whatsapp");
+```
+
+and send it:
+
+```java
+ApiResponse<WhatsAppMessageResponse> response = 
+        sendWhatsAppMessageApi.sendWhatsAppTextMessage(whatsAppTextMessage);
+```
+
+Complete code may look like this:
+
+```java
+ApiClient apiClient = new ApiClient();
+apiClient.setApiKey(API_KEY);
+apiClient.setBasePath(BASE_PATH);
+
+SendWhatsAppMessageApi sendWhatsAppMessageApi = new SendWhatsAppMessageApi(apiClient);
+
+WhatsAppTextMessage whatsAppTextMessage =
+        new WhatsAppTextMessage("441134960000", "441134960001",
+                new Content("Some text with url: http://example.com")
+                .previewUrl(true))
+        .messageId("a28dd97c-1ffb-4fcf-99f1-0b557ed381da")
+        .callbackData("Callback data")
+        .notifyUrl("https://www.example.com/whatsapp");
+
+try {
+    ApiResponse<WhatsAppMessageResponse> response =
+            sendWhatsAppMessageApi.sendWhatsAppTextMessage(whatsAppTextMessage);
+} catch (ApiException e) {
+    /* handle exceptions */
+}
+```
+
+Please note how above (WhatsAppTextMessage) **request** is created; [Fluent Interface](https://en.wikipedia.org/wiki/Fluent_interface) design pattern is the only way to create request(s) within `infobip-api-java-sdk`. Request creation is designed in such way that all **required parameters are provided to constructor** while **optional parameters can be added with method chaining**.
 
 #### For more examples please refer to the following links:
 
@@ -90,15 +134,10 @@ If you want to build your own .jar, execute the following from within the cloned
 - [RCS Channel](src/main/java/com/infobip/client/channels/rcs/)
 - [WebRTC](src/main/java/com/infobip/client/channels/webrtc/)
 
-## Ask for help
+## Documentation
 
-Feel free to open issues on the repository for any issue or feature request. As per pull requests, for details check the `CONTRIBUTING` [file][contributing] related to it.
+Infobip API Documentation can be found [here](https://www.infobip.com/docs/api).
 
-If it is, however, something that requires our imminent attention feel free to contact us @ [devrel@infobip.com](mailto:devrel@infobip.com).
+## Development
 
-- [Apidocs](https://www.infobip.com/docs/api)
-- [Freetrial](https://www.infobip.com/docs/freetrial)
-- [Signup](https://www.infobip.com/signup)
-- [Semver](https://semver.org)
-- [License][LICENSE]
-- [Contributing][CONTRIBUTING]
+Feel free to participate in this open source project. For details check our [contribution guidelines](CONTRIBUTING.md).
