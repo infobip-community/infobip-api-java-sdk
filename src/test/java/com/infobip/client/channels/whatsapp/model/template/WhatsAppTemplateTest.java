@@ -1,9 +1,9 @@
 
 package com.infobip.client.channels.whatsapp.model.template;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
 import com.infobip.client.channels.whatsapp.model.common.Language;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
@@ -31,16 +31,14 @@ public class WhatsAppTemplateTest {
     @Test
     void validateWhatsAppTemplate_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppTemplate>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppTemplateWithRequiredParameters());
+                getValidator().validate(getWhatsAppTemplateWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWhatsAppTemplate_withAllParameters() {
         Set<ConstraintViolation<WhatsAppTemplate>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppTemplateWithAllParameters());
+                getValidator().validate(getWhatsAppTemplateWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

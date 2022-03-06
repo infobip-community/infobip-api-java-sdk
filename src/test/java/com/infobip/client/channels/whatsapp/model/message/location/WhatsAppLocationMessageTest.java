@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model.message.location;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -30,16 +30,14 @@ public class WhatsAppLocationMessageTest {
     @Test
     void validateWhatsAppLocationMessage_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppLocationMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppLocationMessageWithRequiredParameters());
+                getValidator().validate(getWhatsAppLocationMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWhatsAppLocationMessage_withAllParameters() {
         Set<ConstraintViolation<WhatsAppLocationMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppLocationMessageWithAllParameters());
+                getValidator().validate(getWhatsAppLocationMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

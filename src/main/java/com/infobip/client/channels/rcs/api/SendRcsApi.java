@@ -1,6 +1,7 @@
 
 package com.infobip.client.channels.rcs.api;
 
+import static com.infobip.client.common.RequestValidator.validateBody;
 import com.infobip.client.channels.rcs.model.RcsBulkMessage;
 import com.infobip.client.channels.rcs.model.RcsMessage;
 import com.infobip.client.channels.rcs.model.RcsMessageResponse;
@@ -39,7 +40,8 @@ public final class SendRcsApi {
      */
     public ApiResponse<RcsMessageResponse> sendRcsMessage(final RcsMessage rcsMessage)
             throws ApiException {
-        Call call = sendRcsMessageValidateBeforeCall(rcsMessage);
+        validateBody(rcsMessage);
+        Call call = sendRcsMessageCall(rcsMessage);
         return apiClient.execute(call, RcsMessageResponse.class);
     }
 
@@ -55,7 +57,8 @@ public final class SendRcsApi {
      */
     public Call sendRcsMessageAsync(final RcsMessage rcsMessage,
             final ApiCallback<RcsMessageResponse> apiCallback) throws ApiException {
-        Call call = sendRcsMessageValidateBeforeCall(rcsMessage, apiCallback);
+        validateBody(rcsMessage);
+        Call call = sendRcsMessageCall(rcsMessage, apiCallback);
         apiClient.executeAsync(call, RcsMessageResponse.class, apiCallback);
         return call;
     }
@@ -71,7 +74,8 @@ public final class SendRcsApi {
      */
     public ApiResponse<RcsMessageResponse> sendRcsBulkMessage(final RcsBulkMessage rcsBulkMessage)
             throws ApiException {
-        Call call = sendRcsBulkMessageValidateBeforeCall(rcsBulkMessage);
+        validateBody(rcsBulkMessage);
+        Call call = sendRcsBulkMessageCall(rcsBulkMessage);
         return apiClient.execute(call, RcsMessageResponse.class);
     }
 
@@ -87,36 +91,14 @@ public final class SendRcsApi {
      */
     public Call sendRcsBulkMessageAsync(final RcsBulkMessage rcsBulkMessage,
             final ApiCallback<RcsMessageResponse> apiCallback) throws ApiException {
-        Call call = sendRcsBulkMessageValidateBeforeCall(rcsBulkMessage, apiCallback);
+        validateBody(rcsBulkMessage);
+        Call call = sendRcsBulkMessageCall(rcsBulkMessage, apiCallback);
         apiClient.executeAsync(call, RcsMessageResponse.class, apiCallback);
         return call;
     }
 
-    private Call sendRcsMessageValidateBeforeCall(final RcsMessage rcsMessage) throws ApiException {
-        return sendRcsMessageValidateBeforeCall(rcsMessage, null);
-    }
-
-    // TODO: Improve validation logic; remove string literal(s)
-    private Call sendRcsMessageValidateBeforeCall(final RcsMessage rcsMessage,
-            final ApiCallback apiCallback) throws ApiException {
-        if (rcsMessage == null) {
-            throw new ApiException("Missing the request");
-        }
-        return sendRcsMessageCall(rcsMessage, apiCallback);
-    }
-
-    private Call sendRcsBulkMessageValidateBeforeCall(final RcsBulkMessage rcsBulkMessage)
-            throws ApiException {
-        return sendRcsBulkMessageValidateBeforeCall(rcsBulkMessage, null);
-    }
-
-    // TODO: Improve validation logic; remove string literal(s)
-    private Call sendRcsBulkMessageValidateBeforeCall(final RcsBulkMessage rcsBulkMessage,
-            final ApiCallback apiCallback) throws ApiException {
-        if (rcsBulkMessage == null) {
-            throw new ApiException("Missing the request'");
-        }
-        return sendRcsBulkMessageCall(rcsBulkMessage, apiCallback);
+    private Call sendRcsMessageCall(RcsMessage rcsMessage) throws ApiException {
+        return sendRcsMessageCall(rcsMessage, null);
     }
 
     private Call sendRcsMessageCall(final RcsMessage rcsMessage, final ApiCallback apiCallback)
@@ -126,6 +108,10 @@ public final class SendRcsApi {
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(SEND_RCS_MESSAGE_ENDPOINT, HttpMethodType.POST, httpHeaders,
                 rcsMessage, apiCallback);
+    }
+
+    private Call sendRcsBulkMessageCall(RcsBulkMessage rcsBulkMessage) throws ApiException {
+        return sendRcsBulkMessageCall(rcsBulkMessage, null);
     }
 
     private Call sendRcsBulkMessageCall(final RcsBulkMessage rcsBulkMessage,

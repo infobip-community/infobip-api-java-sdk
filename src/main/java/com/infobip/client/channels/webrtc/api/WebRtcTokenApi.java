@@ -1,6 +1,7 @@
 
 package com.infobip.client.channels.webrtc.api;
 
+import static com.infobip.client.common.RequestValidator.validateBody;
 import com.infobip.client.channels.webrtc.model.token.WebRtcToken;
 import com.infobip.client.channels.webrtc.model.token.WebRtcTokenResponse;
 import com.infobip.client.common.ApiCallback;
@@ -37,7 +38,8 @@ public final class WebRtcTokenApi {
      */
     public ApiResponse<WebRtcTokenResponse> generateWebRtcToken(final WebRtcToken webRtcToken)
             throws ApiException {
-        Call call = generateWebRtcTokenValidateBeforeCall(webRtcToken);
+        validateBody(webRtcToken);
+        Call call = generateWebRtcTokenCall(webRtcToken);
         return apiClient.execute(call, WebRtcTokenResponse.class);
     }
 
@@ -53,20 +55,14 @@ public final class WebRtcTokenApi {
      */
     public Call generateWebRtcTokenAsync(final WebRtcToken webRtcToken,
             final ApiCallback<WebRtcTokenResponse> apiCallback) throws ApiException {
-        Call call = generateWebRtcTokenValidateBeforeCall(webRtcToken, apiCallback);
+        validateBody(webRtcToken);
+        Call call = generateWebRtcTokenCall(webRtcToken, apiCallback);
         apiClient.executeAsync(call, WebRtcTokenResponse.class, apiCallback);
         return call;
     }
 
-    private Call generateWebRtcTokenValidateBeforeCall(final WebRtcToken webRtcToken)
-            throws ApiException {
-        return generateWebRtcTokenValidateBeforeCall(webRtcToken, null);
-    }
-
-    // TODO: Improve validation logic
-    private Call generateWebRtcTokenValidateBeforeCall(final WebRtcToken webRtcToken,
-            final ApiCallback apiCallback) throws ApiException {
-        return generateWebRtcTokenCall(webRtcToken, apiCallback);
+    private Call generateWebRtcTokenCall(WebRtcToken webRtcToken) throws ApiException {
+        return generateWebRtcTokenCall(webRtcToken, null);
     }
 
     private Call generateWebRtcTokenCall(final WebRtcToken webRtcToken,

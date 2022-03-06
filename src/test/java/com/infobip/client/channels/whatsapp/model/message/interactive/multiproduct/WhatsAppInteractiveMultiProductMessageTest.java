@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.multiproduct;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
@@ -34,16 +34,15 @@ public class WhatsAppInteractiveMultiProductMessageTest {
     @Test
     void validateWhatsAppInteractiveMultiProductMessage_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppInteractiveMultiProductMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(
-                                getWhatsAppInteractiveMultiProductMessageWithRequiredParameters());
+                getValidator().validate(
+                        getWhatsAppInteractiveMultiProductMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWhatsAppInteractiveMultiProductMessage_withAllParameters() {
         Set<ConstraintViolation<WhatsAppInteractiveMultiProductMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
+                getValidator()
                         .validate(getWhatsAppInteractiveMultiProductMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }

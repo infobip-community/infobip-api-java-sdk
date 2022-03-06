@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.webrtc.model.application;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -29,16 +29,14 @@ public class WebRtcApplicationTest {
     @Test
     void validateWebRtcApplication_withRequiredParameters() {
         Set<ConstraintViolation<WebRtcApplication>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWebRtcApplicationWithRequiredParameters());
+                getValidator().validate(getWebRtcApplicationWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWebRtcApplication_withAllParameters() {
         Set<ConstraintViolation<WebRtcApplication>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWebRtcApplicationWithAllParameters());
+                getValidator().validate(getWebRtcApplicationWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

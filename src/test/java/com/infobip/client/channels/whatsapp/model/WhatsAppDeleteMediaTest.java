@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -21,8 +21,7 @@ public class WhatsAppDeleteMediaTest {
     @Test
     void validateWhatsAppDeleteMedia_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppDeleteMedia>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppDeleteMediaWithRequiredParameters());
+                getValidator().validate(getWhatsAppDeleteMediaWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 

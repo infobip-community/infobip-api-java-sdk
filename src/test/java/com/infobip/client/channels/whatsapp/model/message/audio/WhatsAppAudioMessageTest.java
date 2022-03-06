@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model.message.audio;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -29,16 +29,14 @@ public class WhatsAppAudioMessageTest {
     @Test
     void validateWhatsAppAudioMessage_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppAudioMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppAudioMessageWithRequiredParameters());
+                getValidator().validate(getWhatsAppAudioMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWhatsAppAudioMessage_withAllParameters() {
         Set<ConstraintViolation<WhatsAppAudioMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppAudioMessageWithAllParameters());
+                getValidator().validate(getWhatsAppAudioMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

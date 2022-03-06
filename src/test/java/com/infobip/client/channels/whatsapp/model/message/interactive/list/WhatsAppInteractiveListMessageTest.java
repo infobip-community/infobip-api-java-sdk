@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.list;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
@@ -32,16 +32,14 @@ public class WhatsAppInteractiveListMessageTest {
     @Test
     void validateWhatsAppInteractiveListMessage_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppInteractiveListMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppInteractiveListMessageWithRequiredParameters());
+                getValidator().validate(getWhatsAppInteractiveListMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWhatsAppInteractiveListMessage_withAllParameters() {
         Set<ConstraintViolation<WhatsAppInteractiveListMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppInteractiveListMessageWithAllParameters());
+                getValidator().validate(getWhatsAppInteractiveListMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 
