@@ -1,6 +1,7 @@
 
 package com.infobip.client.channels.whatsapp.api;
 
+import static com.infobip.client.common.RequestValidator.validatePathParameters;
 import com.infobip.client.common.ApiCallback;
 import com.infobip.client.common.ApiClient;
 import com.infobip.client.common.ApiException;
@@ -8,6 +9,7 @@ import com.infobip.client.common.ApiResponse;
 import com.infobip.client.common.HttpHeader;
 import com.infobip.client.common.HttpMethodType;
 import java.io.File;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.Call;
@@ -43,7 +45,8 @@ public final class ReceiveWhatsAppMessageApi {
      */
     public ApiResponse<File> downloadWhatsAppInboundMedia(final String sender, final String mediaId)
             throws ApiException {
-        Call call = downloadWhatsAppInboundMediaValidateBeforeCall(sender, mediaId);
+        validatePathParameters(Arrays.asList(sender, mediaId));
+        Call call = downloadWhatsAppInboundMediaCall(sender, mediaId);
         return apiClient.execute(call, File.class);
     }
 
@@ -66,7 +69,8 @@ public final class ReceiveWhatsAppMessageApi {
      */
     public Call downloadWhatsAppInboundMediaAsync(final String sender, final String mediaId,
             final ApiCallback<File> apiCallback) throws ApiException {
-        Call call = downloadWhatsAppInboundMediaValidateBeforeCall(sender, mediaId, apiCallback);
+        validatePathParameters(Arrays.asList(sender, mediaId));
+        Call call = downloadWhatsAppInboundMediaCall(sender, mediaId, apiCallback);
         apiClient.executeAsync(call, File.class, apiCallback);
         return call;
     }
@@ -89,7 +93,8 @@ public final class ReceiveWhatsAppMessageApi {
      */
     public ApiResponse<String> getWhatsAppMediaMetadata(final String sender, final String mediaId)
             throws ApiException {
-        Call call = getWhatsAppMediaMetadataValidateBeforeCall(sender, mediaId);
+        validatePathParameters(Arrays.asList(sender, mediaId));
+        Call call = getWhatsAppMediaMetadataCall(sender, mediaId);
         return apiClient.execute(call, String.class);
     }
 
@@ -112,7 +117,8 @@ public final class ReceiveWhatsAppMessageApi {
      */
     public Call getWhatsAppMediaMetadataAsync(final String sender, final String mediaId,
             final ApiCallback<String> apiCallback) throws ApiException {
-        Call call = getWhatsAppMediaMetadataValidateBeforeCall(sender, mediaId, apiCallback);
+        validatePathParameters(Arrays.asList(sender, mediaId));
+        Call call = getWhatsAppMediaMetadataCall(sender, mediaId, apiCallback);
         apiClient.executeAsync(call, String.class, apiCallback);
         return call;
     }
@@ -135,7 +141,8 @@ public final class ReceiveWhatsAppMessageApi {
      */
     public ApiResponse<Void> markWhatsAppMessageAsRead(final String sender, final String messageId)
             throws ApiException {
-        Call call = markWhatsAppMessageAsReadValidateBeforeCall(sender, messageId);
+        validatePathParameters(Arrays.asList(sender, messageId));
+        Call call = markWhatsAppMessageAsReadCall(sender, messageId);
         return apiClient.execute(call);
     }
 
@@ -158,57 +165,15 @@ public final class ReceiveWhatsAppMessageApi {
      */
     public Call markWhatsAppMessageAsReadAsync(final String sender, final String messageId,
             final ApiCallback<Void> apiCallback) throws ApiException {
-        Call call = markWhatsAppMessageAsReadValidateBeforeCall(sender, messageId, apiCallback);
+        validatePathParameters(Arrays.asList(sender, messageId));
+        Call call = markWhatsAppMessageAsReadCall(sender, messageId, apiCallback);
         apiClient.executeAsync(call, apiCallback);
         return call;
     }
 
-    private Call downloadWhatsAppInboundMediaValidateBeforeCall(final String sender,
-            final String mediaId) throws ApiException {
-        return downloadWhatsAppInboundMediaValidateBeforeCall(sender, mediaId, null);
-    }
-
-    private Call downloadWhatsAppInboundMediaValidateBeforeCall(final String sender,
-            final String mediaId, final ApiCallback apiCallback) throws ApiException {
-        if (sender == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        if (mediaId == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return downloadWhatsAppInboundMediaCall(sender, mediaId, apiCallback);
-    }
-
-    private Call getWhatsAppMediaMetadataValidateBeforeCall(final String sender,
-            final String mediaId) throws ApiException {
-        return getWhatsAppMediaMetadataValidateBeforeCall(sender, mediaId, null);
-    }
-
-    private Call getWhatsAppMediaMetadataValidateBeforeCall(final String sender,
-            final String mediaId, final ApiCallback apiCallback) throws ApiException {
-        if (sender == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        if (mediaId == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return getWhatsAppMediaMetadataCall(sender, mediaId, apiCallback);
-    }
-
-    private Call markWhatsAppMessageAsReadValidateBeforeCall(final String sender,
-            final String messageId) throws ApiException {
-        return markWhatsAppMessageAsReadValidateBeforeCall(sender, messageId, null);
-    }
-
-    private Call markWhatsAppMessageAsReadValidateBeforeCall(final String sender,
-            final String messageId, final ApiCallback apiCallback) throws ApiException {
-        if (sender == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        if (messageId == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return markWhatsAppMessageAsReadCall(sender, messageId, apiCallback);
+    private Call downloadWhatsAppInboundMediaCall(String sender, String mediaId)
+            throws ApiException {
+        return downloadWhatsAppInboundMediaCall(sender, mediaId, null);
     }
 
     private Call downloadWhatsAppInboundMediaCall(final String sender, final String mediaId,
@@ -225,6 +190,10 @@ public final class ReceiveWhatsAppMessageApi {
                 httpHeaders, apiCallback);
     }
 
+    private Call getWhatsAppMediaMetadataCall(String sender, String mediaId) throws ApiException {
+        return getWhatsAppMediaMetadataCall(sender, mediaId, null);
+    }
+
     private Call getWhatsAppMediaMetadataCall(final String sender, final String mediaId,
             final ApiCallback apiCallback) throws ApiException {
         String getWhatsAppMediaMetadataEndpoint = GET_WHATSAPP_MEDIA_METADATA_ENDPOINT
@@ -236,6 +205,11 @@ public final class ReceiveWhatsAppMessageApi {
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(getWhatsAppMediaMetadataEndpoint, HttpMethodType.HEAD,
                 httpHeaders, apiCallback);
+    }
+
+    private Call markWhatsAppMessageAsReadCall(String sender, String messageId)
+            throws ApiException {
+        return markWhatsAppMessageAsReadCall(sender, messageId, null);
     }
 
     private Call markWhatsAppMessageAsReadCall(final String sender, final String messageId,

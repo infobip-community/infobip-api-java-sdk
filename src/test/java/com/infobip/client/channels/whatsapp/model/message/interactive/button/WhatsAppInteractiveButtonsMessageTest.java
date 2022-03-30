@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.button;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
@@ -33,7 +33,7 @@ public class WhatsAppInteractiveButtonsMessageTest {
     @Test
     void validateWhatsAppInteractiveButtonsMessage_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppInteractiveButtonsMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
+                getValidator()
                         .validate(getWhatsAppInteractiveButtonsMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
@@ -41,8 +41,7 @@ public class WhatsAppInteractiveButtonsMessageTest {
     @Test
     void validateWhatsAppInteractiveButtonsMessage_withAllParameters() {
         Set<ConstraintViolation<WhatsAppInteractiveButtonsMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppInteractiveButtonsMessageWithAllParameters());
+                getValidator().validate(getWhatsAppInteractiveButtonsMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model.message.interactive.product;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -32,7 +32,7 @@ public class WhatsAppInteractiveProductMessageTest {
     @Test
     void validateWhatsAppInteractiveProductMessage_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppInteractiveProductMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
+                getValidator()
                         .validate(getWhatsAppInteractiveProductMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
@@ -40,8 +40,7 @@ public class WhatsAppInteractiveProductMessageTest {
     @Test
     void validateWhatsAppInteractiveProductMessage_withAllParameters() {
         Set<ConstraintViolation<WhatsAppInteractiveProductMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppInteractiveProductMessageWithAllParameters());
+                getValidator().validate(getWhatsAppInteractiveProductMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.webrtc.model.token;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -29,15 +29,14 @@ public class WebRtcTokenTest {
     @Test
     void validateWebRtcToken_withRequiredParameters() {
         Set<ConstraintViolation<WebRtcToken>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWebRtcTokenWithRequiredParameters());
+                getValidator().validate(getWebRtcTokenWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWebRtcToken_withAllParameters() {
         Set<ConstraintViolation<WebRtcToken>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator().validate(getWebRtcTokenWithAllParameters());
+                getValidator().validate(getWebRtcTokenWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

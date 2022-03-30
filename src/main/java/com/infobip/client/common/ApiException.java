@@ -1,8 +1,10 @@
 
 package com.infobip.client.common;
 
+import jakarta.validation.ConstraintViolation;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * <p>
@@ -11,7 +13,8 @@ import java.util.Map;
  */
 @SuppressWarnings("serial")
 public final class ApiException extends Exception {
-    private int code = 0;
+    private Set<? extends ConstraintViolation<?>> requestBodyValidationViolations = null;
+    private int responseCode = 0;
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;
 
@@ -50,15 +53,31 @@ public final class ApiException extends Exception {
      * </p>
      *
      * @param message the error message
+     * @param requestBodyValidationViolations a set of
+     *     {@link jakarta.validation.ConstraintViolation}
+     *     instances
+     */
+    public ApiException(String message,
+            Set<? extends ConstraintViolation<?>> requestBodyValidationViolations) {
+        super(message);
+        this.requestBodyValidationViolations = requestBodyValidationViolations;
+    }
+
+    /**
+     * <p>
+     * Constructor for ApiException.
+     * </p>
+     *
+     * @param message the error message
      * @param throwable a {@link java.lang.Throwable} object
-     * @param code HTTP status code
+     * @param responseCode HTTP status responseCode
      * @param responseHeaders a {@link java.util.Map} of HTTP response headers
      * @param responseBody the response body
      */
-    public ApiException(String message, Throwable throwable, int code,
+    public ApiException(String message, Throwable throwable, int responseCode,
             Map<String, List<String>> responseHeaders, String responseBody) {
         super(message, throwable);
-        this.code = code;
+        this.responseCode = responseCode;
         this.responseHeaders = responseHeaders;
         this.responseBody = responseBody;
     }
@@ -69,13 +88,13 @@ public final class ApiException extends Exception {
      * </p>
      *
      * @param message the error message
-     * @param code HTTP status code
+     * @param responseCode HTTP status responseCode
      * @param responseHeaders a {@link java.util.Map} of HTTP response headers
      * @param responseBody the response body
      */
-    public ApiException(String message, int code, Map<String, List<String>> responseHeaders,
+    public ApiException(String message, int responseCode, Map<String, List<String>> responseHeaders,
             String responseBody) {
-        this(message, (Throwable) null, code, responseHeaders, responseBody);
+        this(message, (Throwable) null, responseCode, responseHeaders, responseBody);
     }
 
     /**
@@ -85,12 +104,12 @@ public final class ApiException extends Exception {
      *
      * @param message the error message
      * @param throwable a {@link java.lang.Throwable} object
-     * @param code HTTP status code
+     * @param responseCode HTTP status responseCode
      * @param responseHeaders a {@link java.util.Map} of HTTP response headers
      */
-    public ApiException(String message, Throwable throwable, int code,
+    public ApiException(String message, Throwable throwable, int responseCode,
             Map<String, List<String>> responseHeaders) {
-        this(message, throwable, code, responseHeaders, null);
+        this(message, throwable, responseCode, responseHeaders, null);
     }
 
     /**
@@ -98,12 +117,13 @@ public final class ApiException extends Exception {
      * Constructor for ApiException.
      * </p>
      *
-     * @param code HTTP status code
+     * @param responseCode HTTP status responseCode
      * @param responseHeaders a {@link java.util.Map} of HTTP response headers
      * @param responseBody the response body
      */
-    public ApiException(int code, Map<String, List<String>> responseHeaders, String responseBody) {
-        this((String) null, (Throwable) null, code, responseHeaders, responseBody);
+    public ApiException(int responseCode, Map<String, List<String>> responseHeaders,
+            String responseBody) {
+        this((String) null, (Throwable) null, responseCode, responseHeaders, responseBody);
     }
 
     /**
@@ -111,12 +131,12 @@ public final class ApiException extends Exception {
      * Constructor for ApiException.
      * </p>
      *
-     * @param code HTTP status code
+     * @param responseCode HTTP status responseCode
      * @param message a {@link java.lang.String} object
      */
-    public ApiException(int code, String message) {
+    public ApiException(int responseCode, String message) {
         super(message);
-        this.code = code;
+        this.responseCode = responseCode;
     }
 
     /**
@@ -124,27 +144,40 @@ public final class ApiException extends Exception {
      * Constructor for ApiException.
      * </p>
      *
-     * @param code HTTP status code
+     * @param responseCode HTTP status responseCode
      * @param message the error message
      * @param responseHeaders a {@link java.util.Map} of HTTP response headers
      * @param responseBody the response body
      */
-    public ApiException(int code, String message, Map<String, List<String>> responseHeaders,
+    public ApiException(int responseCode, String message, Map<String, List<String>> responseHeaders,
             String responseBody) {
-        this(code, message);
+        this(responseCode, message);
         this.responseHeaders = responseHeaders;
         this.responseBody = responseBody;
     }
 
     /**
      * <p>
-     * Get the HTTP status code.
+     * Get the Request body validation violations.
      * </p>
      *
-     * @return HTTP status code
+     * @return A set of {@link jakarta.validation.ConstraintViolation} instances
+     *     which you can iterate over in
+     *     order to see which validation errors occurred
      */
-    public int getCode() {
-        return code;
+    public Set<? extends ConstraintViolation<?>> getRequestBodyValidationViolations() {
+        return requestBodyValidationViolations;
+    }
+
+    /**
+     * <p>
+     * Get the HTTP status responseCode.
+     * </p>
+     *
+     * @return HTTP status responseCode
+     */
+    public int getResponseCode() {
+        return responseCode;
     }
 
     /**

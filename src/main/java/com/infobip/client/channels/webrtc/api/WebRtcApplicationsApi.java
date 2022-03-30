@@ -1,6 +1,9 @@
 
 package com.infobip.client.channels.webrtc.api;
 
+import static com.infobip.client.common.RequestValidator.validate;
+import static com.infobip.client.common.RequestValidator.validateBody;
+import static com.infobip.client.common.RequestValidator.validatePathParameters;
 import com.infobip.client.channels.webrtc.model.application.WebRtcApplication;
 import com.infobip.client.channels.webrtc.model.application.WebRtcApplicationResponse;
 import com.infobip.client.channels.webrtc.model.application.WebRtcApplicationResponses;
@@ -10,6 +13,7 @@ import com.infobip.client.common.ApiException;
 import com.infobip.client.common.ApiResponse;
 import com.infobip.client.common.HttpHeader;
 import com.infobip.client.common.HttpMethodType;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import okhttp3.Call;
@@ -36,7 +40,7 @@ public final class WebRtcApplicationsApi {
      * @throws ApiException in case of error(s)
      */
     public ApiResponse<WebRtcApplicationResponses> getWebRtcApplications() throws ApiException {
-        Call call = getWebRtcApplicationsValidateBeforeCall();
+        Call call = getWebRtcApplicationsCall();
         return apiClient.execute(call, WebRtcApplicationResponses.class);
     }
 
@@ -52,7 +56,7 @@ public final class WebRtcApplicationsApi {
      */
     public Call getWebRtcApplicationsAsync(
             final ApiCallback<WebRtcApplicationResponses> apiCallback) throws ApiException {
-        Call call = getWebRtcApplicationsValidateBeforeCall(apiCallback);
+        Call call = getWebRtcApplicationsCall(apiCallback);
         apiClient.executeAsync(call, WebRtcApplicationResponses.class, apiCallback);
         return call;
     }
@@ -69,7 +73,8 @@ public final class WebRtcApplicationsApi {
      */
     public ApiResponse<WebRtcApplicationResponse>
             saveWebRtcApplication(WebRtcApplication webRtcApplication) throws ApiException {
-        Call call = saveWebRtcApplicationValidateBeforeCall(webRtcApplication);
+        validateBody(webRtcApplication);
+        Call call = saveWebRtcApplicationCall(webRtcApplication);
         return apiClient.execute(call, WebRtcApplicationResponse.class);
     }
 
@@ -86,7 +91,8 @@ public final class WebRtcApplicationsApi {
      */
     public Call saveWebRtcApplicationAsync(final WebRtcApplication webRtcApplication,
             final ApiCallback<WebRtcApplicationResponse> apiCallback) throws ApiException {
-        Call call = saveWebRtcApplicationValidateBeforeCall(webRtcApplication, apiCallback);
+        validateBody(webRtcApplication);
+        Call call = saveWebRtcApplicationCall(webRtcApplication, apiCallback);
         apiClient.executeAsync(call, WebRtcApplicationResponse.class, apiCallback);
         return call;
     }
@@ -103,7 +109,8 @@ public final class WebRtcApplicationsApi {
      */
     public ApiResponse<WebRtcApplicationResponse> getWebRtcApplication(final String id)
             throws ApiException {
-        Call call = getWebRtcApplicationValidateBeforeCall(id);
+        validatePathParameters(Arrays.asList(id));
+        Call call = getWebRtcApplicationCall(id);
         return apiClient.execute(call, WebRtcApplicationResponse.class);
     }
 
@@ -120,7 +127,8 @@ public final class WebRtcApplicationsApi {
      */
     public Call getWebRtcApplicationAsync(final String id,
             final ApiCallback<WebRtcApplicationResponse> apiCallback) throws ApiException {
-        Call call = getWebRtcApplicationValidateBeforeCall(id, apiCallback);
+        validatePathParameters(Arrays.asList(id));
+        Call call = getWebRtcApplicationCall(id, apiCallback);
         apiClient.executeAsync(call, WebRtcApplicationResponse.class, apiCallback);
         return call;
     }
@@ -138,7 +146,8 @@ public final class WebRtcApplicationsApi {
      */
     public ApiResponse<WebRtcApplicationResponse> updateWebRtcApplication(final String id,
             final WebRtcApplication webRtcApplication) throws ApiException {
-        Call call = updateWebRtcApplicationValidateBeforeCall(id, webRtcApplication);
+        validate(Arrays.asList(id), webRtcApplication);
+        Call call = updateWebRtcApplicationCall(id, webRtcApplication);
         return apiClient.execute(call, WebRtcApplicationResponse.class);
     }
 
@@ -157,7 +166,8 @@ public final class WebRtcApplicationsApi {
     public Call updateWebRtcApplicationAsync(final String id,
             final WebRtcApplication webRtcApplication,
             final ApiCallback<WebRtcApplicationResponse> apiCallback) throws ApiException {
-        Call call = updateWebRtcApplicationValidateBeforeCall(id, webRtcApplication, apiCallback);
+        validate(Arrays.asList(id), webRtcApplication);
+        Call call = updateWebRtcApplicationCall(id, webRtcApplication, apiCallback);
         apiClient.executeAsync(call, WebRtcApplicationResponse.class, apiCallback);
         return call;
     }
@@ -173,7 +183,8 @@ public final class WebRtcApplicationsApi {
      * @throws ApiException in case of error(s)
      */
     public ApiResponse<Void> deleteWebRtcApplication(final String id) throws ApiException {
-        Call call = deleteWebRtcApplicationValidateBeforeCall(id);
+        validatePathParameters(Arrays.asList(id));
+        Call call = deleteWebRtcApplicationCall(id);
         return apiClient.execute(call);
     }
 
@@ -190,71 +201,14 @@ public final class WebRtcApplicationsApi {
      */
     public Call deleteWebRtcApplicationAsync(final String id, final ApiCallback<Void> apiCallback)
             throws ApiException {
-        Call call = deleteWebRtcApplicationValidateBeforeCall(id, apiCallback);
+        validatePathParameters(Arrays.asList(id));
+        Call call = deleteWebRtcApplicationCall(id, apiCallback);
         apiClient.executeAsync(call, apiCallback);
         return call;
     }
 
-    private Call getWebRtcApplicationsValidateBeforeCall() throws ApiException {
-        return getWebRtcApplicationsValidateBeforeCall(null);
-    }
-
-    // TODO: Improve validation logic
-    private Call getWebRtcApplicationsValidateBeforeCall(final ApiCallback apiCallback)
-            throws ApiException {
-        return getWebRtcApplicationsCall(apiCallback);
-    }
-
-    private Call saveWebRtcApplicationValidateBeforeCall(final WebRtcApplication webRtcApplication)
-            throws ApiException {
-        return saveWebRtcApplicationValidateBeforeCall(webRtcApplication, null);
-    }
-
-    // TODO: Improve validation logic
-    private Call saveWebRtcApplicationValidateBeforeCall(final WebRtcApplication webRtcApplication,
-            final ApiCallback apiCallback) throws ApiException {
-        return saveWebRtcApplicationCall(webRtcApplication, apiCallback);
-    }
-
-    private Call getWebRtcApplicationValidateBeforeCall(final String id) throws ApiException {
-        return getWebRtcApplicationValidateBeforeCall(id, null);
-    }
-
-    // TODO: Improve validation logic; remove string literal(s)
-    private Call getWebRtcApplicationValidateBeforeCall(final String id,
-            final ApiCallback apiCallback) throws ApiException {
-        if (id == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return getWebRtcApplicationCall(id, apiCallback);
-    }
-
-    private Call updateWebRtcApplicationValidateBeforeCall(final String id,
-            final WebRtcApplication webRtcApplication) throws ApiException {
-        return updateWebRtcApplicationValidateBeforeCall(id, webRtcApplication, null);
-    }
-
-    // TODO: Improve validation logic; remove string literal(s)
-    private Call updateWebRtcApplicationValidateBeforeCall(final String id,
-            final WebRtcApplication webRtcApplication, final ApiCallback apiCallback)
-            throws ApiException {
-        if (id == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return updateWebRtcApplicationCall(id, webRtcApplication, apiCallback);
-    }
-
-    private Call deleteWebRtcApplicationValidateBeforeCall(final String id) throws ApiException {
-        return deleteWebRtcApplicationValidateBeforeCall(id, null);
-    }
-
-    // TODO: Improve validation logic; remove string literal(s)
-    private Call deleteWebRtcApplicationValidateBeforeCall(final String id,
-            final ApiCallback apiCallback) throws ApiException {
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id'");
-        }
-        return deleteWebRtcApplicationCall(id, apiCallback);
+    private Call getWebRtcApplicationsCall() throws ApiException {
+        return getWebRtcApplicationsCall(null);
     }
 
     private Call getWebRtcApplicationsCall(final ApiCallback apiCallback) throws ApiException {
@@ -265,6 +219,11 @@ public final class WebRtcApplicationsApi {
                 httpHeaders, apiCallback);
     }
 
+    private Call saveWebRtcApplicationCall(WebRtcApplication webRtcApplication)
+            throws ApiException {
+        return saveWebRtcApplicationCall(webRtcApplication, null);
+    }
+
     private Call saveWebRtcApplicationCall(final WebRtcApplication webRtcApplication,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
@@ -272,6 +231,10 @@ public final class WebRtcApplicationsApi {
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(SAVE_WEBRTC_APPLICATION_ENDPOINT, HttpMethodType.POST,
                 httpHeaders, webRtcApplication, apiCallback);
+    }
+
+    private Call getWebRtcApplicationCall(String id) throws ApiException {
+        return getWebRtcApplicationCall(id, null);
     }
 
     private Call getWebRtcApplicationCall(final String id, final ApiCallback apiCallback)
@@ -285,6 +248,11 @@ public final class WebRtcApplicationsApi {
                 apiCallback);
     }
 
+    private Call updateWebRtcApplicationCall(String id, WebRtcApplication webRtcApplication)
+            throws ApiException {
+        return updateWebRtcApplicationCall(id, webRtcApplication, null);
+    }
+
     private Call updateWebRtcApplicationCall(final String id,
             final WebRtcApplication webRtcApplication, final ApiCallback apiCallback)
             throws ApiException {
@@ -295,6 +263,10 @@ public final class WebRtcApplicationsApi {
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(updateWebRtcApplicationEndpoint, HttpMethodType.PUT, httpHeaders,
                 webRtcApplication, apiCallback);
+    }
+
+    private Call deleteWebRtcApplicationCall(String id) throws ApiException {
+        return deleteWebRtcApplicationCall(id, null);
     }
 
     private Call deleteWebRtcApplicationCall(final String id, final ApiCallback apiCallback)

@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model.message.sticker;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -29,16 +29,14 @@ public class WhatsAppStickerMessageTest {
     @Test
     void validateWhatsAppStickerMessage_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppStickerMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppStickerMessageWithRequiredParameters());
+                getValidator().validate(getWhatsAppStickerMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWhatsAppStickerMessage_withAllParameters() {
         Set<ConstraintViolation<WhatsAppStickerMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppStickerMessageWithAllParameters());
+                getValidator().validate(getWhatsAppStickerMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

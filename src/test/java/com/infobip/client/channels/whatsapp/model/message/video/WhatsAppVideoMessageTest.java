@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.whatsapp.model.message.video;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -29,16 +29,14 @@ public class WhatsAppVideoMessageTest {
     @Test
     void validateWhatsAppVideoMessage_withRequiredParameters() {
         Set<ConstraintViolation<WhatsAppVideoMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppVideoMessageWithRequiredParameters());
+                getValidator().validate(getWhatsAppVideoMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateWhatsAppVideoMessage_withAllParameters() {
         Set<ConstraintViolation<WhatsAppVideoMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getWhatsAppVideoMessageWithAllParameters());
+                getValidator().validate(getWhatsAppVideoMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

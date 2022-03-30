@@ -1,8 +1,8 @@
 
 package com.infobip.client.channels.rcs.model;
 
+import static com.infobip.client.common.RequestValidator.getValidator;
 import static org.junit.Assert.assertEquals;
-import com.infobip.client.common.ModelValidator;
 import com.infobip.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
@@ -30,15 +30,14 @@ public class RcsMessageTest {
     @Test
     void validateRcsMessage_withRequiredParameters() {
         Set<ConstraintViolation<RcsMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator()
-                        .validate(getRcsMessageWithRequiredParameters());
+                getValidator().validate(getRcsMessageWithRequiredParameters());
         assertEquals(0, constraintViolations.size());
     }
 
     @Test
     void validateRcsMessage_withAllParameters() {
         Set<ConstraintViolation<RcsMessage>> constraintViolations =
-                ModelValidator.INSTANCE.getValidator().validate(getRcsMessageWithAllParameters());
+                getValidator().validate(getRcsMessageWithAllParameters());
         assertEquals(0, constraintViolations.size());
     }
 

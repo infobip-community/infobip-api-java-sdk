@@ -1,6 +1,7 @@
 
 package com.infobip.client.channels.whatsapp.api;
 
+import static com.infobip.client.common.RequestValidator.validateBody;
 import com.infobip.client.channels.whatsapp.model.message.WhatsAppBulkMessagesResponse;
 import com.infobip.client.channels.whatsapp.model.message.WhatsAppMessageResponse;
 import com.infobip.client.channels.whatsapp.model.message.audio.WhatsAppAudioMessage;
@@ -67,9 +68,9 @@ public final class SendWhatsAppMessageApi {
      *     message Documentation</a>
      */
     public ApiResponse<WhatsAppBulkMessagesResponse> sendWhatsAppTemplateMessage(
-            final WhatsAppTemplateMessage whatsAppTemplateMessage)
-            throws ApiException {
-        Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessage);
+            final WhatsAppTemplateMessage whatsAppTemplateMessage) throws ApiException {
+        validateBody(whatsAppTemplateMessage);
+        Call call = sendWhatsAppTemplateMessageCall(whatsAppTemplateMessage);
         return apiClient.execute(call, WhatsAppBulkMessagesResponse.class);
     }
 
@@ -93,8 +94,8 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppTemplateMessageAsync(
             final WhatsAppTemplateMessage whatsAppTemplateMessage,
             final ApiCallback<WhatsAppBulkMessagesResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessage,
-                apiCallback);
+        validateBody(whatsAppTemplateMessage);
+        Call call = sendWhatsAppTemplateMessageCall(whatsAppTemplateMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppBulkMessagesResponse.class, apiCallback);
         return call;
     }
@@ -117,7 +118,8 @@ public final class SendWhatsAppMessageApi {
      */
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppTextMessage(
             final WhatsAppTextMessage whatsAppTextMessage) throws ApiException {
-        Call call = sendWhatsAppTextMessageValidateBeforeCall(whatsAppTextMessage);
+        validateBody(whatsAppTextMessage);
+        Call call = sendWhatsAppTextMessageCall(whatsAppTextMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -140,7 +142,8 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppTextMessageAsync(final WhatsAppTextMessage whatsAppTextMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppTextMessageValidateBeforeCall(whatsAppTextMessage, apiCallback);
+        validateBody(whatsAppTextMessage);
+        Call call = sendWhatsAppTextMessageCall(whatsAppTextMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -163,7 +166,8 @@ public final class SendWhatsAppMessageApi {
      */
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppDocumentMessage(
             final WhatsAppDocumentMessage whatsAppDocumentMessage) throws ApiException {
-        Call call = sendWhatsAppDocumentMessageValidateBeforeCall(whatsAppDocumentMessage);
+        validateBody(whatsAppDocumentMessage);
+        Call call = sendWhatsAppDocumentMessageCall(whatsAppDocumentMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -187,8 +191,8 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppDocumentMessageAsync(
             final WhatsAppDocumentMessage whatsAppDocumentMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call =
-                sendWhatsAppDocumentMessageValidateBeforeCall(whatsAppDocumentMessage, apiCallback);
+        validateBody(whatsAppDocumentMessage);
+        Call call = sendWhatsAppDocumentMessageCall(whatsAppDocumentMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -211,7 +215,8 @@ public final class SendWhatsAppMessageApi {
      */
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppImageMessage(
             final WhatsAppImageMessage whatsAppImageMessage) throws ApiException {
-        Call call = sendWhatsAppImageMessageValidateBeforeCall(whatsAppImageMessage);
+        validateBody(whatsAppImageMessage);
+        Call call = sendWhatsAppImageMessageCall(whatsAppImageMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -234,7 +239,8 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppImageMessageAsync(final WhatsAppImageMessage whatsAppImageMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppImageMessageValidateBeforeCall(whatsAppImageMessage, apiCallback);
+        validateBody(whatsAppImageMessage);
+        Call call = sendWhatsAppImageMessageCall(whatsAppImageMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -257,7 +263,8 @@ public final class SendWhatsAppMessageApi {
      */
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppAudioMessage(
             final WhatsAppAudioMessage whatsAppAudioMessage) throws ApiException {
-        Call call = sendWhatsAppAudioMessageValidateBeforeCall(whatsAppAudioMessage);
+        validateBody(whatsAppAudioMessage);
+        Call call = sendWhatsAppAudioMessageCall(whatsAppAudioMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -280,7 +287,8 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppAudioMessageAsync(final WhatsAppAudioMessage whatsAppAudioMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppAudioMessageValidateBeforeCall(whatsAppAudioMessage, apiCallback);
+        validateBody(whatsAppAudioMessage);
+        Call call = sendWhatsAppAudioMessageCall(whatsAppAudioMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -303,7 +311,8 @@ public final class SendWhatsAppMessageApi {
      */
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppVideoMessage(
             final WhatsAppVideoMessage whatsAppVideoMessage) throws ApiException {
-        Call call = sendWhatsAppVideoMessageValidateBeforeCall(whatsAppVideoMessage);
+        validateBody(whatsAppVideoMessage);
+        Call call = sendWhatsAppVideoMessageCall(whatsAppVideoMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -326,7 +335,8 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppVideoMessageAsync(final WhatsAppVideoMessage whatsAppVideoMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppVideoMessageValidateBeforeCall(whatsAppVideoMessage, apiCallback);
+        validateBody(whatsAppVideoMessage);
+        Call call = sendWhatsAppVideoMessageCall(whatsAppVideoMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -349,7 +359,8 @@ public final class SendWhatsAppMessageApi {
      */
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppStickerMessage(
             final WhatsAppStickerMessage whatsAppStickerMessage) throws ApiException {
-        Call call = sendWhatsAppStickerMessageValidateBeforeCall(whatsAppStickerMessage);
+        validateBody(whatsAppStickerMessage);
+        Call call = sendWhatsAppStickerMessageCall(whatsAppStickerMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -372,8 +383,8 @@ public final class SendWhatsAppMessageApi {
      */
     public Call sendWhatsAppStickerMessageAsync(final WhatsAppStickerMessage whatsAppStickerMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call =
-                sendWhatsAppStickerMessageValidateBeforeCall(whatsAppStickerMessage, apiCallback);
+        validateBody(whatsAppStickerMessage);
+        Call call = sendWhatsAppStickerMessageCall(whatsAppStickerMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -396,7 +407,8 @@ public final class SendWhatsAppMessageApi {
      */
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppLocationMessage(
             final WhatsAppLocationMessage whatsAppLocationMessage) throws ApiException {
-        Call call = sendWhatsAppLocationMessageValidateBeforeCall(whatsAppLocationMessage);
+        validateBody(whatsAppLocationMessage);
+        Call call = sendWhatsAppLocationMessageCall(whatsAppLocationMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -420,8 +432,8 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppLocationMessageAsync(
             final WhatsAppLocationMessage whatsAppLocationMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call =
-                sendWhatsAppLocationMessageValidateBeforeCall(whatsAppLocationMessage, apiCallback);
+        validateBody(whatsAppLocationMessage);
+        Call call = sendWhatsAppLocationMessageCall(whatsAppLocationMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -444,7 +456,8 @@ public final class SendWhatsAppMessageApi {
      */
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppContactMessage(
             final WhatsAppContactMessage whatsAppContactMessage) throws ApiException {
-        Call call = sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactMessage);
+        validateBody(whatsAppContactMessage);
+        Call call = sendWhatsAppContactMessageCall(whatsAppContactMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -465,11 +478,10 @@ public final class SendWhatsAppMessageApi {
      * @see <a href="https://www.infobip.com/docs/whatsapp">Send WhatsApp contact
      *     message Documentation</a>
      */
-    public Call sendWhatsAppContactMessageAsync(
-            final WhatsAppContactMessage whatsAppContactMessage,
+    public Call sendWhatsAppContactMessageAsync(final WhatsAppContactMessage whatsAppContactMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call =
-                sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactMessage, apiCallback);
+        validateBody(whatsAppContactMessage);
+        Call call = sendWhatsAppContactMessageCall(whatsAppContactMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -495,8 +507,8 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppInteractiveButtonsMessage(
             final WhatsAppInteractiveButtonsMessage whatsAppInteractiveButtonsMessage)
             throws ApiException {
-        Call call = sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
-                whatsAppInteractiveButtonsMessage);
+        validateBody(whatsAppInteractiveButtonsMessage);
+        Call call = sendWhatsAppInteractiveButtonsMessageCall(whatsAppInteractiveButtonsMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -522,8 +534,9 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppInteractiveButtonsMessageAsync(
             final WhatsAppInteractiveButtonsMessage whatsAppInteractiveButtonsMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
-                whatsAppInteractiveButtonsMessage, apiCallback);
+        validateBody(whatsAppInteractiveButtonsMessage);
+        Call call = sendWhatsAppInteractiveButtonsMessageCall(whatsAppInteractiveButtonsMessage,
+                apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -549,8 +562,8 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppInteractiveListMessage(
             final WhatsAppInteractiveListMessage whatsAppInteractiveListMessage)
             throws ApiException {
-        Call call = sendWhatsAppInteractiveListMessageValidateBeforeCall(
-                whatsAppInteractiveListMessage);
+        validateBody(whatsAppInteractiveListMessage);
+        Call call = sendWhatsAppInteractiveListMessageCall(whatsAppInteractiveListMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -576,8 +589,9 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppInteractiveListMessageAsync(
             final WhatsAppInteractiveListMessage whatsAppInteractiveListMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppInteractiveListMessageValidateBeforeCall(
-                whatsAppInteractiveListMessage, apiCallback);
+        validateBody(whatsAppInteractiveListMessage);
+        Call call =
+                sendWhatsAppInteractiveListMessageCall(whatsAppInteractiveListMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -603,8 +617,8 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppInteractiveProductMessage(
             final WhatsAppInteractiveProductMessage whatsAppInteractiveProductMessage)
             throws ApiException {
-        Call call = sendWhatsAppInteractiveProductMessageValidateBeforeCall(
-                whatsAppInteractiveProductMessage);
+        validateBody(whatsAppInteractiveProductMessage);
+        Call call = sendWhatsAppInteractiveProductMessageCall(whatsAppInteractiveProductMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
 
@@ -630,8 +644,9 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppInteractiveProductMessageAsync(
             final WhatsAppInteractiveProductMessage whatsAppInteractiveProductMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppInteractiveProductMessageValidateBeforeCall(
-                whatsAppInteractiveProductMessage, apiCallback);
+        validateBody(whatsAppInteractiveProductMessage);
+        Call call = sendWhatsAppInteractiveProductMessageCall(whatsAppInteractiveProductMessage,
+                apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
@@ -657,7 +672,8 @@ public final class SendWhatsAppMessageApi {
     public ApiResponse<WhatsAppMessageResponse> sendWhatsAppInteractiveMultiProductMessage(
             final WhatsAppInteractiveMultiProductMessage whatsAppInteractiveMultiProductMessage)
             throws ApiException {
-        Call call = sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
+        validateBody(whatsAppInteractiveMultiProductMessage);
+        Call call = sendWhatsAppInteractiveMultiProductMessageCall(
                 whatsAppInteractiveMultiProductMessage);
         return apiClient.execute(call, WhatsAppMessageResponse.class);
     }
@@ -684,214 +700,31 @@ public final class SendWhatsAppMessageApi {
     public Call sendWhatsAppInteractiveMultiProductMessageAsync(
             final WhatsAppInteractiveMultiProductMessage whatsAppInteractiveMultiProductMessage,
             final ApiCallback<WhatsAppMessageResponse> apiCallback) throws ApiException {
-        Call call = sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
+        validateBody(whatsAppInteractiveMultiProductMessage);
+        Call call = sendWhatsAppInteractiveMultiProductMessageCall(
                 whatsAppInteractiveMultiProductMessage, apiCallback);
         apiClient.executeAsync(call, WhatsAppMessageResponse.class, apiCallback);
         return call;
     }
 
-    private Call sendWhatsAppTemplateMessageValidateBeforeCall(
-            final WhatsAppTemplateMessage whatsAppTemplateMessage)
+    private Call sendWhatsAppTemplateMessageCall(WhatsAppTemplateMessage whatsAppTemplateMessage)
             throws ApiException {
-        return sendWhatsAppTemplateMessageValidateBeforeCall(whatsAppTemplateMessage, null);
-    }
-
-    private Call sendWhatsAppTemplateMessageValidateBeforeCall(
-            final WhatsAppTemplateMessage whatsAppTemplateMessage,
-            final ApiCallback apiCallback) throws ApiException {
-        if (whatsAppTemplateMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppTemplateMessageCall(whatsAppTemplateMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppTextMessageValidateBeforeCall(
-            final WhatsAppTextMessage whatsAppTextMessage) throws ApiException {
-        return sendWhatsAppTextMessageValidateBeforeCall(whatsAppTextMessage, null);
-    }
-
-    private Call sendWhatsAppTextMessageValidateBeforeCall(
-            final WhatsAppTextMessage whatsAppTextMessage, final ApiCallback apiCallback)
-            throws ApiException {
-        if (whatsAppTextMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppTextMessageCall(whatsAppTextMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppDocumentMessageValidateBeforeCall(
-            final WhatsAppDocumentMessage whatsAppDocumentMessage) throws ApiException {
-        return sendWhatsAppDocumentMessageValidateBeforeCall(whatsAppDocumentMessage, null);
-    }
-
-    private Call sendWhatsAppDocumentMessageValidateBeforeCall(
-            final WhatsAppDocumentMessage whatsAppDocumentMessage, final ApiCallback apiCallback)
-            throws ApiException {
-        if (whatsAppDocumentMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppDocumentMessageCall(whatsAppDocumentMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppImageMessageValidateBeforeCall(
-            final WhatsAppImageMessage whatsAppImageMessage) throws ApiException {
-        return sendWhatsAppImageMessageValidateBeforeCall(whatsAppImageMessage, null);
-    }
-
-    private Call sendWhatsAppImageMessageValidateBeforeCall(
-            final WhatsAppImageMessage whatsAppImageMessage, final ApiCallback apiCallback)
-            throws ApiException {
-        if (whatsAppImageMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppImageMessageCall(whatsAppImageMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppAudioMessageValidateBeforeCall(
-            final WhatsAppAudioMessage whatsAppAudioMessage) throws ApiException {
-        return sendWhatsAppAudioMessageValidateBeforeCall(whatsAppAudioMessage, null);
-    }
-
-    private Call sendWhatsAppAudioMessageValidateBeforeCall(
-            final WhatsAppAudioMessage whatsAppAudioMessage, final ApiCallback apiCallback)
-            throws ApiException {
-        if (whatsAppAudioMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppAudioMessageCall(whatsAppAudioMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppVideoMessageValidateBeforeCall(
-            final WhatsAppVideoMessage whatsAppVideoMessage) throws ApiException {
-        return sendWhatsAppVideoMessageValidateBeforeCall(whatsAppVideoMessage, null);
-    }
-
-    private Call sendWhatsAppVideoMessageValidateBeforeCall(
-            final WhatsAppVideoMessage whatsAppVideoMessage, final ApiCallback apiCallback)
-            throws ApiException {
-        if (whatsAppVideoMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppVideoMessageCall(whatsAppVideoMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppStickerMessageValidateBeforeCall(
-            final WhatsAppStickerMessage whatsAppStickerMessage) throws ApiException {
-        return sendWhatsAppStickerMessageValidateBeforeCall(whatsAppStickerMessage, null);
-    }
-
-    private Call sendWhatsAppStickerMessageValidateBeforeCall(
-            final WhatsAppStickerMessage whatsAppStickerMessage, final ApiCallback apiCallback)
-            throws ApiException {
-        if (whatsAppStickerMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppStickerMessageCall(whatsAppStickerMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppLocationMessageValidateBeforeCall(
-            final WhatsAppLocationMessage whatsAppLocationMessage) throws ApiException {
-        return sendWhatsAppLocationMessageValidateBeforeCall(whatsAppLocationMessage, null);
-    }
-
-    private Call sendWhatsAppLocationMessageValidateBeforeCall(
-            final WhatsAppLocationMessage whatsAppLocationMessage, final ApiCallback apiCallback)
-            throws ApiException {
-        if (whatsAppLocationMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppLocationMessageCall(whatsAppLocationMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppContactMessageValidateBeforeCall(
-            final WhatsAppContactMessage whatsAppContactMessage) throws ApiException {
-        return sendWhatsAppContactMessageValidateBeforeCall(whatsAppContactMessage, null);
-    }
-
-    private Call sendWhatsAppContactMessageValidateBeforeCall(
-            final WhatsAppContactMessage whatsAppContactMessage, final ApiCallback apiCallback)
-            throws ApiException {
-        if (whatsAppContactMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppContactMessageCall(whatsAppContactMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
-            final WhatsAppInteractiveButtonsMessage whatsAppInteractiveButtonsMessage)
-            throws ApiException {
-        return sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
-                whatsAppInteractiveButtonsMessage, null);
-    }
-
-    private Call sendWhatsAppInteractiveButtonsMessageValidateBeforeCall(
-            final WhatsAppInteractiveButtonsMessage whatsAppInteractiveButtonsMessage,
-            final ApiCallback apiCallback) throws ApiException {
-        if (whatsAppInteractiveButtonsMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppInteractiveButtonsMessageCall(whatsAppInteractiveButtonsMessage,
-                apiCallback);
-    }
-
-    private Call sendWhatsAppInteractiveListMessageValidateBeforeCall(
-            final WhatsAppInteractiveListMessage whatsAppInteractiveListMessage)
-            throws ApiException {
-        return sendWhatsAppInteractiveListMessageValidateBeforeCall(whatsAppInteractiveListMessage,
-                null);
-    }
-
-    private Call sendWhatsAppInteractiveListMessageValidateBeforeCall(
-            final WhatsAppInteractiveListMessage whatsAppInteractiveListMessage,
-            final ApiCallback apiCallback) throws ApiException {
-        if (whatsAppInteractiveListMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppInteractiveListMessageCall(whatsAppInteractiveListMessage, apiCallback);
-    }
-
-    private Call sendWhatsAppInteractiveProductMessageValidateBeforeCall(
-            final WhatsAppInteractiveProductMessage whatsAppInteractiveProductMessage)
-            throws ApiException {
-        return sendWhatsAppInteractiveProductMessageValidateBeforeCall(
-                whatsAppInteractiveProductMessage, null);
-    }
-
-    private Call sendWhatsAppInteractiveProductMessageValidateBeforeCall(
-            final WhatsAppInteractiveProductMessage whatsAppInteractiveProductMessage,
-            final ApiCallback apiCallback) throws ApiException {
-        if (whatsAppInteractiveProductMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppInteractiveProductMessageCall(whatsAppInteractiveProductMessage,
-                apiCallback);
-    }
-
-    private Call sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
-            final WhatsAppInteractiveMultiProductMessage whatsAppInteractiveMultiProductMessage)
-            throws ApiException {
-        return sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
-                whatsAppInteractiveMultiProductMessage, null);
-    }
-
-    private Call sendWhatsAppInteractiveMultiProductMessageValidateBeforeCall(
-            final WhatsAppInteractiveMultiProductMessage whatsAppInteractiveMultiProductMessage,
-            final ApiCallback apiCallback) throws ApiException {
-        if (whatsAppInteractiveMultiProductMessage == null) {
-            throw new ApiException("Missing the required parameter");
-        }
-        return sendWhatsAppInteractiveMultiProductMessageCall(
-                whatsAppInteractiveMultiProductMessage, apiCallback);
+        return sendWhatsAppTemplateMessageCall(whatsAppTemplateMessage, null);
     }
 
     private Call sendWhatsAppTemplateMessageCall(
-            final WhatsAppTemplateMessage whatsAppTemplateMessage,
-            final ApiCallback apiCallback) throws ApiException {
+            final WhatsAppTemplateMessage whatsAppTemplateMessage, final ApiCallback apiCallback)
+            throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(WHATSAPP_TEMPLATE_MESSAGE_ENDPOINT, HttpMethodType.POST,
                 httpHeaders, whatsAppTemplateMessage, apiCallback);
+    }
+
+    private Call sendWhatsAppTextMessageCall(WhatsAppTextMessage whatsAppTextMessage)
+            throws ApiException {
+        return sendWhatsAppTextMessageCall(whatsAppTextMessage, null);
     }
 
     private Call sendWhatsAppTextMessageCall(final WhatsAppTextMessage whatsAppTextMessage,
@@ -901,6 +734,11 @@ public final class SendWhatsAppMessageApi {
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(WHATSAPP_TEXT_MESSAGE_ENDPOINT, HttpMethodType.POST, httpHeaders,
                 whatsAppTextMessage, apiCallback);
+    }
+
+    private Call sendWhatsAppDocumentMessageCall(WhatsAppDocumentMessage whatsAppDocumentMessage)
+            throws ApiException {
+        return sendWhatsAppDocumentMessageCall(whatsAppDocumentMessage, null);
     }
 
     private Call sendWhatsAppDocumentMessageCall(
@@ -913,6 +751,11 @@ public final class SendWhatsAppMessageApi {
                 httpHeaders, whatsAppDocumentMessage, apiCallback);
     }
 
+    private Call sendWhatsAppImageMessageCall(WhatsAppImageMessage whatsAppImageMessage)
+            throws ApiException {
+        return sendWhatsAppImageMessageCall(whatsAppImageMessage, null);
+    }
+
     private Call sendWhatsAppImageMessageCall(final WhatsAppImageMessage whatsAppImageMessage,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
@@ -920,6 +763,11 @@ public final class SendWhatsAppMessageApi {
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(WHATSAPP_IMAGE_MESSAGE_ENDPOINT, HttpMethodType.POST,
                 httpHeaders, whatsAppImageMessage, apiCallback);
+    }
+
+    private Call sendWhatsAppAudioMessageCall(WhatsAppAudioMessage whatsAppAudioMessage)
+            throws ApiException {
+        return sendWhatsAppAudioMessageCall(whatsAppAudioMessage, null);
     }
 
     private Call sendWhatsAppAudioMessageCall(final WhatsAppAudioMessage whatsAppAudioMessage,
@@ -931,6 +779,11 @@ public final class SendWhatsAppMessageApi {
                 httpHeaders, whatsAppAudioMessage, apiCallback);
     }
 
+    private Call sendWhatsAppVideoMessageCall(WhatsAppVideoMessage whatsAppVideoMessage)
+            throws ApiException {
+        return sendWhatsAppVideoMessageCall(whatsAppVideoMessage, null);
+    }
+
     private Call sendWhatsAppVideoMessageCall(final WhatsAppVideoMessage whatsAppVideoMessage,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
@@ -940,6 +793,11 @@ public final class SendWhatsAppMessageApi {
                 httpHeaders, whatsAppVideoMessage, apiCallback);
     }
 
+    private Call sendWhatsAppStickerMessageCall(WhatsAppStickerMessage whatsAppStickerMessage)
+            throws ApiException {
+        return sendWhatsAppStickerMessageCall(whatsAppStickerMessage, null);
+    }
+
     private Call sendWhatsAppStickerMessageCall(final WhatsAppStickerMessage whatsAppStickerMessage,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
@@ -947,6 +805,11 @@ public final class SendWhatsAppMessageApi {
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(WHATSAPP_STICKER_MESSAGE_ENDPOINT, HttpMethodType.POST,
                 httpHeaders, whatsAppStickerMessage, apiCallback);
+    }
+
+    private Call sendWhatsAppLocationMessageCall(WhatsAppLocationMessage whatsAppLocationMessage)
+            throws ApiException {
+        return sendWhatsAppLocationMessageCall(whatsAppLocationMessage, null);
     }
 
     private Call sendWhatsAppLocationMessageCall(
@@ -959,14 +822,24 @@ public final class SendWhatsAppMessageApi {
                 httpHeaders, whatsAppLocationMessage, apiCallback);
     }
 
-    private Call sendWhatsAppContactMessageCall(
-            final WhatsAppContactMessage whatsAppContactMessage, final ApiCallback apiCallback)
+    private Call sendWhatsAppContactMessageCall(WhatsAppContactMessage whatsAppContactMessage)
             throws ApiException {
+        return sendWhatsAppContactMessageCall(whatsAppContactMessage, null);
+    }
+
+    private Call sendWhatsAppContactMessageCall(final WhatsAppContactMessage whatsAppContactMessage,
+            final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
         httpHeaders.put(HttpHeader.ACCEPT, HttpHeader.APPLICATION_JSON);
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(WHATSAPP_CONTACT_MESSAGE_ENDPOINT, HttpMethodType.POST,
                 httpHeaders, whatsAppContactMessage, apiCallback);
+    }
+
+    private Call sendWhatsAppInteractiveButtonsMessageCall(
+            WhatsAppInteractiveButtonsMessage whatsAppInteractiveButtonsMessage)
+            throws ApiException {
+        return sendWhatsAppInteractiveButtonsMessageCall(whatsAppInteractiveButtonsMessage, null);
     }
 
     private Call sendWhatsAppInteractiveButtonsMessageCall(
@@ -980,6 +853,11 @@ public final class SendWhatsAppMessageApi {
     }
 
     private Call sendWhatsAppInteractiveListMessageCall(
+            WhatsAppInteractiveListMessage whatsAppInteractiveListMessage) throws ApiException {
+        return sendWhatsAppInteractiveListMessageCall(whatsAppInteractiveListMessage, null);
+    }
+
+    private Call sendWhatsAppInteractiveListMessageCall(
             final WhatsAppInteractiveListMessage whatsAppInteractiveListMessage,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
@@ -990,6 +868,12 @@ public final class SendWhatsAppMessageApi {
     }
 
     private Call sendWhatsAppInteractiveProductMessageCall(
+            WhatsAppInteractiveProductMessage whatsAppInteractiveProductMessage)
+            throws ApiException {
+        return sendWhatsAppInteractiveProductMessageCall(whatsAppInteractiveProductMessage, null);
+    }
+
+    private Call sendWhatsAppInteractiveProductMessageCall(
             final WhatsAppInteractiveProductMessage whatsAppInteractiveProductMessage,
             final ApiCallback apiCallback) throws ApiException {
         Map<String, String> httpHeaders = new HashMap<String, String>();
@@ -997,6 +881,13 @@ public final class SendWhatsAppMessageApi {
         httpHeaders.put(HttpHeader.CONTENT_TYPE, HttpHeader.APPLICATION_JSON);
         return apiClient.buildCall(WHATSAPP_INTERACTIVE_PRODUCT_MESSAGE_ENDPOINT,
                 HttpMethodType.POST, httpHeaders, whatsAppInteractiveProductMessage, apiCallback);
+    }
+
+    private Call sendWhatsAppInteractiveMultiProductMessageCall(
+            WhatsAppInteractiveMultiProductMessage whatsAppInteractiveMultiProductMessage)
+            throws ApiException {
+        return sendWhatsAppInteractiveMultiProductMessageCall(
+                whatsAppInteractiveMultiProductMessage, null);
     }
 
     private Call sendWhatsAppInteractiveMultiProductMessageCall(
