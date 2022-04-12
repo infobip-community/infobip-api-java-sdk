@@ -130,9 +130,12 @@ Please note how above (WhatsAppTextMessage) **request** is created; [Fluent Inte
 
 #### For more examples please refer to the following links:
 
-- [WhatsApp](src/main/java/com/infobip/client/channels/whatsapp/)
-- [RCS Channel](src/main/java/com/infobip/client/channels/rcs/)
-- [WebRTC](src/main/java/com/infobip/client/channels/webrtc/)
+- [SMS](src/test/java/io/github/infobip_community/client/channels/sms/model/)
+- [MMS](src/test/java/io/github/infobip_community/client/channels/mms/model/)
+- [Email](src/test/java/io/github/infobip_community/client/channels/email/model/)
+- [WhatsApp](src/test/java/io/github/infobip_community/client/channels/whatsapp/model/)
+- [RCS](src/test/java/io/github/infobip_community/client/channels/rcs/model/)
+- [WebRTC](src/test/java/io/github/infobip_community/client/channels/webrtc/model/)
 
 ## Documentation
 
