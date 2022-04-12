@@ -12,6 +12,7 @@ To use this, you'll need an Infobip account. If you do not own one, you can crea
 * [License](#license)
 * [Installation](#installation)
 * [Quickstart Guide](#quickstart-guide)
+* [Testing](#testing)
 * [Documentation](#documentation)
 * [Development](#development)
 
@@ -35,7 +36,7 @@ To use it, we need to add the following dependency:
 <dependency>
   <groupId>io.github.infobip-community</groupId>
   <artifactId>infobip-api-java-sdk</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
@@ -136,6 +137,14 @@ Please note how above (WhatsAppTextMessage) **request** is created; [Fluent Inte
 - [WhatsApp](src/test/java/io/github/infobip_community/client/channels/whatsapp/model/)
 - [RCS](src/test/java/io/github/infobip_community/client/channels/rcs/model/)
 - [WebRTC](src/test/java/io/github/infobip_community/client/channels/webrtc/model/)
+
+## Testing
+
+To run tests position yourself in the project's root and run:
+
+```
+mvn test
+```
 
 ## Documentation
 
