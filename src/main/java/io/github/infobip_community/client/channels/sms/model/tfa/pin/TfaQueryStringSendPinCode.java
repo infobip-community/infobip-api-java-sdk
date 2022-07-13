@@ -1,10 +1,17 @@
 
 package io.github.infobip_community.client.channels.sms.model.tfa.pin;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
+@NoArgsConstructor
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class TfaQueryStringSendPinCode {
     private boolean ncNeeded = true;
-
-    public TfaQueryStringSendPinCode() {}
 
     /**
      * Indicates if Number Lookup is needed before sending the 2FA message. If the
@@ -15,37 +22,5 @@ public final class TfaQueryStringSendPinCode {
     public TfaQueryStringSendPinCode ncNeeded(boolean ncNeeded) {
         this.ncNeeded = ncNeeded;
         return this;
-    }
-
-    public boolean isNcNeeded() {
-        return ncNeeded;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (ncNeeded ? 1231 : 1237);
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof TfaQueryStringSendPinCode)) {
-            return false;
-        }
-        TfaQueryStringSendPinCode other = (TfaQueryStringSendPinCode) obj;
-        if (ncNeeded != other.ncNeeded) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "TfaQueryStringSendPinCode [ncNeeded=" + ncNeeded + "]";
     }
 }
