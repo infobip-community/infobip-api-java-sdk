@@ -3,7 +3,13 @@ package io.github.infobip_community.client.channels.rcs.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public abstract class Suggestion {
     @NotBlank
     @Size(min = 1, max = 25)
@@ -27,56 +33,5 @@ public abstract class Suggestion {
         this.text = text;
         this.postbackData = postbackData;
         this.type = type;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public String getPostbackData() {
-        return postbackData;
-    }
-
-    public SuggestionType getType() {
-        return type;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((postbackData == null) ? 0 : postbackData.hashCode());
-        result = prime * result + ((text == null) ? 0 : text.hashCode());
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Suggestion)) {
-            return false;
-        }
-        Suggestion other = (Suggestion) obj;
-        if (postbackData == null) {
-            if (other.postbackData != null) {
-                return false;
-            }
-        } else if (!postbackData.equals(other.postbackData)) {
-            return false;
-        }
-        if (text == null) {
-            if (other.text != null) {
-                return false;
-            }
-        } else if (!text.equals(other.text)) {
-            return false;
-        }
-        if (type != other.type) {
-            return false;
-        }
-        return true;
     }
 }

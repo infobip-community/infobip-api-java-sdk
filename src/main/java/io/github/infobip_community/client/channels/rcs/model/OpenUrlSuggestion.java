@@ -2,8 +2,14 @@
 package io.github.infobip_community.client.channels.rcs.model;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.URL;
 
+@Getter
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public final class OpenUrlSuggestion extends Suggestion {
     @NotBlank
     @URL
@@ -22,45 +28,5 @@ public final class OpenUrlSuggestion extends Suggestion {
     public OpenUrlSuggestion(String text, String postbackData, String url) {
         super(text, postbackData, SuggestionType.OPEN_URL);
         this.url = url;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((url == null) ? 0 : url.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof OpenUrlSuggestion)) {
-            return false;
-        }
-        OpenUrlSuggestion other = (OpenUrlSuggestion) obj;
-        if (url == null) {
-            if (other.url != null) {
-                return false;
-            }
-        } else if (!url.equals(other.url)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "OpenUrlSuggestion [url=" + url + ", text=" + text + ", postbackData=" + postbackData
-                + ", type=" + type + "]";
     }
 }
