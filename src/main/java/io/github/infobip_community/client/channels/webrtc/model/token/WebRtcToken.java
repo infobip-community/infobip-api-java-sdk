@@ -3,7 +3,13 @@ package io.github.infobip_community.client.channels.webrtc.model.token;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class WebRtcToken {
     @NotBlank
     @Size(min = 3, max = 64)
@@ -63,91 +69,5 @@ public final class WebRtcToken {
     public WebRtcToken timeToLive(Long timeToLive) {
         this.timeToLive = timeToLive;
         return this;
-    }
-
-    public String getIdentity() {
-        return identity;
-    }
-
-    public String getApplicationId() {
-        return applicationId;
-    }
-
-    public String getDisplayName() {
-        return displayName;
-    }
-
-    public Capabilities getCapabilities() {
-        return capabilities;
-    }
-
-    public Long getTimeToLive() {
-        return timeToLive;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((applicationId == null) ? 0 : applicationId.hashCode());
-        result = prime * result + ((capabilities == null) ? 0 : capabilities.hashCode());
-        result = prime * result + ((displayName == null) ? 0 : displayName.hashCode());
-        result = prime * result + ((identity == null) ? 0 : identity.hashCode());
-        result = prime * result + ((timeToLive == null) ? 0 : timeToLive.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof WebRtcToken)) {
-            return false;
-        }
-        WebRtcToken other = (WebRtcToken) obj;
-        if (applicationId == null) {
-            if (other.applicationId != null) {
-                return false;
-            }
-        } else if (!applicationId.equals(other.applicationId)) {
-            return false;
-        }
-        if (capabilities == null) {
-            if (other.capabilities != null) {
-                return false;
-            }
-        } else if (!capabilities.equals(other.capabilities)) {
-            return false;
-        }
-        if (displayName == null) {
-            if (other.displayName != null) {
-                return false;
-            }
-        } else if (!displayName.equals(other.displayName)) {
-            return false;
-        }
-        if (identity == null) {
-            if (other.identity != null) {
-                return false;
-            }
-        } else if (!identity.equals(other.identity)) {
-            return false;
-        }
-        if (timeToLive == null) {
-            if (other.timeToLive != null) {
-                return false;
-            }
-        } else if (!timeToLive.equals(other.timeToLive)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "WebRtcToken [identity=" + identity + ", applicationId=" + applicationId
-                + ", displayName=" + displayName + ", capabilities=" + capabilities
-                + ", timeToLive=" + timeToLive + "]";
     }
 }

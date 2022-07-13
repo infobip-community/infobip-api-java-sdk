@@ -1,6 +1,13 @@
 
 package io.github.infobip_community.client.channels.webrtc.model.token;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class Capabilities {
     private final Recording recording;
 
@@ -16,37 +23,5 @@ public final class Capabilities {
      */
     public Capabilities(Recording recording) {
         this.recording = recording;
-    }
-
-    public Recording getRecording() {
-        return recording;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((recording == null) ? 0 : recording.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Capabilities)) {
-            return false;
-        }
-        Capabilities other = (Capabilities) obj;
-        if (recording != other.recording) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Capabilities [recording=" + recording + "]";
     }
 }
