@@ -2,8 +2,14 @@
 package io.github.infobip_community.client.channels.mms.model;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.URL;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class ExternallyHostedMedia {
     @NotBlank
     private final String contentType;
@@ -26,66 +32,5 @@ public final class ExternallyHostedMedia {
         this.contentType = contentType;
         this.contentId = contentId;
         this.contentUrl = contentUrl;
-    }
-
-    public String getContentType() {
-        return contentType;
-    }
-
-    public String getContentId() {
-        return contentId;
-    }
-
-    public String getContentUrl() {
-        return contentUrl;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((contentId == null) ? 0 : contentId.hashCode());
-        result = prime * result + ((contentType == null) ? 0 : contentType.hashCode());
-        result = prime * result + ((contentUrl == null) ? 0 : contentUrl.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof ExternallyHostedMedia)) {
-            return false;
-        }
-        ExternallyHostedMedia other = (ExternallyHostedMedia) obj;
-        if (contentId == null) {
-            if (other.contentId != null) {
-                return false;
-            }
-        } else if (!contentId.equals(other.contentId)) {
-            return false;
-        }
-        if (contentType == null) {
-            if (other.contentType != null) {
-                return false;
-            }
-        } else if (!contentType.equals(other.contentType)) {
-            return false;
-        }
-        if (contentUrl == null) {
-            if (other.contentUrl != null) {
-                return false;
-            }
-        } else if (!contentUrl.equals(other.contentUrl)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "ExternallyHostedMedia [contentType=" + contentType + ", contentId=" + contentId
-                + ", contentUrl=" + contentUrl + "]";
     }
 }

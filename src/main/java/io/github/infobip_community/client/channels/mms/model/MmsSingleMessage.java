@@ -2,8 +2,15 @@
 package io.github.infobip_community.client.channels.mms.model;
 
 import jakarta.validation.Valid;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.io.File;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class MmsSingleMessage {
     @Valid
     private Head head;
@@ -63,91 +70,5 @@ public final class MmsSingleMessage {
     public MmsSingleMessage smil(String smil) {
         this.smil = smil;
         return this;
-    }
-
-    public Head getHead() {
-        return head;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public File getMedia() {
-        return media;
-    }
-
-    public ExternallyHostedMedia getExternallyHostedMedia() {
-        return externallyHostedMedia;
-    }
-
-    public String getSmil() {
-        return smil;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result
-                + ((externallyHostedMedia == null) ? 0 : externallyHostedMedia.hashCode());
-        result = prime * result + ((head == null) ? 0 : head.hashCode());
-        result = prime * result + ((media == null) ? 0 : media.hashCode());
-        result = prime * result + ((smil == null) ? 0 : smil.hashCode());
-        result = prime * result + ((text == null) ? 0 : text.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof MmsSingleMessage)) {
-            return false;
-        }
-        MmsSingleMessage other = (MmsSingleMessage) obj;
-        if (externallyHostedMedia == null) {
-            if (other.externallyHostedMedia != null) {
-                return false;
-            }
-        } else if (!externallyHostedMedia.equals(other.externallyHostedMedia)) {
-            return false;
-        }
-        if (head == null) {
-            if (other.head != null) {
-                return false;
-            }
-        } else if (!head.equals(other.head)) {
-            return false;
-        }
-        if (media == null) {
-            if (other.media != null) {
-                return false;
-            }
-        } else if (!media.equals(other.media)) {
-            return false;
-        }
-        if (smil == null) {
-            if (other.smil != null) {
-                return false;
-            }
-        } else if (!smil.equals(other.smil)) {
-            return false;
-        }
-        if (text == null) {
-            if (other.text != null) {
-                return false;
-            }
-        } else if (!text.equals(other.text)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "MmsSingleMessage [head=" + head + ", text=" + text + ", media=" + media
-                + ", externallyHostedMedia=" + externallyHostedMedia + ", smil=" + smil + "]";
     }
 }
