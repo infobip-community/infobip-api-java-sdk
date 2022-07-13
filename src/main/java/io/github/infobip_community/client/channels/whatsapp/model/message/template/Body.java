@@ -2,9 +2,16 @@
 package io.github.infobip_community.client.channels.whatsapp.model.message.template;
 
 import jakarta.validation.constraints.NotEmpty;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class Body {
     @NotEmpty
     private List<String> placeholders = new ArrayList<>();
@@ -21,41 +28,5 @@ public final class Body {
      */
     public Body(List<String> placeholders) {
         this.placeholders = placeholders;
-    }
-
-    public List<String> getPlaceholders() {
-        return placeholders;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((placeholders == null) ? 0 : placeholders.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Body)) {
-            return false;
-        }
-        Body other = (Body) obj;
-        if (placeholders == null) {
-            if (other.placeholders != null) {
-                return false;
-            }
-        } else if (!placeholders.equals(other.placeholders)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Body [placeholders=" + placeholders + "]";
     }
 }

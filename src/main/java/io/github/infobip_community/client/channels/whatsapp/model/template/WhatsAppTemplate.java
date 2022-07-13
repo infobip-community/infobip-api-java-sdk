@@ -2,7 +2,9 @@
 package io.github.infobip_community.client.channels.whatsapp.model.template;
 
 import io.github.infobip_community.client.channels.whatsapp.model.common.Language;
+import lombok.ToString;
 
+@ToString(callSuper = true)
 public final class WhatsAppTemplate extends Template {
     /**
      * <p>
@@ -14,11 +16,5 @@ public final class WhatsAppTemplate extends Template {
     public WhatsAppTemplate(String name, Language language, Category category,
             Structure structure) {
         super(name, language, category, structure);
-    }
-
-    @Override
-    public String toString() {
-        return "WhatsAppTemplate [name=" + name + ", language=" + language + ", category="
-                + category + ", structure=" + structure + "]";
     }
 }

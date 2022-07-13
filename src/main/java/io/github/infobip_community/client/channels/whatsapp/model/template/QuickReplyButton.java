@@ -1,6 +1,11 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.template;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public final class QuickReplyButton extends Button {
     /**
      * <p>
@@ -11,29 +16,5 @@ public final class QuickReplyButton extends Button {
      */
     public QuickReplyButton(String text) {
         super(ButtonType.QUICK_REPLY, text);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof QuickReplyButton)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "QuickReplyButton [type=" + type + ", text=" + text + "]";
     }
 }

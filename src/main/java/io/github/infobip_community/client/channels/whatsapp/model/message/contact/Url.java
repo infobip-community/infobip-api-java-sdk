@@ -1,19 +1,20 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.message.contact;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.validator.constraints.URL;
 
+@NoArgsConstructor
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class Url {
     @URL
     private String url;
     private UrlType type;
-
-    /**
-     * <p>
-     * Url.
-     * </p>
-     */
-    public Url() {}
 
     /**
      * Contact's url.
@@ -29,49 +30,5 @@ public final class Url {
     public Url type(UrlType type) {
         this.type = type;
         return this;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public UrlType getType() {
-        return type;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-        result = prime * result + ((url == null) ? 0 : url.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Url)) {
-            return false;
-        }
-        Url other = (Url) obj;
-        if (type != other.type) {
-            return false;
-        }
-        if (url == null) {
-            if (other.url != null) {
-                return false;
-            }
-        } else if (!url.equals(other.url)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Url [url=" + url + ", type=" + type + "]";
     }
 }

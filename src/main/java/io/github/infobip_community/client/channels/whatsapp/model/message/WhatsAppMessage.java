@@ -5,9 +5,15 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.URL;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
+@Getter
+@EqualsAndHashCode
+@ToString
 public abstract class WhatsAppMessage<T extends WhatsAppMessage<T>> {
     @NotBlank
     @Size(min = 1, max = 24)
@@ -74,96 +80,5 @@ public abstract class WhatsAppMessage<T extends WhatsAppMessage<T>> {
     public T notifyUrl(String notifyUrl) {
         this.notifyUrl = notifyUrl;
         return (T) this;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    public String getMessageId() {
-        return messageId;
-    }
-
-    public MessageContent getContent() {
-        return content;
-    }
-
-    public String getCallbackData() {
-        return callbackData;
-    }
-
-    public String getNotifyUrl() {
-        return notifyUrl;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((callbackData == null) ? 0 : callbackData.hashCode());
-        result = prime * result + ((content == null) ? 0 : content.hashCode());
-        result = prime * result + ((from == null) ? 0 : from.hashCode());
-        result = prime * result + ((messageId == null) ? 0 : messageId.hashCode());
-        result = prime * result + ((notifyUrl == null) ? 0 : notifyUrl.hashCode());
-        result = prime * result + ((to == null) ? 0 : to.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof WhatsAppMessage)) {
-            return false;
-        }
-        WhatsAppMessage other = (WhatsAppMessage) obj;
-        if (callbackData == null) {
-            if (other.callbackData != null) {
-                return false;
-            }
-        } else if (!callbackData.equals(other.callbackData)) {
-            return false;
-        }
-        if (content == null) {
-            if (other.content != null) {
-                return false;
-            }
-        } else if (!content.equals(other.content)) {
-            return false;
-        }
-        if (from == null) {
-            if (other.from != null) {
-                return false;
-            }
-        } else if (!from.equals(other.from)) {
-            return false;
-        }
-        if (messageId == null) {
-            if (other.messageId != null) {
-                return false;
-            }
-        } else if (!messageId.equals(other.messageId)) {
-            return false;
-        }
-        if (notifyUrl == null) {
-            if (other.notifyUrl != null) {
-                return false;
-            }
-        } else if (!notifyUrl.equals(other.notifyUrl)) {
-            return false;
-        }
-        if (to == null) {
-            if (other.to != null) {
-                return false;
-            }
-        } else if (!to.equals(other.to)) {
-            return false;
-        }
-        return true;
     }
 }

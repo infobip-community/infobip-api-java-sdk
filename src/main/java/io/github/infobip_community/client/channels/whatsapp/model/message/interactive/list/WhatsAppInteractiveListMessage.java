@@ -3,9 +3,10 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.inter
 
 import io.github.infobip_community.client.channels.whatsapp.model.message.MessageContent;
 import io.github.infobip_community.client.channels.whatsapp.model.message.WhatsAppMessage;
+import lombok.ToString;
 
-public final class WhatsAppInteractiveListMessage
-        extends WhatsAppMessage<WhatsAppInteractiveListMessage> {
+@ToString(callSuper = true)
+public final class WhatsAppInteractiveListMessage extends WhatsAppMessage<WhatsAppInteractiveListMessage> {
     /**
      * <p>
      * WhatsAppInteractiveListMessage.
@@ -15,12 +16,5 @@ public final class WhatsAppInteractiveListMessage
      */
     public WhatsAppInteractiveListMessage(String from, String to, Content content) {
         super(from, to, content);
-    }
-
-    @Override
-    public String toString() {
-        return "WhatsAppInteractiveListMessage [from=" + from + ", to=" + to + ", messageId="
-                + messageId + ", content=" + content + ", callbackData=" + callbackData
-                + ", notifyUrl=" + notifyUrl + "]";
     }
 }

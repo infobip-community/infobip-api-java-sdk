@@ -3,9 +3,16 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.templ
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class TemplateData {
     @Valid
     @NotNull
@@ -43,65 +50,5 @@ public final class TemplateData {
     public TemplateData buttons(List<Button> buttons) {
         this.buttons = buttons;
         return this;
-    }
-
-    public Body getBody() {
-        return body;
-    }
-
-    public Header getHeader() {
-        return header;
-    }
-
-    public List<Button> getButtons() {
-        return buttons;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((body == null) ? 0 : body.hashCode());
-        result = prime * result + ((buttons == null) ? 0 : buttons.hashCode());
-        result = prime * result + ((header == null) ? 0 : header.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof TemplateData)) {
-            return false;
-        }
-        TemplateData other = (TemplateData) obj;
-        if (body == null) {
-            if (other.body != null) {
-                return false;
-            }
-        } else if (!body.equals(other.body)) {
-            return false;
-        }
-        if (buttons == null) {
-            if (other.buttons != null) {
-                return false;
-            }
-        } else if (!buttons.equals(other.buttons)) {
-            return false;
-        }
-        if (header == null) {
-            if (other.header != null) {
-                return false;
-            }
-        } else if (!header.equals(other.header)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "TemplateData [body=" + body + ", header=" + header + ", buttons=" + buttons + "]";
     }
 }

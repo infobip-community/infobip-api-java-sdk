@@ -1,6 +1,9 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.template;
 
+import lombok.ToString;
+
+@ToString(callSuper = true)
 public final class DocumentHeader extends Header {
     /**
      * <p>
@@ -9,10 +12,5 @@ public final class DocumentHeader extends Header {
      */
     public DocumentHeader() {
         super(HeaderFormat.DOCUMENT);
-    }
-
-    @Override
-    public String toString() {
-        return "DocumentHeader [format=" + format + "]";
     }
 }

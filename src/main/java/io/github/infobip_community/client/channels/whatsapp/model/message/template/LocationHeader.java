@@ -1,8 +1,14 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.message.template;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Range;
 
+@Getter
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public final class LocationHeader extends Header {
     @Range(min = -90, max = 90)
     private final double latitude;
@@ -21,52 +27,5 @@ public final class LocationHeader extends Header {
         super(HeaderType.LOCATION);
         this.latitude = latitude;
         this.longitude = longitude;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        long temp;
-        temp = Double.doubleToLongBits(latitude);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(longitude);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof LocationHeader)) {
-            return false;
-        }
-        LocationHeader other = (LocationHeader) obj;
-        if (Double.doubleToLongBits(latitude) != Double.doubleToLongBits(other.latitude)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "LocationHeader [latitude=" + latitude + ", longitude=" + longitude + ", type="
-                + type + "]";
     }
 }

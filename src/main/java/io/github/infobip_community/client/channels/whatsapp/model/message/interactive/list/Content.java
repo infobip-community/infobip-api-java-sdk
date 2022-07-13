@@ -4,7 +4,13 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.inter
 import io.github.infobip_community.client.channels.whatsapp.model.message.MessageContent;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@EqualsAndHashCode(callSuper = false)
+@ToString
 public final class Content extends MessageContent {
     @Valid
     @NotNull
@@ -53,78 +59,5 @@ public final class Content extends MessageContent {
     public Content footer(Footer footer) {
         this.footer = footer;
         return this;
-    }
-
-    public Body getBody() {
-        return body;
-    }
-
-    public Action getAction() {
-        return action;
-    }
-
-    public Header getHeader() {
-        return header;
-    }
-
-    public Footer getFooter() {
-        return footer;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((action == null) ? 0 : action.hashCode());
-        result = prime * result + ((body == null) ? 0 : body.hashCode());
-        result = prime * result + ((footer == null) ? 0 : footer.hashCode());
-        result = prime * result + ((header == null) ? 0 : header.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Content)) {
-            return false;
-        }
-        Content other = (Content) obj;
-        if (action == null) {
-            if (other.action != null) {
-                return false;
-            }
-        } else if (!action.equals(other.action)) {
-            return false;
-        }
-        if (body == null) {
-            if (other.body != null) {
-                return false;
-            }
-        } else if (!body.equals(other.body)) {
-            return false;
-        }
-        if (footer == null) {
-            if (other.footer != null) {
-                return false;
-            }
-        } else if (!footer.equals(other.footer)) {
-            return false;
-        }
-        if (header == null) {
-            if (other.header != null) {
-                return false;
-            }
-        } else if (!header.equals(other.header)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Content [body=" + body + ", action=" + action + ", header=" + header + ", footer="
-                + footer + "]";
     }
 }

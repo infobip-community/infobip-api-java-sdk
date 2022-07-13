@@ -3,7 +3,9 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.locat
 
 import io.github.infobip_community.client.channels.whatsapp.model.message.MessageContent;
 import io.github.infobip_community.client.channels.whatsapp.model.message.WhatsAppMessage;
+import lombok.ToString;
 
+@ToString(callSuper = true)
 public final class WhatsAppLocationMessage extends WhatsAppMessage<WhatsAppLocationMessage> {
     /**
      * <p>
@@ -14,12 +16,5 @@ public final class WhatsAppLocationMessage extends WhatsAppMessage<WhatsAppLocat
      */
     public WhatsAppLocationMessage(String from, String to, Content content) {
         super(from, to, content);
-    }
-
-    @Override
-    public String toString() {
-        return "WhatsAppLocationMessage [from=" + from + ", to=" + to + ", messageId=" + messageId
-                + ", content=" + content + ", callbackData=" + callbackData + ", notifyUrl="
-                + notifyUrl + "]";
     }
 }

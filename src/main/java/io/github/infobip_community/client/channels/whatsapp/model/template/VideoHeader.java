@@ -1,6 +1,9 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.template;
 
+import lombok.ToString;
+
+@ToString(callSuper = true)
 public final class VideoHeader extends Header {
     /**
      * <p>
@@ -9,10 +12,5 @@ public final class VideoHeader extends Header {
      */
     public VideoHeader() {
         super(HeaderFormat.VIDEO);
-    }
-
-    @Override
-    public String toString() {
-        return "VideoHeader [format=" + format + "]";
     }
 }

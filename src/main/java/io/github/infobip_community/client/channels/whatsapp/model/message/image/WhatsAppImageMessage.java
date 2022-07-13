@@ -3,7 +3,9 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.image
 
 import io.github.infobip_community.client.channels.whatsapp.model.message.MessageContent;
 import io.github.infobip_community.client.channels.whatsapp.model.message.WhatsAppMessage;
+import lombok.ToString;
 
+@ToString(callSuper = true)
 public final class WhatsAppImageMessage extends WhatsAppMessage<WhatsAppImageMessage> {
     /**
      * <p>
@@ -14,12 +16,5 @@ public final class WhatsAppImageMessage extends WhatsAppMessage<WhatsAppImageMes
      */
     public WhatsAppImageMessage(String from, String to, Content content) {
         super(from, to, content);
-    }
-
-    @Override
-    public String toString() {
-        return "WhatsAppImageMessage [from=" + from + ", to=" + to + ", messageId=" + messageId
-                + ", content=" + content + ", callbackData=" + callbackData + ", notifyUrl="
-                + notifyUrl + "]";
     }
 }

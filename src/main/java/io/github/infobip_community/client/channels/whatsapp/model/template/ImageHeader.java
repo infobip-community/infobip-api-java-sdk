@@ -1,6 +1,9 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.template;
 
+import lombok.ToString;
+
+@ToString(callSuper = true)
 public final class ImageHeader extends Header {
     /**
      * <p>
@@ -9,10 +12,5 @@ public final class ImageHeader extends Header {
      */
     public ImageHeader() {
         super(HeaderFormat.IMAGE);
-    }
-
-    @Override
-    public String toString() {
-        return "ImageHeader [format=" + format + "]";
     }
 }
