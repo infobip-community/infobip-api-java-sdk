@@ -53,7 +53,6 @@ These should be branched directly off of the master branch.
 git checkout -b my-branch -t upstream/master
 ```
 
-FIXME
 ### 💻 Step 4: Code
 Please follow code structure and naming structure that is already in specific repositories.
 Please be sure to run linters for specific repository from time to time on any code changes to ensure that they follow the project's code style.
