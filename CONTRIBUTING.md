@@ -1,59 +1,151 @@
-# Getting Involved
+# Contributing to Infobip Community
 
-Thanks for your interest in the project, we'd love to have you involved!
-Check out the sections below to find out more about what to do next ...
+✨✨ First off, thanks for taking the time to contribute! ✨✨
 
-## Submitting an Issue
+This project adheres to the Contributor Covenant [code of conduct](CODE_OF_CONDUCT.md). By participating,
+you are expected to uphold this code. Please report unacceptable behavior to DevRel@infobip.com.
 
-If you've seen something that is or might seem like a bug or a mistake in the
-documentation, or you simply have a suggestion for a new feature, please go
-ahead and open us [an issue][issue-link]. Include as much information as 
-you have.
+The following is a set of guidelines for contributing to Infobip's SDKs or any other projects,
+which are hosted in the [Infobip Organisation](https://github.com/infobip-community)  on GitHub.
+These are mostly guidelines, not rules. Use your best judgment,
+and feel free to propose changes to this document in a pull request.
 
-Before you submit your issue please do the archive search first, maybe the
-same question was already answered or is pending.
+## 🚩 Issues
+How to report a bug?
 
-If you did not find a related issue among the ones already asked, feel free
-to open a new issue.
+Bugs are tracked as [GitHub issues](https://docs.github.com/en/issues/tracking-your-work-with-issues/about-issues). After you've determined which repository your bug is related to,
+create an issue on that repository and provide the following information by filling in comment section.
 
-For new feature requests, feel free not to follow to the letter the following
-structure. However, for any sort of bug, anomaly, issue etc. type of request,
-please do refer to provided structure. It might save us a lot of time to
-pinpoint and fix what is the subject of the issue in less time.
+Explain the problem and include additional details to help maintainers reproduce the problem:
+* **Use a clear and descriptive title** for the issue to identify the problem.
+* **Describe the exact steps which reproduce the problem** in as many details as possible.
+* **Provide specific examples to demonstrate the steps**.
+* **Describe the behavior you observed after following the steps**
+* **Explain which behavior you expected to see instead and why.**
+* **Can you reliably reproduce the issue?** If not, provide details about how often the problem happens and under which conditions it normally happens.
 
-### New issue structure (bugs, anomalies, improvements...)
+## ℹ️ Asking for General Help
 
-Providing the following information will increase the chances of your issue
-being dealt with quickly:
+The [Infobip website](https://www.infobip.com/docs/api) has a list of resources for getting programming help and more.
+For any question contributors are available at [DevRel@infobip.com](mailto:DevRel@infobip.com).
+Please use the issue tracker for bugs only!
 
-* **Short TO-THE-POINT Overview** - what seems to be the issue
-* **Description** - more detailed explanation of the issue. The stack trace
-in cases where it is applicable.
-* **Which `infobip-api-java-sdk` version(s)** - which library version(s)
-did you used when occurred with this issue.
-* **Which `JRE` version(s)** - which Java Runtime Environment version(s)
-did you used when occurred with this issue.
-* **Environment** - is this a problem with all development/testing/production
-environments or only specific one(s)?
-* **Reproducing** - how did it happen? Is it an isolated anomaly, can you
-reproduce it, what are the steps to reproduce it?
-* **Related Issues** - is there something similar to this issue that has been
-reported before? If so, please tag that issue(s) as a reference.
-* **Suggest a Fix** - this code is generated, but perhaps you can point to
-the part of the code that might be causing the bug.
+## ⬇️ Pull request
 
-## Pull Requests
+### 🍴 Step 1: Fork
+Fork the project on GitHub and clone your fork locally.
+Example for Java SDK repository:
+```bash
+git clone https://github.com/<your username>/infobip-api-java-sdk.git
+cd infobip-api-java-sdk
+git remote add upstream https://github.com/infobip-community/infobip-api-java-sdk.git
+git fetch upstream
+```
+### 🛠️ Step 2: Build
+Please run all tests that are in repository, all test should pass.
+Please check do you need to activate some additional features that are repository or langauge specific. [Java Readme](README.md)
 
-We'll gladly accept your pull requests, but they should be easily understood,
-short and follow the pre-existing conventions so that everyone involved can
-understand what you're trying to do. Feel free to open an issue first (check
-above on how to do that) and indulge your fellow developers in some
-discussion.We appreciate your effort and time so please always check whether 
-there are previously opened (or even closed) pull requests related to your 
-topic of interest.
+### 🌱 Step 3: Branch
+To keep your development environment organized, create local branches to hold your work.
+These should be branched directly off of the master branch.
 
-When you're ready to start coding, fork this repository to your own GitHub
-account and make your changes in a new branch. We strongly recommend you use
-single-change commits. Once you feel it's ready, open us a pull request and
-explain what the change is so we can evaluate the impact and importance it
-may have on project.
+```bash
+git checkout -b my-branch -t upstream/master
+```
+
+FIXME
+### 💻 Step 4: Code
+Please follow code structure and naming structure that is already in specific repositories.
+Please be sure to run linters for specific repository from time to time on any code changes to ensure that they follow the project's code style.
+For Java repository we mostly conform to [Oracle Java Code Conventions](https://www.oracle.com/java/technologies/javase/codeconventions-contents.html).
+Most important things to keep in mind are:
+* Codebase has four-space indentation
+* Codebase is using Pascal case for classes (ex. MessageBodyBase)
+* Codebase is using camel case for methods (ex. sendSmsMessage)
+* 120 character line preferred limit. (as oposed to 80 in the Oracle guide)
+
+### ✅ Step 5: Commit
+It is recommended to keep your changes grouped logically within individual commits.
+Many contributors find it easier to review changes that are split across multiple commits.
+There is no limit to the number of commits in a pull request.
+
+```bash
+git add my/changed/files
+git commit
+```
+
+Note that multiple commits get squashed when they are landed.
+A good commit message should describe what changed and why.
+Commit message should:
+
+* Contain a short description of the change (preferably 50 characters or less, and no more than 72 characters)
+* First letter should be capital and rest entirely in lowercase with the exception of proper nouns, acronyms,
+  and the words that refer to code, like function/variable names
+
+#### ⚠️ Breaking Changes
+
+When commit has the breaking change first line of commit text should be BREAKING CHANGE.
+
+### 📌 Step 6: Rebase
+Once you have committed your changes, it is a good idea to use git rebase (not git merge) to synchronize your work with the main repository.
+```bash
+git fetch upstream
+git rebase upstream/master
+```
+
+### 🧪 Step 7: Tests
+Bug fixes and features should always come with tests. Looking at other tests to see how they should be structured can also help.
+Before submitting your changes in a pull request, always run the full test suite.
+Make sure the linter does not report any issues and that all tests pass. Please do not submit patches that fail either check.
+
+### 🚀 Step 8: Push
+Once your commits are ready to go -- with passing tests and linting -- begin the process of opening a pull request by pushing your working branch to your fork on GitHub.
+```bash
+git push origin my-branch
+```
+
+### 📬 Step 9: Opening the Pull Request
+From within GitHub, open new pull request. Add repository admins as reviewers.
+Your PR may be delayed in being merged as maintainers seek more information or clarify ambiguities.
+
+### 🤼 Step 10: Discuss and update
+You will probably get feedback or requests for changes to your pull request.
+This is a big part of the submission process so don't be discouraged!
+Some contributors may sign off on the pull request right away.
+Others may have detailed comments or feedback.
+This is a necessary part of the process in order to evaluate whether the changes are correct and necessary.
+
+To make changes to an existing pull request, make the changes to your local branch,
+add a new commit with those changes, and push those to your fork. GitHub will automatically update the pull request.
+
+```bash
+git add my/changed/files
+git commit
+git push origin my-branch
+```
+
+Feel free to post a comment in the pull request to ping reviewers if you are awaiting an answer on something.
+
+### 🌍 Step 11: Landing
+
+In order to land, a pull request needs to be reviewed and approved by at least one repository Owner and pass CI.
+After that, if there are no objections from other contributors, the pull request can be merged.
+
+🎉🎊 Congratulations and thanks for your contribution! 🎊🎉
+
+Every pull request is tested on the Continuous Integration (CI) system to confirm that it works.
+Ideally, the pull request will pass ("be green") on all of CI's tests.
+This means that all tests pass and there are no linting errors.
+However, it is not uncommon for the CI infrastructure itself to fail on specific platforms or for so-called "flaky" tests to fail ("be red").
+Each CI failure must be manually inspected to determine the cause.
+
+## 📜 Code of Conduct
+
+This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md).
+By participating, you are expected to uphold this code.
+Please report unacceptable behavior to [DevRel@infobip.com](mailto:DevRel@infobip.com).
+
+## 📚 Further Reading
+
+For more in-depth guides on developing SDKs, see
+[Readme](README.md) and [Infobip's website](https://www.infobip.com/docs/api).
