@@ -3,9 +3,16 @@ package io.github.infobip_community.client.channels.rcs.model;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public final class CardContent extends Content {
     @NotNull
     private final Orientation orientation;
@@ -39,73 +46,5 @@ public final class CardContent extends Content {
     public CardContent suggestions(List<Suggestion> suggestions) {
         this.suggestions = suggestions;
         return this;
-    }
-
-    public Orientation getOrientation() {
-        return orientation;
-    }
-
-    public Alignment getAlignment() {
-        return alignment;
-    }
-
-    public ResourceContent getContent() {
-        return content;
-    }
-
-    public List<Suggestion> getSuggestions() {
-        return suggestions;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((alignment == null) ? 0 : alignment.hashCode());
-        result = prime * result + ((content == null) ? 0 : content.hashCode());
-        result = prime * result + ((orientation == null) ? 0 : orientation.hashCode());
-        result = prime * result + ((suggestions == null) ? 0 : suggestions.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof CardContent)) {
-            return false;
-        }
-        CardContent other = (CardContent) obj;
-        if (alignment != other.alignment) {
-            return false;
-        }
-        if (content == null) {
-            if (other.content != null) {
-                return false;
-            }
-        } else if (!content.equals(other.content)) {
-            return false;
-        }
-        if (orientation != other.orientation) {
-            return false;
-        }
-        if (suggestions == null) {
-            if (other.suggestions != null) {
-                return false;
-            }
-        } else if (!suggestions.equals(other.suggestions)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "CardContent [orientation=" + orientation + ", alignment=" + alignment + ", content="
-                + content + ", suggestions=" + suggestions + ", type=" + type + "]";
     }
 }

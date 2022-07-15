@@ -3,7 +3,9 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.docum
 
 import io.github.infobip_community.client.channels.whatsapp.model.message.MessageContent;
 import io.github.infobip_community.client.channels.whatsapp.model.message.WhatsAppMessage;
+import lombok.ToString;
 
+@ToString(callSuper = true)
 public final class WhatsAppDocumentMessage extends WhatsAppMessage<WhatsAppDocumentMessage> {
     /**
      * <p>
@@ -14,12 +16,5 @@ public final class WhatsAppDocumentMessage extends WhatsAppMessage<WhatsAppDocum
      */
     public WhatsAppDocumentMessage(String from, String to, Content content) {
         super(from, to, content);
-    }
-
-    @Override
-    public String toString() {
-        return "WhatsAppDocumentMessage [from=" + from + ", to=" + to + ", messageId=" + messageId
-                + ", content=" + content + ", callbackData=" + callbackData + ", notifyUrl="
-                + notifyUrl + "]";
     }
 }

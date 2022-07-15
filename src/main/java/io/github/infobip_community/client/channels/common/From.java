@@ -1,6 +1,11 @@
 
 package io.github.infobip_community.client.channels.common;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public final class From extends FromTo {
     /**
      * <p>
@@ -14,29 +19,5 @@ public final class From extends FromTo {
      */
     public From(Integer hour, Integer minute) {
         super(hour, minute);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof From)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "From [hour=" + hour + ", minute=" + minute + "]";
     }
 }

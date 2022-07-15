@@ -2,8 +2,15 @@
 package io.github.infobip_community.client.channels.sms.model.message.outbound;
 
 import jakarta.validation.Valid;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.List;
 
+@Getter
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public final class TextMessage extends Message<TextMessage> {
     @Valid
     private Language language;
@@ -47,70 +54,5 @@ public final class TextMessage extends Message<TextMessage> {
     public TextMessage transliteration(Transliteration transliteration) {
         this.transliteration = transliteration;
         return this;
-    }
-
-    public Language getLanguage() {
-        return language;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public Transliteration getTransliteration() {
-        return transliteration;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((language == null) ? 0 : language.hashCode());
-        result = prime * result + ((text == null) ? 0 : text.hashCode());
-        result = prime * result + ((transliteration == null) ? 0 : transliteration.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof TextMessage)) {
-            return false;
-        }
-        TextMessage other = (TextMessage) obj;
-        if (language == null) {
-            if (other.language != null) {
-                return false;
-            }
-        } else if (!language.equals(other.language)) {
-            return false;
-        }
-        if (text == null) {
-            if (other.text != null) {
-                return false;
-            }
-        } else if (!text.equals(other.text)) {
-            return false;
-        }
-        if (transliteration != other.transliteration) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "TextMessage [language=" + language + ", text=" + text + ", transliteration="
-                + transliteration + ", callbackData=" + callbackData + ", deliveryTimeWindow="
-                + deliveryTimeWindow + ", destinations=" + destinations + ", flash=" + flash
-                + ", from=" + from + ", intermediateReport=" + intermediateReport
-                + ", notifyContentType=" + notifyContentType + ", notifyUrl=" + notifyUrl
-                + ", regional=" + regional + ", sendAt=" + sendAt + ", validityPeriod="
-                + validityPeriod + "]";
     }
 }

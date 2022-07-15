@@ -2,7 +2,13 @@
 package io.github.infobip_community.client.channels.sms.model.message.outbound;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class SendingSpeedLimit {
     @NotNull
     private final Integer amount;
@@ -34,49 +40,5 @@ public final class SendingSpeedLimit {
     public SendingSpeedLimit timeUnit(SpeedLimitTimeUnit timeUnit) {
         this.timeUnit = timeUnit;
         return this;
-    }
-
-    public Integer getAmount() {
-        return amount;
-    }
-
-    public SpeedLimitTimeUnit getTimeUnit() {
-        return timeUnit;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((amount == null) ? 0 : amount.hashCode());
-        result = prime * result + ((timeUnit == null) ? 0 : timeUnit.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof SendingSpeedLimit)) {
-            return false;
-        }
-        SendingSpeedLimit other = (SendingSpeedLimit) obj;
-        if (amount == null) {
-            if (other.amount != null) {
-                return false;
-            }
-        } else if (!amount.equals(other.amount)) {
-            return false;
-        }
-        if (timeUnit != other.timeUnit) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "SendingSpeedLimit [amount=" + amount + ", timeUnit=" + timeUnit + "]";
     }
 }

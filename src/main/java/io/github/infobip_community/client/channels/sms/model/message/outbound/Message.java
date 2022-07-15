@@ -10,9 +10,16 @@ import jakarta.validation.constraints.Size;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.URL;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
+@Getter
+@EqualsAndHashCode
+@ToString
 public abstract class Message<T extends Message<T>> {
     @Size(min = 0, max = 4000)
     protected String callbackData;
@@ -138,145 +145,5 @@ public abstract class Message<T extends Message<T>> {
     public T validityPeriod(Long validityPeriod) {
         this.validityPeriod = validityPeriod;
         return (T) this;
-    }
-
-    public String getCallbackData() {
-        return callbackData;
-    }
-
-    public DeliveryTimeWindow getDeliveryTimeWindow() {
-        return deliveryTimeWindow;
-    }
-
-    public List<Destination> getDestinations() {
-        return destinations;
-    }
-
-    public boolean isFlash() {
-        return flash;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public boolean isIntermediateReport() {
-        return intermediateReport;
-    }
-
-    public NotifyContentType getNotifyContentType() {
-        return notifyContentType;
-    }
-
-    public String getNotifyUrl() {
-        return notifyUrl;
-    }
-
-    public Regional getRegional() {
-        return regional;
-    }
-
-    public OffsetDateTime getSendAt() {
-        return sendAt;
-    }
-
-    public Long getValidityPeriod() {
-        return validityPeriod;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((callbackData == null) ? 0 : callbackData.hashCode());
-        result = prime * result
-                + ((deliveryTimeWindow == null) ? 0 : deliveryTimeWindow.hashCode());
-        result = prime * result + ((destinations == null) ? 0 : destinations.hashCode());
-        result = prime * result + (flash ? 1231 : 1237);
-        result = prime * result + ((from == null) ? 0 : from.hashCode());
-        result = prime * result + (intermediateReport ? 1231 : 1237);
-        result = prime * result + ((notifyContentType == null) ? 0 : notifyContentType.hashCode());
-        result = prime * result + ((notifyUrl == null) ? 0 : notifyUrl.hashCode());
-        result = prime * result + ((regional == null) ? 0 : regional.hashCode());
-        result = prime * result + ((sendAt == null) ? 0 : sendAt.hashCode());
-        result = prime * result + ((validityPeriod == null) ? 0 : validityPeriod.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Message)) {
-            return false;
-        }
-        Message other = (Message) obj;
-        if (callbackData == null) {
-            if (other.callbackData != null) {
-                return false;
-            }
-        } else if (!callbackData.equals(other.callbackData)) {
-            return false;
-        }
-        if (deliveryTimeWindow == null) {
-            if (other.deliveryTimeWindow != null) {
-                return false;
-            }
-        } else if (!deliveryTimeWindow.equals(other.deliveryTimeWindow)) {
-            return false;
-        }
-        if (destinations == null) {
-            if (other.destinations != null) {
-                return false;
-            }
-        } else if (!destinations.equals(other.destinations)) {
-            return false;
-        }
-        if (flash != other.flash) {
-            return false;
-        }
-        if (from == null) {
-            if (other.from != null) {
-                return false;
-            }
-        } else if (!from.equals(other.from)) {
-            return false;
-        }
-        if (intermediateReport != other.intermediateReport) {
-            return false;
-        }
-        if (notifyContentType != other.notifyContentType) {
-            return false;
-        }
-        if (notifyUrl == null) {
-            if (other.notifyUrl != null) {
-                return false;
-            }
-        } else if (!notifyUrl.equals(other.notifyUrl)) {
-            return false;
-        }
-        if (regional == null) {
-            if (other.regional != null) {
-                return false;
-            }
-        } else if (!regional.equals(other.regional)) {
-            return false;
-        }
-        if (sendAt == null) {
-            if (other.sendAt != null) {
-                return false;
-            }
-        } else if (!sendAt.equals(other.sendAt)) {
-            return false;
-        }
-        if (validityPeriod == null) {
-            if (other.validityPeriod != null) {
-                return false;
-            }
-        } else if (!validityPeriod.equals(other.validityPeriod)) {
-            return false;
-        }
-        return true;
     }
 }

@@ -4,9 +4,16 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.inter
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class Section {
     @Size(max = 24)
     private String title;
@@ -33,53 +40,5 @@ public final class Section {
     public Section title(String title) {
         this.title = title;
         return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public List<Row> getRows() {
-        return rows;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((rows == null) ? 0 : rows.hashCode());
-        result = prime * result + ((title == null) ? 0 : title.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Section)) {
-            return false;
-        }
-        Section other = (Section) obj;
-        if (rows == null) {
-            if (other.rows != null) {
-                return false;
-            }
-        } else if (!rows.equals(other.rows)) {
-            return false;
-        }
-        if (title == null) {
-            if (other.title != null) {
-                return false;
-            }
-        } else if (!title.equals(other.title)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Section [title=" + title + ", rows=" + rows + "]";
     }
 }

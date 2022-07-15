@@ -3,7 +3,13 @@ package io.github.infobip_community.client.channels.rcs.model;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public final class FileContent extends Content {
     @Valid
     @NotNull
@@ -29,56 +35,5 @@ public final class FileContent extends Content {
     public FileContent thumbnail(ResourceUrl thumbnail) {
         this.thumbnail = thumbnail;
         return this;
-    }
-
-    public ResourceUrl getFile() {
-        return file;
-    }
-
-    public ResourceUrl getThumbnail() {
-        return thumbnail;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((file == null) ? 0 : file.hashCode());
-        result = prime * result + ((thumbnail == null) ? 0 : thumbnail.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof FileContent)) {
-            return false;
-        }
-        FileContent other = (FileContent) obj;
-        if (file == null) {
-            if (other.file != null) {
-                return false;
-            }
-        } else if (!file.equals(other.file)) {
-            return false;
-        }
-        if (thumbnail == null) {
-            if (other.thumbnail != null) {
-                return false;
-            }
-        } else if (!thumbnail.equals(other.thumbnail)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "FileContent [file=" + file + ", thumbnail=" + thumbnail + ", type=" + type + "]";
     }
 }

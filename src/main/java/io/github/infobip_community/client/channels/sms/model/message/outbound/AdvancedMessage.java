@@ -2,19 +2,20 @@
 package io.github.infobip_community.client.channels.sms.model.message.outbound;
 
 import jakarta.validation.Valid;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
+@NoArgsConstructor
+@Getter
+@EqualsAndHashCode
+@ToString
 public abstract class AdvancedMessage<T extends AdvancedMessage<T>> {
     protected String bulkId;
     @Valid
     protected SendingSpeedLimit sendingSpeedLimit;
-
-    /**
-     * <p>
-     * AdvancedMessage.
-     * </p>
-     */
-    public AdvancedMessage() {}
 
     /**
      * Unique ID assigned to the request if messaging multiple recipients or sending
@@ -38,48 +39,5 @@ public abstract class AdvancedMessage<T extends AdvancedMessage<T>> {
     public T sendingSpeedLimit(SendingSpeedLimit sendingSpeedLimit) {
         this.sendingSpeedLimit = sendingSpeedLimit;
         return (T) this;
-    }
-
-    public String getBulkId() {
-        return bulkId;
-    }
-
-    public SendingSpeedLimit getSendingSpeedLimit() {
-        return sendingSpeedLimit;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((bulkId == null) ? 0 : bulkId.hashCode());
-        result = prime * result + ((sendingSpeedLimit == null) ? 0 : sendingSpeedLimit.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof AdvancedMessage)) {
-            return false;
-        }
-        AdvancedMessage other = (AdvancedMessage) obj;
-        if (bulkId == null) {
-            if (other.bulkId != null) {
-                return false;
-            }
-        } else if (!bulkId.equals(other.bulkId)) {
-            return false;
-        }
-        if (sendingSpeedLimit == null) {
-            if (other.sendingSpeedLimit != null) {
-                return false;
-            }
-        } else if (!sendingSpeedLimit.equals(other.sendingSpeedLimit)) {
-            return false;
-        }
-        return true;
     }
 }

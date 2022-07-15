@@ -2,9 +2,16 @@
 package io.github.infobip_community.client.channels.sms.model.tfa.pin;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class TfaSendPinCode {
     @NotBlank
     private final String applicationId;
@@ -50,90 +57,5 @@ public final class TfaSendPinCode {
     public TfaSendPinCode placeholders(Map<String, String> placeholders) {
         this.placeholders = placeholders;
         return this;
-    }
-
-    public String getApplicationId() {
-        return applicationId;
-    }
-
-    public String getFrom() {
-        return from;
-    }
-
-    public String getMessageId() {
-        return messageId;
-    }
-
-    public Map<String, String> getPlaceholders() {
-        return placeholders;
-    }
-
-    public String getTo() {
-        return to;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((applicationId == null) ? 0 : applicationId.hashCode());
-        result = prime * result + ((from == null) ? 0 : from.hashCode());
-        result = prime * result + ((messageId == null) ? 0 : messageId.hashCode());
-        result = prime * result + ((placeholders == null) ? 0 : placeholders.hashCode());
-        result = prime * result + ((to == null) ? 0 : to.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof TfaSendPinCode)) {
-            return false;
-        }
-        TfaSendPinCode other = (TfaSendPinCode) obj;
-        if (applicationId == null) {
-            if (other.applicationId != null) {
-                return false;
-            }
-        } else if (!applicationId.equals(other.applicationId)) {
-            return false;
-        }
-        if (from == null) {
-            if (other.from != null) {
-                return false;
-            }
-        } else if (!from.equals(other.from)) {
-            return false;
-        }
-        if (messageId == null) {
-            if (other.messageId != null) {
-                return false;
-            }
-        } else if (!messageId.equals(other.messageId)) {
-            return false;
-        }
-        if (placeholders == null) {
-            if (other.placeholders != null) {
-                return false;
-            }
-        } else if (!placeholders.equals(other.placeholders)) {
-            return false;
-        }
-        if (to == null) {
-            if (other.to != null) {
-                return false;
-            }
-        } else if (!to.equals(other.to)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "TfaSendPinCode [applicationId=" + applicationId + ", from=" + from + ", messageId="
-                + messageId + ", placeholders=" + placeholders + ", to=" + to + "]";
     }
 }

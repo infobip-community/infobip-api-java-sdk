@@ -3,9 +3,10 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.inter
 
 import io.github.infobip_community.client.channels.whatsapp.model.message.MessageContent;
 import io.github.infobip_community.client.channels.whatsapp.model.message.WhatsAppMessage;
+import lombok.ToString;
 
-public final class WhatsAppInteractiveButtonsMessage
-        extends WhatsAppMessage<WhatsAppInteractiveButtonsMessage> {
+@ToString(callSuper = true)
+public final class WhatsAppInteractiveButtonsMessage extends WhatsAppMessage<WhatsAppInteractiveButtonsMessage> {
     /**
      * <p>
      * WhatsAppInteractiveButtonsMessage.
@@ -16,12 +17,5 @@ public final class WhatsAppInteractiveButtonsMessage
     public WhatsAppInteractiveButtonsMessage(String from, String to,
             Content content) {
         super(from, to, content);
-    }
-
-    @Override
-    public String toString() {
-        return "WhatsAppInteractiveButtonsMessage [from=" + from + ", to=" + to + ", messageId="
-                + messageId + ", content=" + content + ", callbackData=" + callbackData
-                + ", notifyUrl=" + notifyUrl + "]";
     }
 }

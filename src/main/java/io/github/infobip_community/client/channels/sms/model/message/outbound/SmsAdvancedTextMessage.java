@@ -3,9 +3,16 @@ package io.github.infobip_community.client.channels.sms.model.message.outbound;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@EqualsAndHashCode(callSuper = true)
+@ToString(callSuper = true)
 public final class SmsAdvancedTextMessage extends AdvancedMessage<SmsAdvancedTextMessage> {
     @Valid
     @NotEmpty
@@ -31,57 +38,5 @@ public final class SmsAdvancedTextMessage extends AdvancedMessage<SmsAdvancedTex
     public SmsAdvancedTextMessage tracking(Tracking tracking) {
         this.tracking = tracking;
         return this;
-    }
-
-    public List<TextMessage> getMessages() {
-        return messages;
-    }
-
-    public Tracking getTracking() {
-        return tracking;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = super.hashCode();
-        result = prime * result + ((messages == null) ? 0 : messages.hashCode());
-        result = prime * result + ((tracking == null) ? 0 : tracking.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!super.equals(obj)) {
-            return false;
-        }
-        if (!(obj instanceof SmsAdvancedTextMessage)) {
-            return false;
-        }
-        SmsAdvancedTextMessage other = (SmsAdvancedTextMessage) obj;
-        if (messages == null) {
-            if (other.messages != null) {
-                return false;
-            }
-        } else if (!messages.equals(other.messages)) {
-            return false;
-        }
-        if (tracking == null) {
-            if (other.tracking != null) {
-                return false;
-            }
-        } else if (!tracking.equals(other.tracking)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "SmsAdvancedTextMessage [messages=" + messages + ", tracking=" + tracking
-                + ", bulkId=" + bulkId + ", sendingSpeedLimit=" + sendingSpeedLimit + "]";
     }
 }

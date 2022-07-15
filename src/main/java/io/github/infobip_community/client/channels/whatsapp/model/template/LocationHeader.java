@@ -1,6 +1,9 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.template;
 
+import lombok.ToString;
+
+@ToString(callSuper = true)
 public final class LocationHeader extends Header {
     /**
      * <p>
@@ -9,10 +12,5 @@ public final class LocationHeader extends Header {
      */
     public LocationHeader() {
         super(HeaderFormat.LOCATION);
-    }
-
-    @Override
-    public String toString() {
-        return "LocationHeader [format=" + format + "]";
     }
 }

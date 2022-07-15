@@ -1,6 +1,13 @@
 
 package io.github.infobip_community.client.channels.sms.model.message.outbound;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class Tracking {
     private String baseUrl;
     private String processKey;
@@ -48,70 +55,5 @@ public final class Tracking {
     public Tracking type(ConversionType type) {
         this.type = type;
         return this;
-    }
-
-    public String getBaseUrl() {
-        return baseUrl;
-    }
-
-    public String getProcessKey() {
-        return processKey;
-    }
-
-    public ConversionRateTrack getTrack() {
-        return track;
-    }
-
-    public ConversionType getType() {
-        return type;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((baseUrl == null) ? 0 : baseUrl.hashCode());
-        result = prime * result + ((processKey == null) ? 0 : processKey.hashCode());
-        result = prime * result + ((track == null) ? 0 : track.hashCode());
-        result = prime * result + ((type == null) ? 0 : type.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Tracking)) {
-            return false;
-        }
-        Tracking other = (Tracking) obj;
-        if (baseUrl == null) {
-            if (other.baseUrl != null) {
-                return false;
-            }
-        } else if (!baseUrl.equals(other.baseUrl)) {
-            return false;
-        }
-        if (processKey == null) {
-            if (other.processKey != null) {
-                return false;
-            }
-        } else if (!processKey.equals(other.processKey)) {
-            return false;
-        }
-        if (track != other.track) {
-            return false;
-        }
-        if (type != other.type) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Tracking [baseUrl=" + baseUrl + ", processKey=" + processKey + ", track=" + track
-                + ", type=" + type + "]";
     }
 }

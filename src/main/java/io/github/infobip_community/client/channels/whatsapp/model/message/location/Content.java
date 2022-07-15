@@ -3,8 +3,14 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.locat
 
 import io.github.infobip_community.client.channels.whatsapp.model.message.MessageContent;
 import jakarta.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.validator.constraints.Range;
 
+@Getter
+@EqualsAndHashCode(callSuper = false)
+@ToString
 public final class Content extends MessageContent {
     @Range(min = -90, max = 90)
     private final double latitude;
@@ -44,73 +50,5 @@ public final class Content extends MessageContent {
     public Content address(String address) {
         this.address = address;
         return this;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((address == null) ? 0 : address.hashCode());
-        long temp;
-        temp = Double.doubleToLongBits(latitude);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(longitude);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Content)) {
-            return false;
-        }
-        Content other = (Content) obj;
-        if (address == null) {
-            if (other.address != null) {
-                return false;
-            }
-        } else if (!address.equals(other.address)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(latitude) != Double.doubleToLongBits(other.latitude)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(longitude) != Double.doubleToLongBits(other.longitude)) {
-            return false;
-        }
-        if (name == null) {
-            if (other.name != null) {
-                return false;
-            }
-        } else if (!name.equals(other.name)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Content [latitude=" + latitude + ", longitude=" + longitude + ", name=" + name
-                + ", address=" + address + "]";
     }
 }

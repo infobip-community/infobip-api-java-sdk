@@ -2,7 +2,13 @@
 package io.github.infobip_community.client.channels.sms.model.message.outbound;
 
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@EqualsAndHashCode
+@ToString
 public final class SmsPreviewMessage {
     private LanguageCode languageCode;
     @NotNull
@@ -39,58 +45,5 @@ public final class SmsPreviewMessage {
     public SmsPreviewMessage transliteration(Transliteration transliteration) {
         this.transliteration = transliteration;
         return this;
-    }
-
-    public LanguageCode getLanguageCode() {
-        return languageCode;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public Transliteration getTransliteration() {
-        return transliteration;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((languageCode == null) ? 0 : languageCode.hashCode());
-        result = prime * result + ((text == null) ? 0 : text.hashCode());
-        result = prime * result + ((transliteration == null) ? 0 : transliteration.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof SmsPreviewMessage)) {
-            return false;
-        }
-        SmsPreviewMessage other = (SmsPreviewMessage) obj;
-        if (languageCode != other.languageCode) {
-            return false;
-        }
-        if (text == null) {
-            if (other.text != null) {
-                return false;
-            }
-        } else if (!text.equals(other.text)) {
-            return false;
-        }
-        if (transliteration != other.transliteration) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "SmsPreviewMessage [languageCode=" + languageCode + ", text=" + text
-                + ", transliteration=" + transliteration + "]";
     }
 }

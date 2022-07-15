@@ -7,7 +7,13 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 
+@Getter
+@EqualsAndHashCode(callSuper = false)
+@ToString
 public final class Content extends MessageContent {
     @NotBlank
     @Size(min = 1, max = 512)
@@ -36,62 +42,5 @@ public final class Content extends MessageContent {
         this.templateName = templateName;
         this.templateData = templateData;
         this.language = language;
-    }
-
-    public String getTemplateName() {
-        return templateName;
-    }
-
-    public TemplateData getTemplateData() {
-        return templateData;
-    }
-
-    public Language getLanguage() {
-        return language;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((language == null) ? 0 : language.hashCode());
-        result = prime * result + ((templateData == null) ? 0 : templateData.hashCode());
-        result = prime * result + ((templateName == null) ? 0 : templateName.hashCode());
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Content)) {
-            return false;
-        }
-        Content other = (Content) obj;
-        if (language != other.language) {
-            return false;
-        }
-        if (templateData == null) {
-            if (other.templateData != null) {
-                return false;
-            }
-        } else if (!templateData.equals(other.templateData)) {
-            return false;
-        }
-        if (templateName == null) {
-            if (other.templateName != null) {
-                return false;
-            }
-        } else if (!templateName.equals(other.templateName)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Content [templateName=" + templateName + ", templateData=" + templateData
-                + ", language=" + language + "]";
     }
 }
