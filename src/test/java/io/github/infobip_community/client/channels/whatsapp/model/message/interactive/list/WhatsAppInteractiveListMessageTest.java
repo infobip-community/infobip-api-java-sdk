@@ -3,6 +3,9 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.inter
 
 import static io.github.infobip_community.client.common.RequestValidator.getValidator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Body;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Footer;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.TextHeader;
 import io.github.infobip_community.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
@@ -41,7 +44,7 @@ public class WhatsAppInteractiveListMessageTest {
     public static WhatsAppInteractiveListMessage
             getWhatsAppInteractiveListMessageWithRequiredParameters() {
         return new WhatsAppInteractiveListMessage("441134960000", "441134960001",
-                new Content(new Body("Some text"), new Action("Choose one",
+                new ListContent(new Body("Some text"), new ListAction("Choose one",
                         Arrays.asList(new Section(Arrays.asList(new Row("1", "row title")))))));
     }
 
@@ -49,8 +52,8 @@ public class WhatsAppInteractiveListMessageTest {
     public static WhatsAppInteractiveListMessage
             getWhatsAppInteractiveListMessageWithAllParameters() {
         return new WhatsAppInteractiveListMessage("441134960000", "441134960001",
-                new Content(new Body(""),
-                        new Action("Choose one",
+                new ListContent(new Body(""),
+                        new ListAction("Choose one",
                                 Arrays.asList(
                                         new Section(Arrays.asList(
                                                 new Row("1", "first row title")

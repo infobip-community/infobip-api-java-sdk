@@ -14,8 +14,7 @@ public final class WhatsAppInteractiveProductMessage extends WhatsAppMessage<Wha
      *
      * @see WhatsAppMessage#WhatsAppMessage(String, String, MessageContent)
      */
-    public WhatsAppInteractiveProductMessage(String from, String to,
-            Content content) {
-        super(from, to, content);
+    public WhatsAppInteractiveProductMessage(String from, String to, ProductContent productContent) {
+        super(from, to, productContent);
     }
 }

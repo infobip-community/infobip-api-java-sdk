@@ -1,6 +1,8 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.message.interactive.button;
 
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Header;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.HeaderType;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.EqualsAndHashCode;

@@ -20,7 +20,7 @@ public final class Section {
     @Valid
     @NotEmpty
     @Size(max = 10)
-    private List<Row> rows = new ArrayList<>();
+    private List<Row> rows;
 
     /**
      * <p>

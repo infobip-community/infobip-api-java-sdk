@@ -3,6 +3,8 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.inter
 
 import static io.github.infobip_community.client.common.RequestValidator.getValidator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Body;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Footer;
 import io.github.infobip_community.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Set;
@@ -42,13 +44,13 @@ public class WhatsAppInteractiveProductMessageTest {
     public static WhatsAppInteractiveProductMessage
             getWhatsAppInteractiveProductMessageWithRequiredParameters() {
         return new WhatsAppInteractiveProductMessage("441134960000", "441134960001",
-                new Content(new Action("1", "2")));
+                new ProductContent(new ProductAction("1", "2")));
     }
 
     public static WhatsAppInteractiveProductMessage
             getWhatsAppInteractiveProductMessageWithAllParameters() {
         return new WhatsAppInteractiveProductMessage("", "441134960001",
-                new Content(new Action("1", "2")).body(new Body("Some text"))
+                new ProductContent(new ProductAction("1", "2")).body(new Body("Some text"))
                         .footer(new Footer("Footer")))
                                 .messageId("a28dd97c-1ffb-4fcf-99f1-0b557ed381da")
                                 .callbackData("Callback data")

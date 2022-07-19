@@ -1,7 +1,11 @@
 
 package io.github.infobip_community.client.channels.whatsapp.model.message.interactive.list;
 
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Body;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Footer;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Header;
 import io.github.infobip_community.client.channels.whatsapp.model.message.MessageContent;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Content;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
@@ -11,17 +15,12 @@ import lombok.ToString;
 @Getter
 @EqualsAndHashCode(callSuper = false)
 @ToString
-public final class Content extends MessageContent {
+public final class ListContent extends Content {
     @Valid
     @NotNull
     private final Body body;
     @Valid
-    @NotNull
-    private final Action action;
-    @Valid
     private Header header;
-    @Valid
-    private Footer footer;
 
     /**
      * <p>
@@ -33,12 +32,12 @@ public final class Content extends MessageContent {
      * @param body Body of a message containing one or more <a href=
      *     "https://www.infobip.com/docs/whatsapp/message-types#free-form-messages">interactive
      *     elements</a>.
-     * @param action Allows you to specify the title of the list and its sections.
+     * @param listAction Allows you to specify the title of the list and its sections.
      *     Each section can have a title and multiple rows to select.
      */
-    public Content(Body body, Action action) {
+    public ListContent(Body body, ListAction listAction) {
+        super(listAction);
         this.body = body;
-        this.action = action;
     }
 
     /**
@@ -46,7 +45,7 @@ public final class Content extends MessageContent {
      * "https://www.infobip.com/docs/whatsapp/message-types#free-form-messages">interactive
      * elements</a>.
      */
-    public Content header(Header header) {
+    public ListContent header(Header header) {
         this.header = header;
         return this;
     }
@@ -56,8 +55,8 @@ public final class Content extends MessageContent {
      * "https://www.infobip.com/docs/whatsapp/message-types#free-form-messages">interactive
      * elements</a>.
      */
-    public Content footer(Footer footer) {
-        this.footer = footer;
+    public ListContent footer(Footer footer) {
+        super.footer(footer);
         return this;
     }
 }

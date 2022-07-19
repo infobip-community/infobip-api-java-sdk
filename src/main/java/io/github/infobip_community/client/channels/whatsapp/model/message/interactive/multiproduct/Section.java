@@ -17,7 +17,7 @@ public final class Section {
     @Size(max = 24)
     private String title;
     @NotEmpty
-    private List<String> productRetailerIds = new ArrayList<>();
+    private List<String> productRetailerIds;
 
     /**
      * <p>
