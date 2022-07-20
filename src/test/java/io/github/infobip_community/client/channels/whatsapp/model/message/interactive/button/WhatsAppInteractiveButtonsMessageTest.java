@@ -3,6 +3,8 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.inter
 
 import static io.github.infobip_community.client.common.RequestValidator.getValidator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Body;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Footer;
 import io.github.infobip_community.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
@@ -43,15 +45,15 @@ public class WhatsAppInteractiveButtonsMessageTest {
     public static WhatsAppInteractiveButtonsMessage
             getWhatsAppInteractiveButtonsMessageWithRequiredParameters() {
         return new WhatsAppInteractiveButtonsMessage("441134960000", "441134960001",
-                new Content(new Body("Some text"),
-                        new Action(Arrays.asList(new Button(ButtonType.REPLY, "1", "Yes")))));
+                new ButtonContent(new Body("Some text"),
+                        new ButtonAction(Arrays.asList(new Button(ButtonType.REPLY, "1", "Yes")))));
     }
 
     public static WhatsAppInteractiveButtonsMessage
             getWhatsAppInteractiveButtonsMessageWithAllParameters() {
         return new WhatsAppInteractiveButtonsMessage("441134960000", "441134960001",
-                new Content(new Body(""),
-                        new Action(Arrays.asList(new Button(ButtonType.REPLY, "1", "Yes"),
+                new ButtonContent(new Body(""),
+                        new ButtonAction(Arrays.asList(new Button(ButtonType.REPLY, "1", "Yes"),
                                 new Button(ButtonType.REPLY, "2", "No"))))
                                         .header(new DocumentHeader("https://example.com/document")
                                                 .filename("document.pdf"))

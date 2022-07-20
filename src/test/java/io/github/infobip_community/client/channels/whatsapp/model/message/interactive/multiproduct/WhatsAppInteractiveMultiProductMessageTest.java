@@ -3,6 +3,9 @@ package io.github.infobip_community.client.channels.whatsapp.model.message.inter
 
 import static io.github.infobip_community.client.common.RequestValidator.getValidator;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Body;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Footer;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.TextHeader;
 import io.github.infobip_community.client.common.Serde;
 import jakarta.validation.ConstraintViolation;
 import java.util.Arrays;
@@ -45,14 +48,14 @@ public class WhatsAppInteractiveMultiProductMessageTest {
     public static WhatsAppInteractiveMultiProductMessage
             getWhatsAppInteractiveMultiProductMessageWithRequiredParameters() {
         return new WhatsAppInteractiveMultiProductMessage("441134960000", "441134960001",
-                new Content(new TextHeader("Header"), new Body("Some text"),
-                        new Action("1", Arrays.asList(new Section(Arrays.asList("1", "2", "3"))))));
+                new MultiProductContent(new TextHeader("Header"), new Body("Some text"),
+                        new MultiProductAction("1", Arrays.asList(new Section(Arrays.asList("1", "2", "3"))))));
     }
 
     public static WhatsAppInteractiveMultiProductMessage
             getWhatsAppInteractiveMultiProductMessageWithAllParameters() {
         return new WhatsAppInteractiveMultiProductMessage("", "441134960001",
-                new Content(new TextHeader("Header"), new Body("Some text"), new Action("1",
+                new MultiProductContent(new TextHeader("Header"), new Body("Some text"), new MultiProductAction("1",
                         Arrays.asList(new Section(Arrays.asList("1", "2", "3")).title("Title 1"),
                                 new Section(Arrays.asList("4", "5", "6")).title("Title 2"))))
                                         .footer(new Footer("Footer")))

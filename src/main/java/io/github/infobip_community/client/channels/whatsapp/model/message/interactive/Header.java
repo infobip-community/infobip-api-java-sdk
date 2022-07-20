@@ -1,5 +1,4 @@
-
-package io.github.infobip_community.client.channels.whatsapp.model.message.interactive.multiproduct;
+package io.github.infobip_community.client.channels.whatsapp.model.message.interactive;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

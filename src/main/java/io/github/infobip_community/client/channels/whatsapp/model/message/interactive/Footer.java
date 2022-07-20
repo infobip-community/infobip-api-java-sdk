@@ -1,5 +1,4 @@
-
-package io.github.infobip_community.client.channels.whatsapp.model.message.interactive.button;
+package io.github.infobip_community.client.channels.whatsapp.model.message.interactive;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;

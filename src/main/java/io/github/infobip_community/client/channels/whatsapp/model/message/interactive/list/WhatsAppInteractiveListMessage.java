@@ -14,7 +14,7 @@ public final class WhatsAppInteractiveListMessage extends WhatsAppMessage<WhatsA
      *
      * @see WhatsAppMessage#WhatsAppMessage(String, String, MessageContent)
      */
-    public WhatsAppInteractiveListMessage(String from, String to, Content content) {
-        super(from, to, content);
+    public WhatsAppInteractiveListMessage(String from, String to, ListContent listContent) {
+        super(from, to, listContent);
     }
 }

@@ -1,26 +1,20 @@
 
-package io.github.infobip_community.client.channels.whatsapp.model.message.interactive.multiproduct;
+package io.github.infobip_community.client.channels.whatsapp.model.message.interactive.product;
 
-import jakarta.validation.Valid;
+import io.github.infobip_community.client.channels.whatsapp.model.message.interactive.Action;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Getter
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @ToString
-public final class Action {
+public final class ProductAction extends Action {
     @NotEmpty
     private final String catalogId;
-    @Valid
     @NotEmpty
-    @Size(max = 10)
-    private List<Section> sections = new ArrayList<>();
+    private final String productRetailerId;
 
     /**
      * <p>
@@ -31,10 +25,10 @@ public final class Action {
      *     "https://www.infobip.com/docs/whatsapp/manage-connection#manage-catalog">catalog</a>
      *     registered with Facebook and connected to the WhatsApp Business Account
      *     the sender belongs to.
-     * @param sections An array of multi product sections.
+     * @param productRetailerId Product-unique identifier, as defined in catalog.
      */
-    public Action(String catalogId, List<Section> sections) {
+    public ProductAction(String catalogId, String productRetailerId) {
         this.catalogId = catalogId;
-        this.sections = sections;
+        this.productRetailerId = productRetailerId;
     }
 }
