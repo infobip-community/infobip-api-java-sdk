@@ -1,31 +1,38 @@
 # Infobip API Java SDK
 
-[![Maven Central](https://badgen.net/maven/v/maven-central/io.github.infobip-community/infobip-api-java-sdk)](https://search.maven.org/artifact/io.github.infobip-community/infobip-api-java-sdk)
+[![Maven Central](https://badgen.net/maven/v/maven-central/io.github.infobip-community/infobip-api-java-sdk?icon=maven)](https://search.maven.org/artifact/io.github.infobip-community/infobip-api-java-sdk)
 [![License](https://badgen.net/github/license/infobip-community/infobip-api-java-sdk)](LICENSE)
+[![Workflow](https://img.shields.io/github/workflow/status/infobip-community/infobip-api-java-sdk/Java%20CI)](https://github.com/infobip-community/infobip-api-java-sdk/actions/workflows/ci.yaml)
+[![Repo Size](https://img.shields.io/github/repo-size/infobip-community/infobip-api-java-sdk)]()
 
-This is a Java SDK for Infobip API and you can use it as a dependency to add [Infobip APIs](https://www.infobip.com/docs/api) features to your application.
-To use this, you'll need an Infobip account. If you do not own one, you can create a [free account here](https://www.infobip.com/signup).
+This is a Java SDK that you can use as a dependency to add [Infobip API](https://www.infobip.com/docs/api) features to your application.
 
-#### Table of contents:
+<img src="https://udesigncss.com/wp-content/uploads/2020/01/Infobip-logo-transparent.png" height="48px" alt="Infobip" />
 
-* [General Info](#general-info)
-* [License](#license)
-* [Installation](#installation)
-* [Quickstart Guide](#quickstart-guide)
-* [Testing](#testing)
-* [Documentation](#documentation)
-* [Development](#development)
+## 📡 Supported channels
 
-## General Info
+- [SMS Reference](https://www.infobip.com/docs/api#channels/sms)
+- [Whatsapp Reference](https://www.infobip.com/docs/api#channels/whatsapp)
+- [Email Reference](https://www.infobip.com/docs/api#channels/email)
+- [WebRTC Reference](https://www.infobip.com/docs/api#channels/webrtc/)
+- [MMS Reference](https://www.infobip.com/docs/api#channels/mms)
+- [RCS Reference](https://www.infobip.com/docs/api#channels/rcs)
+
+More channels to be added in the near future.
+
+## ℹ️ General Info
 
 For `infobip-api-java-sdk` versioning we use [Semantic Versioning](https://semver.org) scheme.
 
-## License
+In order to run use it in your project, you'll need Java 8 or greater, and Apache Maven v3 or greater.
 
-Published under [MIT License](LICENSE).
 
-## Installation
+## 🔐 Authentication
 
+Currently, `infobip-api-java-sdk` only supports API Key authentication, and the key needs to be passed during client creation.
+This will most likely change with future versions, once more authentication methods are included.
+
+## 📦 Installation
 #### Maven Central
 
 `infobip-api-java-sdk` is published to Maven Central Repository.
@@ -60,7 +67,9 @@ mvn package
 
 to build your own .jar file, documentation and sources (under `infobip-api-java-sdk/target` folder).
 
-## Quickstart Guide
+## 🚀 Usage
+
+To use this, you'll need an Infobip account. If you do not own one, you can create a [free account here](https://www.infobip.com/signup).
 
 (1) Complete the [installation](#installation) process and make sure that you have `infobip-api-java-sdk` as dependency in your project.
 
@@ -71,11 +80,6 @@ ApiClient apiClient = new ApiClient();
 apiClient.setApiKey(API_KEY);
 apiClient.setBasePath(BASE_PATH);
 ```
-
-Note about **API Authentication**:
-
-Currently, `infobip-api-java-sdk` only supports API Key authentication, and the key needs to be passed during client creation.
-This will most likely change with future versions, once more authentication methods are included.
 
 (3) To be able to send, for example, [WhatsApp Text message](https://www.infobip.com/docs/api#channels/whatsapp/send-whatsapp-text-message) initialize the `SendWhatsAppMessageApi` with `ApiClient`:
 
@@ -90,7 +94,7 @@ WhatsAppTextMessage whatsAppTextMessage =
         new WhatsAppTextMessage("441134960000", "441134960001",
                 new Content("Some text with url: http://example.com")
                 .previewUrl(true))
-        .messageId("a28dd97c-1ffb-4fcf-99f1-0b557ed381da")
+        .messageId("a28dd97c-XXXX-XXXX-XXXX-XXXXXXXXXXXX")
         .callbackData("Callback data")
         .notifyUrl("https://www.example.com/whatsapp");
 ```
@@ -98,29 +102,8 @@ WhatsAppTextMessage whatsAppTextMessage =
 and send it:
 
 ```java
-ApiResponse<WhatsAppMessageResponse> response = 
-        sendWhatsAppMessageApi.sendWhatsAppTextMessage(whatsAppTextMessage);
-```
-
-Complete code may look like this:
-
-```java
-ApiClient apiClient = new ApiClient();
-apiClient.setApiKey(API_KEY);
-apiClient.setBasePath(BASE_PATH);
-
-SendWhatsAppMessageApi sendWhatsAppMessageApi = new SendWhatsAppMessageApi(apiClient);
-
-WhatsAppTextMessage whatsAppTextMessage =
-        new WhatsAppTextMessage("441134960000", "441134960001",
-                new Content("Some text with url: http://example.com")
-                .previewUrl(true))
-        .messageId("a28dd97c-1ffb-4fcf-99f1-0b557ed381da")
-        .callbackData("Callback data")
-        .notifyUrl("https://www.example.com/whatsapp");
-
 try {
-    ApiResponse<WhatsAppMessageResponse> response =
+    ApiResponse<WhatsAppMessageResponse> response = 
             sendWhatsAppMessageApi.sendWhatsAppTextMessage(whatsAppTextMessage);
 } catch (ApiException e) {
     /* handle exceptions */
@@ -138,7 +121,18 @@ Please note how above (WhatsAppTextMessage) **request** is created; [Fluent Inte
 - [RCS](src/test/java/io/github/infobip_community/client/channels/rcs/model/)
 - [WebRTC](src/test/java/io/github/infobip_community/client/channels/webrtc/model/)
 
-## Testing
+## 🛠 API Exception
+Fields provided within `ApiException` object are `responseCode` referring to the HTTP Code response, as well as the `responseHeaders` and `responseBody`.
+
+```java
+    apiException.getResponseCode();
+    apiException.getResponseHeaders();
+    apiException.getResponseBody();
+```
+
+Use them to handle exceptions and understand the reasoning behind API call failure.
+
+## 🧪 Testing
 
 To run tests position yourself in the project's root and run:
 
@@ -146,10 +140,9 @@ To run tests position yourself in the project's root and run:
 mvn test
 ```
 
-## Documentation
+## ⚖️ License
 
-Infobip API Documentation can be found [here](https://www.infobip.com/docs/api).
+This library is distributed under the MIT license found in the [LICENSE](LICENSE) file.
 
-## Development
-
-Feel free to participate in this open source project. For details check our [contribution guidelines](CONTRIBUTING.md).
+## 🆘 Want to help and improve open source SDK?
+Check out our [contributing guide](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md).
